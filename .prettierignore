@@ -4,3 +4,11 @@ out
 coverage
 package-lock.json
 next-env.d.ts
+
+*.local.md
+*.local.py
+*.pen
+.claude
+.serena
+playwright-report
+test-results
