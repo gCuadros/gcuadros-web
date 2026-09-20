@@ -110,3 +110,17 @@ test("project and talk links point to the real published work", async ({
   await expect(page).toHaveTitle("Gonzalo Cuadros | Frontend Tech Lead");
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
 });
+
+test("CV download serves a PDF file", async ({ page, request }) => {
+  await page.goto("/");
+  const link = page.getByRole("link", {
+    name: "Descargar CV (PDF)",
+    exact: true,
+  });
+  await expect(link).toHaveAttribute("download", "");
+  const href = await link.getAttribute("href");
+  const response = await request.get(href!);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+});
