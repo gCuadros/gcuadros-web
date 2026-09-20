@@ -162,6 +162,9 @@ export function Experience() {
         ))}
       </ol>
       <div className="trajectory-foot">
+        <a className="button" href="/cv/gonzalo-cuadros-cv.pdf" download>
+          Descargar CV (PDF)
+        </a>
         <ArrowLink href={links.linkedin}>
           Trayectoria completa en LinkedIn
         </ArrowLink>
