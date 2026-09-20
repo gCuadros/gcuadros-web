@@ -45,7 +45,7 @@ Julio de 2020 — julio de 2022
 
 ### Hevy Coach MCP
 
-Servidor MCP que conecta datos de entrenamiento de Hevy con asistentes de IA. Permite leer entrenamientos y rutinas, calcular métricas de progreso, crear rutinas y registrar peso corporal.
+Servidor MCP que conecta datos de entrenamiento de Hevy con asistentes de IA. Permite leer entrenamientos y rutinas, calcular métricas de progreso, crear rutinas y registrar peso corporal. Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy; las herramientas de escritura están declaradas aparte y piden confirmación antes de ejecutarse.
 
 [Código del proyecto](https://github.com/gCuadros/hevy-mcp)
 
