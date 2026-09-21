@@ -194,6 +194,12 @@ export function Project() {
             rutinas. Lee entrenamientos y rutinas, calcula métricas de progreso,
             y puede crear rutinas y registrar peso corporal.
           </p>
+          <p>
+            Sin caché ni base de datos: cada consulta llama en vivo a la API de
+            Hevy para razonar sobre datos actuales. Las herramientas de lectura
+            y escritura están declaradas por separado, y las de escritura piden
+            confirmación antes de ejecutarse.
+          </p>
           <div className="actions">
             <a className="button" href={links.hevy}>
               Ver código en GitHub
