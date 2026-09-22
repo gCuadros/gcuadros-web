@@ -38,3 +38,7 @@ La home contiene presentación, especialidades, trayectoria, Hevy Coach MCP, cha
 ## Flujo de trabajo
 
 Ver [CONTRIBUTING.md](CONTRIBUTING.md). Los cambios se revisan mediante PR. Las decisiones técnicas están en [arquitectura](docs/architecture.md) y los pasos de publicación en [despliegue](docs/deployment.md).
+
+## CV descargable
+
+El PDF y su fuente editable están versionados. Consulta [cómo actualizar el CV](docs/cv.md).

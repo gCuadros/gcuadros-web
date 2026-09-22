@@ -162,6 +162,9 @@ export function Experience() {
         ))}
       </ol>
       <div className="trajectory-foot">
+        <a className="button" href="/cv/gonzalo-cuadros-cv.pdf" download>
+          Descargar CV (PDF)
+        </a>
         <ArrowLink href={links.linkedin}>
           Trayectoria completa en LinkedIn
         </ArrowLink>
@@ -190,6 +193,12 @@ export function Project() {
             Hevy con asistentes de IA para analizar el progreso y gestionar
             rutinas. Lee entrenamientos y rutinas, calcula métricas de progreso,
             y puede crear rutinas y registrar peso corporal.
+          </p>
+          <p>
+            Sin caché ni base de datos: cada consulta llama en vivo a la API de
+            Hevy para razonar sobre datos actuales. Las herramientas de lectura
+            y escritura están declaradas por separado, y las de escritura piden
+            confirmación antes de ejecutarse.
           </p>
           <div className="actions">
             <a className="button" href={links.hevy}>
