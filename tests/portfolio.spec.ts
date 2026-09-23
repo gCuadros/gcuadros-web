@@ -124,3 +124,48 @@ test("CV download serves a PDF file", async ({ page, request }) => {
   expect(response.headers()["content-type"]).toContain("application/pdf");
   expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
 });
+
+for (const width of [320, 1440]) {
+  test(`Hevy case is accessible and navigable at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await page.getByRole("link", { name: "Leer el caso técnico" }).click();
+    await expect(page).toHaveURL(/\/proyectos\/hevy$/);
+    await expect(
+      page.getByRole("heading", { name: "Hevy Coach MCP", exact: true }),
+    ).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+    ).toBe(false);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    await page
+      .getByRole("main")
+      .getByRole("link", { name: "Volver al portfolio" })
+      .click();
+    await expect(page).toHaveURL(/#proyecto$/);
+  });
+}
+
+test("social image is declared and serves a PNG", async ({ page, request }) => {
+  await page.goto("/");
+  const src = await page
+    .locator('meta[property="og:image"]')
+    .getAttribute("content");
+  expect(src).toBeTruthy();
+  const response = await request.get(new URL(src!).pathname);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["content-type"]).toContain("image/png");
+  expect((await response.body()).subarray(0, 8).toString("hex")).toBe(
+    "89504e470d0a1a0a",
+  );
+});

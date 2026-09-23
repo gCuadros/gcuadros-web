@@ -850,3 +850,47 @@ p {
     animation: none !important;
   }
 }
+
+.project-copy > p + p {
+  margin-top: 1rem;
+}
+.case-study {
+  max-width: 52rem;
+  padding-block: 4rem;
+}
+.case-study h1 {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.12;
+  margin-block: 1.5rem;
+}
+.case-study h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.case-study section {
+  margin-top: 3rem;
+}
+.case-study p + p,
+.case-study ul {
+  margin-top: 1rem;
+}
+.case-study li {
+  margin-bottom: 0.75rem;
+}
+.case-study ul {
+  padding-left: 1.25rem;
+}
+.case-study .actions {
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.case-study pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+}

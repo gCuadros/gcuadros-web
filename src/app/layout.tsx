@@ -10,12 +10,20 @@ const title = "Gonzalo Cuadros | Frontend Tech Lead";
 const description =
   "Arquitectura frontend, DevOps y liderazgo técnico. Conoce la trayectoria, los proyectos y las charlas de Gonzalo Cuadros, Tech Lead en MANGO.";
 
+const deploymentHost =
+  process.env.VERCEL_ENV === "production"
+    ? (process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL)
+    : process.env.VERCEL_URL;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    deploymentHost ? `https://${deploymentHost}` : "http://localhost:3100",
+  ),
   title,
   description,
   authors: [{ name: "Gonzalo Cuadros" }],
   openGraph: { title, description, locale: "es_ES", type: "website" },
-  twitter: { card: "summary", title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 const personJsonLd = {
