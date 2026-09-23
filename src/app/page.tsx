@@ -44,9 +44,6 @@ export default function Home() {
           <Signature />
         </section>
         <Work />
-        <div className="section-divider container">
-          <Signature />
-        </div>
         <Experience />
         <Project />
         <Talks />

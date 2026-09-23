@@ -99,9 +99,7 @@ export function Work() {
               <span aria-hidden="true">→</span>
               <span>Despliegue</span>
             </div>
-            <p className="annotation-note">
-              CI/CD de frontend, migrado a GitHub
-            </p>
+            <p className="annotation-note">CI/CD de frontend</p>
           </div>
         </article>
         <article className="work-row">
@@ -181,6 +179,7 @@ export function Project() {
   return (
     <section
       id="proyecto"
+      tabIndex={-1}
       className="project section"
       aria-labelledby="project-title"
     >
@@ -197,14 +196,14 @@ export function Project() {
           <p>
             Sin caché ni base de datos: cada consulta llama en vivo a la API de
             Hevy para razonar sobre datos actuales. Las herramientas de lectura
-            y escritura están declaradas por separado, y las de escritura piden
-            confirmación antes de ejecutarse.
+            y escritura están declaradas por separado para que el cliente MCP
+            pueda aplicar sus controles de confirmación.
           </p>
           <div className="actions">
             <a className="button" href={links.hevy}>
               Ver código en GitHub
             </a>
-            <ArrowLink href={links.hevyPost}>Cómo lo presenté</ArrowLink>
+            <ArrowLink href="/proyectos/hevy">Leer el caso técnico</ArrowLink>
           </div>
         </div>
         <figure className="project-schema">
