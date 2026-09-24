@@ -39,3 +39,15 @@ Fuentes primarias consultadas:
 - [Greenhouse: Talent Matching](https://support.greenhouse.io/hc/en-us/articles/41396009937307-Talent-Matching): criterios y pesos definidos por vacante; el score no es universal ni equivale a decisión automática de rechazo.
 
 No se ha subido el CV a servicios externos de scoring. Sin oferta objetivo ni acceso al sistema del empleador no se afirma ninguna puntuación ATS.
+
+## Comprobación en cada PR
+
+El check obligatorio `Quality checks` ejecuta `scripts/verify_cv.py` sobre el PDF versionado, sin regenerarlo. Comprueba dos páginas, igualdad del texto visible en orden (ignorando viñetas y pies de página) y destinos de enlaces contra `content/cv.md`. Detecta cambios de fuente sin actualizar el PDF, incluso eliminaciones de texto o cambios de URL. El generador reutiliza esta misma comprobación.
+
+Para ejecutarla localmente con las dependencias instaladas:
+
+```sh
+python scripts/verify_cv.py
+```
+
+La prueba no comprueba la presentación visual ni reproduce el parser o scoring de un ATS comercial.

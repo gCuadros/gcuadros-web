@@ -23,6 +23,11 @@ jobs:
       - run: npm run format:check
       - run: npm run lint
       - run: npm run typecheck
+      - name: Verify published CV against editable source
+        run: |
+          python3 -m venv /tmp/cv-check
+          /tmp/cv-check/bin/pip install -r scripts/requirements-cv.txt
+          /tmp/cv-check/bin/python scripts/verify_cv.py
   build:
     name: Production build
     runs-on: ubuntu-latest

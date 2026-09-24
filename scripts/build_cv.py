@@ -4,7 +4,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
-from pypdf import PdfReader
 root=Path(__file__).resolve().parents[1]
 source=(root/'content/cv.md').read_text()
 out=root/'public/cv/gonzalo-cuadros-cv.pdf'
@@ -34,28 +33,5 @@ def footer(canvas,doc):
  canvas.setFont('Helvetica',8);canvas.setFillColor(HexColor('#62666C'));canvas.drawString(43,29,'Gonzalo Cuadros | Frontend Tech Lead');canvas.drawRightString(w-43,29,str(doc.page));canvas.restoreState()
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=43,leftMargin=43,topMargin=40,bottomMargin=55,title='Gonzalo Cuadros - CV',author='Gonzalo Cuadros')
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
-r=PdfReader(out);text='\n'.join(p.extract_text() for p in r.pages)
-assert len(r.pages)==2,len(r.pages)
-assert 'Notas editoriales' not in text and 'Pendientes antes' not in text
-assert all(x in text for x in ['Gonzalo Cuadros','MANGO','Wuolah','Freepik','UNIR','Hevy'])
-links=[a.get_object()['/A']['/URI'] for p in r.pages for a in p.get('/Annots',[]) if a.get_object().get('/A',{}).get('/URI')]
-assert len(links)==6,links
-
-print({'pages':len(r.pages),'links':links,'bytes':out.stat().st_size})
-
-# Verify the visible text layer preserves the source in reading order.
-visible = []
-for line in source.splitlines():
- if not line.strip(): continue
- line = re.sub(r'^#{1,3} |^- ', '', line)
- line = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', line)
- visible.append(line.replace('**', '').replace('—', '-').replace('–', '-'))
-normalize = lambda value: re.sub(r'\s+', ' ', value).strip()
-extracted = normalize(text)
-cursor = 0
-for line in visible:
- token = normalize(line)
- position = extracted.find(token, cursor)
- assert position >= 0, f'Missing or out-of-order PDF text: {token}'
- cursor = position + len(token)
-print('Visible source text preserved in PDF reading order; not an ATS scoring certification.')
+from verify_cv import verify_cv
+verify_cv(root)
