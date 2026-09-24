@@ -9,11 +9,11 @@ root=Path(__file__).resolve().parents[1]
 source=(root/'content/cv.md').read_text()
 out=root/'public/cv/gonzalo-cuadros-cv.pdf'
 styles={
- 'body':ParagraphStyle('body',fontName='Helvetica',fontSize=10,leading=14,textColor=HexColor('#242629'),spaceAfter=7),
+ 'body':ParagraphStyle('body',fontName='Helvetica',fontSize=10,leading=13,textColor=HexColor('#242629'),spaceAfter=5),
  'name':ParagraphStyle('name',fontName='Helvetica-Bold',fontSize=27,leading=32,spaceAfter=10,textColor=HexColor('#16181b')),
- 'section':ParagraphStyle('section',fontName='Helvetica-Bold',fontSize=12,leading=16,spaceBefore=13,spaceAfter=8,textColor=HexColor('#875334'),keepWithNext=True),
+ 'section':ParagraphStyle('section',fontName='Helvetica-Bold',fontSize=12,leading=16,spaceBefore=10,spaceAfter=6,textColor=HexColor('#875334'),keepWithNext=True),
  'role':ParagraphStyle('role',fontName='Helvetica-Bold',fontSize=10.5,leading=14,spaceBefore=7,spaceAfter=4,keepWithNext=True),
- 'bullet':ParagraphStyle('bullet',fontName='Helvetica',fontSize=10,leading=14,leftIndent=10,firstLineIndent=-7,spaceAfter=5,textColor=HexColor('#242629'))}
+ 'bullet':ParagraphStyle('bullet',fontName='Helvetica',fontSize=10,leading=13,leftIndent=10,firstLineIndent=-7,spaceAfter=4,textColor=HexColor('#242629'))}
 def fmt(text):
  text=html.escape(text.replace('—','-').replace('–','-'))
  text=re.sub(r'\[([^\]]+)\]\(([^)]+)\)',r'<a href="\2" color="#875334"><u>\1</u></a>',text)

@@ -19,10 +19,14 @@ export const navigation = [
 export const experience = [
   {
     company: "MANGO",
+    description:
+      "Liderazgo técnico de cinco profesionales en tres equipos. Arquitectura compartida con otros Tech Leads, CI/CD de frontend y migraciones de CDN y de Bitbucket a GitHub.",
     roles: [{ title: "Frontend Tech Lead", period: "ene. 2025 — actualidad" }],
   },
   {
     company: "GFT · proyecto MANGO",
+    description:
+      "De Senior a Tech Lead en el proyecto MANGO: migración a Next.js 13, evolución de la plataforma y definición de estándares y prioridades técnicas.",
     roles: [
       { title: "Frontend Tech Lead", period: "jul. 2024 — ene. 2025" },
       { title: "Senior Frontend Engineer", period: "jun. 2023 — jul. 2024" },
@@ -30,6 +34,8 @@ export const experience = [
   },
   {
     company: "Wuolah",
+    description:
+      "De Senior a Tech Lead: migración a Next.js y TypeScript, gestión de datos con React Query y unificación de repositorios con Turborepo.",
     roles: [
       { title: "Tech Lead, Front End", period: "ene. 2023 — jun. 2023" },
       { title: "Senior Frontend Developer", period: "jul. 2022 — ene. 2023" },
@@ -37,6 +43,14 @@ export const experience = [
   },
   {
     company: "Freepik",
+    description:
+      "Migración a Next.js y de JavaScript a TypeScript. Gestión de despliegues e infraestructura en GCP, incluidos entornos sandbox.",
     roles: [{ title: "Frontend Developer", period: "jul. 2020 — jul. 2022" }],
+  },
+  {
+    company: "Cash Converters España",
+    description:
+      "Desarrollo frontend y participación en UX/UI con React y Redux, Angular y NgRx, Sass y Salesforce Commerce Cloud.",
+    roles: [{ title: "Frontend Developer", period: "mar. 2019 — jul. 2020" }],
   },
 ];
