@@ -1,15 +1,17 @@
 # Gonzalo Cuadros
 
 **Frontend Tech Lead · Arquitectura frontend · DevOps & Cloud**  
-Madrid, España · [LinkedIn](https://www.linkedin.com/in/gonzalo-cuadros/) · [GitHub](https://github.com/gCuadros)
+Madrid, España · [linkedin.com/in/gonzalo-cuadros](https://www.linkedin.com/in/gonzalo-cuadros/)
 
-## Perfil
+[gcuadros-web.vercel.app](https://gcuadros-web.vercel.app/) · [github.com/gCuadros](https://github.com/gCuadros)
 
-Trabajo en arquitectura frontend, migraciones y DevOps aplicado al desarrollo web. Mi trayectoria pasa por Cash Converters, Freepik, Wuolah y el proyecto MANGO, primero desde GFT y actualmente dentro de MANGO. Combino decisiones de arquitectura, responsabilidad sobre CI/CD y acompañamiento técnico de equipos.
+## Perfil profesional
 
-Actualmente lidero técnicamente a cinco profesionales distribuidos en tres equipos. Junto al resto de Tech Leads participo en las decisiones de arquitectura y en el enfoque de las migraciones de la plataforma.
+Frontend Tech Lead especializado en arquitectura frontend con React, Next.js y TypeScript, migraciones a monorepos y DevOps aplicado al frontend. Experiencia en CI/CD, infraestructura como código y despliegues en Google Cloud Platform (GCP).
 
-## Experiencia
+En MANGO lidero técnicamente a cinco profesionales distribuidos en tres equipos. Comparto con otros Tech Leads las decisiones de arquitectura y el enfoque de las migraciones, combinando evolución de plataforma, automatización y mentoría.
+
+## Experiencia profesional
 
 ### MANGO — Frontend Tech Lead
 
@@ -49,18 +51,18 @@ Marzo de 2019 — julio de 2020 · Málaga
 
 - Desarrollo frontend y participación en UX/UI: React/Redux, Angular/NgRx, HTML/CSS/Sass y Salesforce Commerce Cloud.
 
-## Áreas técnicas
+## Competencias técnicas
 
 - **Frontend:** React, Next.js, TypeScript, arquitectura de microfrontends, monorepos con Turborepo y design systems.
-- **DevOps y cloud:** CI/CD, Terraform e infraestructura como código, GCP, Jenkins y observabilidad con Dynatrace.
+- **DevOps y Platform Engineering:** integración y entrega continua (CI/CD), Terraform e infraestructura como código (IaC), Google Cloud Platform (GCP), Jenkins y observabilidad con Dynatrace.
 - **Calidad web:** rendimiento, Core Web Vitals y experiencia de desarrollo.
 - **Liderazgo técnico:** decisiones compartidas de arquitectura, mentoría, feedback y acompañamiento de equipos.
 
-## Proyecto propio
+## Proyectos
 
 ### Hevy Coach MCP
 
-Servidor MCP que conecta datos de entrenamiento de Hevy con asistentes de IA. Permite leer entrenamientos y rutinas, calcular métricas de progreso, crear rutinas y registrar peso corporal. Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy; las herramientas de escritura se declaran aparte para que el cliente MCP pueda aplicar sus controles de confirmación.
+Servidor Model Context Protocol (MCP) que conecta datos de entrenamiento de Hevy con asistentes de IA. Permite leer entrenamientos y rutinas, calcular métricas de progreso, crear rutinas y registrar peso corporal. Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy; las herramientas de escritura se declaran aparte para que el cliente MCP pueda aplicar sus controles de confirmación.
 
 [Código del proyecto](https://github.com/gCuadros/hevy-mcp)
 
@@ -70,7 +72,7 @@ Servidor MCP que conecta datos de entrenamiento de Hevy con asistentes de IA. Pe
 - **Fabrics 2025 — MANGO:** participación como ponente. [Ver publicación](https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/).
 - **Codespace Academy · junio de 2023 — agosto de 2024:** colaboración docente. Diseño e impartición de sesiones desde fundamentos frontend hasta técnicas avanzadas con Next.js.
 
-## Formación
+## Educación y formación
 
 **Máster en DevOps & Cloud — UNIR** · Septiembre de 2025 — junio de 2026 · Nota: 9
 
