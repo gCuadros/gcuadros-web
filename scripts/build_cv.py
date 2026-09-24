@@ -21,7 +21,7 @@ def fmt(text):
 story=[]
 for line in source.splitlines():
  if not line.strip():continue
- if line.startswith('## Áreas técnicas'):story.append(PageBreak())
+ if line.startswith('## Competencias técnicas'):story.append(PageBreak())
  kind='body'
  if line.startswith('# '):kind='name';line=line[2:]
  elif line.startswith('## '):kind='section';line=line[3:]
@@ -39,6 +39,23 @@ assert len(r.pages)==2,len(r.pages)
 assert 'Notas editoriales' not in text and 'Pendientes antes' not in text
 assert all(x in text for x in ['Gonzalo Cuadros','MANGO','Wuolah','Freepik','UNIR','Hevy'])
 links=[a.get_object()['/A']['/URI'] for p in r.pages for a in p.get('/Annots',[]) if a.get_object().get('/A',{}).get('/URI')]
-assert len(links)==5,links
+assert len(links)==6,links
 
 print({'pages':len(r.pages),'links':links,'bytes':out.stat().st_size})
+
+# Verify the visible text layer preserves the source in reading order.
+visible = []
+for line in source.splitlines():
+ if not line.strip(): continue
+ line = re.sub(r'^#{1,3} |^- ', '', line)
+ line = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', line)
+ visible.append(line.replace('**', '').replace('—', '-').replace('–', '-'))
+normalize = lambda value: re.sub(r'\s+', ' ', value).strip()
+extracted = normalize(text)
+cursor = 0
+for line in visible:
+ token = normalize(line)
+ position = extracted.find(token, cursor)
+ assert position >= 0, f'Missing or out-of-order PDF text: {token}'
+ cursor = position + len(token)
+print('Visible source text preserved in PDF reading order; not an ATS scoring certification.')
