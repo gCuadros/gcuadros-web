@@ -375,9 +375,10 @@ p {
   gap: 2rem;
 }
 .education {
+  max-width: 30rem;
   text-align: right;
 }
-.education > p:last-child {
+.education > p:not(.caption) {
   margin-top: 0.25rem;
   font-size: 0.9375rem;
   color: var(--foreground);
@@ -893,4 +894,9 @@ p {
   border: 1px solid var(--border);
   margin-top: 1rem;
   font-size: 0.9375rem;
+}
+
+.experience-description {
+  margin-top: 1rem;
+  max-width: 65ch;
 }

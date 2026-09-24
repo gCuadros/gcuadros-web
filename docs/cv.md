@@ -20,3 +20,7 @@ Editar el Markdown, regenerar el PDF y revisar las dos páginas visualmente. El 
 El generador admite los encabezados, listas, negritas y enlaces usados en la fuente actual; no es un conversor Markdown general. El salto de página se sitúa antes de Áreas técnicas. El PDF tiene texto seleccionable, pero no está certificado como PDF accesible etiquetado.
 
 Solo se versiona contenido público. PLAN.local.md, STATUS.local.md y las notas editoriales privadas del borrador no forman parte del CV. La fuente canónica para futuras ediciones es content/cv.md.
+
+## Criterios editoriales
+
+La trayectoria incluye Cash Converters, Freepik, Wuolah y MANGO (primero desde GFT), con aportaciones concretas por etapa. Codespace se recoge como colaboración docente entre junio de 2023 y agosto de 2024. Las denominaciones de formación conservan la información aportada por el titular. AWS, Azure, Kubernetes y Ansible se presentan exclusivamente como formación del máster, no como experiencia profesional. No añadir niveles de idiomas ni resultados cuantificados sin una fuente confirmada.

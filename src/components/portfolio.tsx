@@ -145,17 +145,20 @@ export function Experience() {
         <h2 id="experience-title">Una trayectoria construyendo frontend</h2>
       </div>
       <ol className="timeline">
-        {experience.map(({ company, roles }) => (
+        {experience.map(({ company, roles, description }) => (
           <li key={company} className="timeline-company">
             <h3>{company}</h3>
-            <ul>
-              {roles.map(({ title, period }) => (
-                <li className="timeline-role" key={title}>
-                  <p>{title}</p>
-                  <p className="period">{period}</p>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <ul>
+                {roles.map(({ title, period }) => (
+                  <li className="timeline-role" key={title}>
+                    <p>{title}</p>
+                    <p className="period">{period}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="experience-description">{description}</p>
+            </div>
           </li>
         ))}
       </ol>
@@ -168,7 +171,10 @@ export function Experience() {
         </ArrowLink>
         <div className="education">
           <p className="caption">Formación</p>
-          <p>Máster en DevOps &amp; Cloud · UNIR</p>
+          <p>Máster en DevOps &amp; Cloud · UNIR · 2025–2026</p>
+          <p>Computer Software Engineering · UOC · 2012–2018</p>
+          <p>Full Stack Development Bootcamp · Code Space · 2018–2019</p>
+          <p>Web/Multimedia Management and Webmaster · Cesur · 2010–2012</p>
         </div>
       </div>
     </section>
@@ -261,7 +267,9 @@ export function Talks() {
         </div>
       </article>
       <p className="codespace-note">
-        También he impartido formación sobre Next.js en Codespace Academy.
+        Entre junio de 2023 y agosto de 2024 colaboré como docente en Codespace
+        Academy, diseñando e impartiendo sesiones desde fundamentos de frontend
+        hasta técnicas avanzadas con Next.js.
       </p>
     </section>
   );
