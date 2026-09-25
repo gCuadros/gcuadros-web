@@ -30,9 +30,9 @@ export default function Home() {
             Arquitectura frontend. De las decisiones a producción.
           </h1>
           <p className="hero-copy">
-            Trabajo en arquitectura frontend y DevOps, y lidero técnicamente a
-            cinco profesionales distribuidos en tres equipos. En MANGO, comparto
-            con otros Tech Leads las decisiones que dan forma a la plataforma.
+            Trabajo en arquitectura frontend y DevOps, y acompaño a equipos de
+            desarrollo desde el liderazgo técnico. Comparto decisiones de
+            arquitectura y ayudo a convertirlas en soluciones mantenibles.
           </p>
           <div className="actions">
             <a className="button" href="#trabajo">
