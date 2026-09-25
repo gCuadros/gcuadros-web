@@ -61,20 +61,20 @@ export function Work() {
           <div className="work-copy">
             <h3>Arquitectura frontend</h3>
             <p>
-              Participo junto al resto de Tech Leads en las decisiones de
-              arquitectura y en el enfoque de las migraciones: de microfrontends
-              a un monorepo con Next.js y de Akamai a Vercel como CDN.
+              Participo en decisiones compartidas de arquitectura y evolución de
+              plataformas frontend, con foco en mantenibilidad, rendimiento y
+              experiencia de desarrollo.
             </p>
           </div>
           <div className="annotation">
             <p className="caption">Esquema conceptual</p>
             <div className="migration">
-              <span>Microfrontends</span>
+              <span>Contexto</span>
               <span aria-hidden="true">→</span>
-              <strong>Monorepo Next.js</strong>
-              <span>Akamai</span>
+              <strong>Decisiones</strong>
+              <span>Validación</span>
               <span aria-hidden="true">→</span>
-              <strong>Vercel (CDN)</strong>
+              <strong>Aprendizaje</strong>
             </div>
           </div>
         </article>
@@ -85,9 +85,9 @@ export function Work() {
           <div className="work-copy">
             <h3>DevOps aplicado al frontend</h3>
             <p>
-              Me encargo del CI/CD de frontend y he trabajado en la migración de
-              Bitbucket a GitHub. Automatización, despliegues y observabilidad
-              forman parte de mi trabajo.
+              Trabajo en automatización, integración y entrega continua de
+              frontend. Despliegues y observabilidad forman parte de mi enfoque
+              para conectar el desarrollo con la operación.
             </p>
           </div>
           <div className="annotation">
@@ -109,22 +109,15 @@ export function Work() {
           <div className="work-copy">
             <h3>Liderazgo técnico</h3>
             <p>
-              Acompaño a cinco profesionales de tres equipos mediante mentoría,
-              1:1 y feedback, y participo en entrevistas y planes de desarrollo.
+              Acompaño a equipos de desarrollo mediante mentoría, 1:1 y
+              feedback, y participo en entrevistas y planes de desarrollo.
             </p>
           </div>
           <div className="annotation">
-            <p className="caption">Contexto de equipo</p>
-            <dl className="team-stats">
-              <div>
-                <dt>equipos</dt>
-                <dd>3</dd>
-              </div>
-              <div>
-                <dt>profesionales</dt>
-                <dd>5</dd>
-              </div>
-            </dl>
+            <p className="caption">Liderazgo técnico</p>
+            <p className="annotation-note">
+              Mentoría · Feedback · Decisiones compartidas
+            </p>
           </div>
         </article>
       </div>

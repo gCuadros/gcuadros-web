@@ -20,13 +20,13 @@ export const experience = [
   {
     company: "MANGO",
     description:
-      "Liderazgo técnico de cinco profesionales en tres equipos. Arquitectura compartida con otros Tech Leads, CI/CD de frontend y migraciones de CDN y de Bitbucket a GitHub.",
+      "Liderazgo técnico y mentoría. Decisiones de arquitectura compartidas con otros Tech Leads, evolución de plataformas y DevOps aplicado al frontend.",
     roles: [{ title: "Frontend Tech Lead", period: "ene. 2025 — actualidad" }],
   },
   {
     company: "GFT · proyecto MANGO",
     description:
-      "De Senior a Tech Lead en el proyecto MANGO: migración a Next.js 13, evolución de la plataforma y definición de estándares y prioridades técnicas.",
+      "De Senior a Tech Lead en el proyecto MANGO: desarrollo frontend y evolución de la plataforma, con definición de estándares y prioridades técnicas.",
     roles: [
       { title: "Frontend Tech Lead", period: "jul. 2024 — ene. 2025" },
       { title: "Senior Frontend Engineer", period: "jun. 2023 — jul. 2024" },

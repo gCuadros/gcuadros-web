@@ -8,3 +8,7 @@
 - No publicar casos profesionales vacíos. Ampliarlos solo con problema, contribución, estado y resultados confirmados.
 - Fotografía y recomendaciones requieren materiales del titular. No se sustituyen por imágenes o testimonios inventados.
 - Imagen social editable en `src/app/opengraph-image.tsx`. No incluye un dominio provisional.
+
+## Confidencialidad
+
+Describir responsabilidades y competencias sin cifras de equipos/personas, topologías internas, rutas de migración entre proveedores ni detalles operativos de empresas. Los artículos técnicos deben usar ejemplos independientes y agnósticos, sin presentarlos como reconstrucciones de sistemas internos ni atribuir resultados no públicos a un empleador. No solicitar datos internos para completar casos.

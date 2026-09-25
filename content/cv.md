@@ -9,7 +9,7 @@ Madrid, España · [linkedin.com/in/gonzalo-cuadros](https://www.linkedin.com/in
 
 Frontend Tech Lead especializado en arquitectura frontend con React, Next.js y TypeScript, migraciones a monorepos y DevOps aplicado al frontend. Experiencia en CI/CD, infraestructura como código y despliegues en Google Cloud Platform (GCP).
 
-En MANGO lidero técnicamente a cinco profesionales distribuidos en tres equipos. Comparto con otros Tech Leads las decisiones de arquitectura y el enfoque de las migraciones, combinando evolución de plataforma, automatización y mentoría.
+En MANGO ejerzo liderazgo técnico y acompaño a equipos de desarrollo. Comparto con otros Tech Leads las decisiones de arquitectura y el enfoque de las migraciones, combinando evolución de plataforma, automatización y mentoría.
 
 ## Experiencia profesional
 
@@ -17,9 +17,9 @@ En MANGO lidero técnicamente a cinco profesionales distribuidos en tres equipos
 
 Enero de 2025 — actualidad
 
-- Liderazgo técnico de tres equipos, con cinco profesionales en total, mediante mentoría, 1:1, feedback y acompañamiento del desarrollo profesional.
-- Decisiones de arquitectura compartidas con otros Tech Leads, incluyendo el enfoque de migración de microfrontends a un monorepo con Next.js y de Akamai a Vercel como CDN.
-- Responsabilidad sobre CI/CD de frontend con Jenkins, observabilidad con Dynatrace y trabajo en la migración de Bitbucket a GitHub.
+- Liderazgo técnico y acompañamiento de equipos mediante mentoría, 1:1, feedback y acompañamiento del desarrollo profesional.
+- Decisiones de arquitectura compartidas con otros Tech Leads para la evolución y mantenibilidad de plataformas frontend.
+- Trabajo en integración y entrega continua de frontend, automatización de despliegues y observabilidad.
 - Participación en entrevistas y planes de desarrollo desde el rol de líder técnico.
 
 ### GFT · proyecto MANGO
@@ -27,7 +27,7 @@ Enero de 2025 — actualidad
 **Frontend Tech Lead** · Julio de 2024 — enero de 2025  
 **Senior Frontend Engineer** · Junio de 2023 — julio de 2024
 
-- Participación en la migración de la plataforma a Next.js 13 y TypeScript.
+- Desarrollo frontend y participación en la evolución de la plataforma.
 - Como Tech Lead, definición de arquitectura, estándares y roadmap técnico, e impulso de la evolución de la plataforma.
 
 ### Wuolah
