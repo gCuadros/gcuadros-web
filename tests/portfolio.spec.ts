@@ -68,7 +68,9 @@ test("mobile menu manages keyboard, escape, anchors and resizing", async ({
   await expect(dialog).not.toBeVisible();
   await expect(trigger).toBeFocused();
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
-  expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
+  await expect
+    .poll(() => page.evaluate(() => document.body.style.overflow))
+    .toBe("");
   await trigger.click();
   await dialog.getByRole("link", { name: "Trayectoria", exact: true }).click();
   await expect(page).toHaveURL(/#trayectoria$/);
@@ -77,7 +79,9 @@ test("mobile menu manages keyboard, escape, anchors and resizing", async ({
   await trigger.click();
   await page.setViewportSize({ width: 1024, height: 900 });
   await expect(dialog).not.toBeVisible();
-  expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
+  await expect
+    .poll(() => page.evaluate(() => document.body.style.overflow))
+    .toBe("");
 });
 
 test("skip link and reduced motion work with keyboard", async ({ page }) => {
