@@ -27,7 +27,8 @@ export default function Home() {
             Gonzalo Cuadros · Frontend Tech Lead en MANGO
           </p>
           <h1 id="hero-title">
-            Arquitectura frontend. De las decisiones a producción.
+            <span>Arquitectura frontend.</span>{" "}
+            <span>De las decisiones a producción.</span>
           </h1>
           <p className="hero-copy">
             Trabajo en arquitectura frontend y DevOps, y acompaño a equipos de
