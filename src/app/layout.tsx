@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "@fontsource-variable/manrope";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
 import "@fontsource/ibm-plex-mono/latin-700.css";
 import "./globals.css";
 import { links } from "@/lib/portfolio";
+
+const editorial = localFont({
+  src: "../../node_modules/@fontsource-variable/newsreader/files/newsreader-latin-standard-normal.woff2",
+  variable: "--font-editorial",
+  display: "swap",
+  weight: "200 800",
+});
 
 const title = "Gonzalo Cuadros | Frontend Tech Lead";
 const description =
@@ -44,7 +52,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={editorial.variable}>
       <body>
         <script
           type="application/ld+json"
