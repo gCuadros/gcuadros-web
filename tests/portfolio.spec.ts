@@ -173,3 +173,114 @@ test("social image is declared and serves a PNG", async ({ page, request }) => {
     "89504e470d0a1a0a",
   );
 });
+
+for (const width of [320, 768, 1440]) {
+  test(`English pages retain locale and remain accessible at ${width}px`, async ({
+    page,
+    request,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await page.getByRole("link", { name: "EN — English", exact: true }).click();
+    await expect(page).toHaveURL(/\/en$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Frontend architecture. From decisions to production.",
+    );
+    await expect(
+      page.getByRole("link", {
+        name: "Download CV (PDF, Spanish)",
+        exact: true,
+      }),
+    ).toHaveAttribute("href", "/cv/gonzalo-cuadros-cv.pdf");
+    await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute(
+      "content",
+      "en_GB",
+    );
+    expect(
+      new URL((await page.locator('link[hreflang="es"]').getAttribute("href"))!)
+        .pathname,
+    ).toBe("/");
+    await expect(
+      page.getByRole("link", { name: "EN — English", exact: true }),
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+    ).toBe(false);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    if (width === 320) {
+      await page.getByRole("button", { name: "Open menu" }).click();
+      const menu = page.getByRole("dialog", { name: "Navigation menu" });
+      await expect(
+        menu.getByRole("link", { name: "Experience", exact: true }),
+      ).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(menu).not.toBeVisible();
+    }
+    await page
+      .getByRole("link", { name: "Read the technical case study" })
+      .click();
+    await expect(page).toHaveURL(/\/en\/proyectos\/hevy$/);
+    await expect(
+      page.getByRole("heading", {
+        name: "Missing data does not mean zero progress",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("main").getByRole("link", { name: "Back to portfolio" }),
+    ).toHaveAttribute("href", "/en#proyecto");
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+    ).toBe(false);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    const social = await page
+      .locator('meta[property="og:image"]')
+      .getAttribute("content");
+    expect(social).toContain("/en/social-image");
+    const image = await request.get(new URL(social!).pathname);
+    expect(image.ok()).toBe(true);
+    expect(image.headers()["content-type"]).toContain("image/png");
+    await page.getByRole("link", { name: "ES — Español", exact: true }).click();
+    await expect(page).toHaveURL(/\/proyectos\/hevy$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "es");
+    await expect(
+      page.getByRole("heading", {
+        name: "Ausencia de datos no significa progreso cero",
+      }),
+    ).toBeVisible();
+  });
+}
+
+test("language routes render translated HTML and switch without JavaScript", async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(`${baseURL}/en/proyectos/hevy`);
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(
+    page.getByRole("heading", {
+      name: "Missing data does not mean zero progress",
+    }),
+  ).toBeVisible();
+  await page.getByRole("link", { name: "ES — Español", exact: true }).click();
+  await expect(page.locator("html")).toHaveAttribute("lang", "es");
+  await context.close();
+});

@@ -1,9 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { links, navigation } from "@/lib/portfolio";
+import { links } from "@/lib/portfolio";
 
-export function MobileMenu() {
+export function MobileMenu({
+  navigation,
+  labels,
+}: {
+  navigation: readonly { href: string; label: string }[];
+  labels: {
+    open: string;
+    close: string;
+    dialog: string;
+    nav: string;
+    connect: string;
+  };
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
@@ -38,7 +50,7 @@ export function MobileMenu() {
       <button
         ref={trigger}
         className="menu-toggle"
-        aria-label="Abrir menú"
+        aria-label={labels.open}
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-haspopup="dialog"
@@ -57,7 +69,7 @@ export function MobileMenu() {
         ref={dialog}
         id="mobile-menu"
         className="mobile-menu"
-        aria-label="Menú de navegación"
+        aria-label={labels.dialog}
         onClose={handleClose}
         onKeyDown={(event) => {
           if (event.key !== "Tab") return;
@@ -79,13 +91,13 @@ export function MobileMenu() {
           <span className="brand">Gonzalo Cuadros</span>
           <button
             className="menu-toggle"
-            aria-label="Cerrar menú"
+            aria-label={labels.close}
             onClick={() => dialog.current?.close()}
           >
             <span aria-hidden="true" className="close-icon" />
           </button>
         </div>
-        <nav aria-label="Navegación móvil">
+        <nav aria-label={labels.nav}>
           {navigation.map(({ href, label }, index) => (
             <a
               key={href}
@@ -104,7 +116,7 @@ export function MobileMenu() {
             className="button button-outline"
             onClick={() => dialog.current?.close()}
           >
-            Conectar
+            {labels.connect}
           </a>
         </nav>
       </dialog>
