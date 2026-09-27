@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { links } from "@/lib/portfolio";
 
+const source =
+  "https://github.com/gCuadros/hevy-mcp/blob/c3a232630934cbe6c42c1a845b9da0d156bc9650";
+
 const title =
   "Hevy Coach MCP: datos reales para un asistente | Gonzalo Cuadros";
 const description =
@@ -103,6 +106,94 @@ export default function HevyCase() {
             operaciones que este servidor expone.
           </p>
         </section>
+        <section aria-labelledby="fallos">
+          <h2 id="fallos">
+            Diseñar para una escritura que no se puede deshacer
+          </h2>
+          <p>
+            Un error HTTP no siempre significa que una operación no haya
+            ocurrido. Si una creación llega a Hevy pero la respuesta falla,
+            repetirla puede generar un duplicado. La integración no dispone de
+            una operación de borrado para compensarlo. Esa restricción cambia
+            cómo se preparan y ejecutan las escrituras.
+          </p>
+          <ul>
+            <li>
+              <strong>Resolver antes de enviar.</strong> Al crear una rutina,
+              primero se resuelven los nombres de todos sus ejercicios. Si uno
+              es desconocido o ambiguo, la herramienta devuelve el problema y no
+              envía una rutina incompleta.
+            </li>
+            <li>
+              <strong>Reintentar según la operación.</strong> El cliente permite
+              reintentos acotados ante respuestas 5xx en lecturas, pero no en
+              escrituras. Las respuestas 429 se tratan aparte. Se acepta
+              devolver un error antes que arriesgar una creación duplicada.
+            </li>
+            <li>
+              <strong>Leer antes de actualizar.</strong> Cuando la API reemplaza
+              un registro completo, omitir campos puede borrarlos. La
+              herramienta recupera el estado existente: preserva las medidas no
+              indicadas y, al cambiar el título de una rutina, los descansos y
+              rangos de repeticiones de sus ejercicios. Reemplazar
+              explícitamente los ejercicios sigue siendo una operación
+              destructiva.
+            </li>
+          </ul>
+          <p>
+            Son defensas frente a fallos concretos, no una transacción
+            distribuida ni una garantía de ejecución exactamente una vez. Una
+            modificación concurrente entre la lectura y la escritura sigue
+            siendo un límite de este enfoque.
+          </p>
+          <div className="actions">
+            <a className="arrow-link" href={`${source}/src/tools/write.ts`}>
+              Ver la preparación de escrituras
+            </a>
+            <a className="arrow-link" href={`${source}/src/hevy/client.ts`}>
+              Ver la política de reintentos
+            </a>
+          </div>
+        </section>
+        <section aria-labelledby="calidad">
+          <h2 id="calidad">Ausencia de datos no significa progreso cero</h2>
+          <p>
+            El motor de cálculo recibe datos y devuelve resultados sin consultar
+            la API. Esto permite comprobar fórmulas con entradas conocidas y
+            mantener la interpretación fuera de la aritmética. Para estimar la
+            repetición máxima, una serie sin peso o repeticiones válidas se
+            excluye; si ninguna serie sirve, el resultado es nulo. Una sola
+            medición de peso tampoco se convierte en una tendencia.
+          </p>
+          <p>
+            La alternativa de rellenar esos huecos con ceros produciría una
+            respuesta más completa en apariencia, pero confundiría falta de
+            información con un resultado medido. El asistente debe poder decir
+            que no tiene datos suficientes.
+          </p>
+          <p>
+            Las pruebas públicas incluyen nombres ambiguos que no producen
+            escrituras, conservación de campos al actualizar, creaciones
+            fallidas que no se repiten y series que no pueden puntuarse. Estas
+            pruebas comprueban reglas del servidor con datos controlados; no
+            demuestran por sí solas la disponibilidad de Hevy ni la calidad de
+            las respuestas de un modelo.
+          </p>
+          <div className="actions">
+            <a
+              className="arrow-link"
+              href={`${source}/src/tools/write.test.ts`}
+            >
+              Revisar las pruebas de escritura
+            </a>
+            <a
+              className="arrow-link"
+              href={`${source}/src/engine/e1rm.test.ts`}
+            >
+              Revisar las pruebas del cálculo
+            </a>
+          </div>
+        </section>
         <section aria-labelledby="ejemplo">
           <h2 id="ejemplo">Una forma de comprobarlo</h2>
           <p>
@@ -137,8 +228,9 @@ export default function HevyCase() {
             se presentan métricas de adopción ni mejoras deportivas no medidas.
           </p>
           <p className="caption">
-            Caso basado en el README público del proyecto, revisado el 23 de
-            septiembre de 2026.
+            Código y pruebas públicas revisados el 27 de septiembre de 2026. Los
+            enlaces técnicos apuntan al commit c3a2326 para mantener
+            verificables las decisiones descritas.
           </p>
         </section>
         <div className="actions">
