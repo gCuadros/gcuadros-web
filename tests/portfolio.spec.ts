@@ -189,10 +189,13 @@ for (const width of [320, 768, 1440]) {
     );
     await expect(
       page.getByRole("link", {
-        name: "Download CV (PDF, Spanish)",
+        name: "Download CV (PDF)",
         exact: true,
       }),
-    ).toHaveAttribute("href", "/cv/gonzalo-cuadros-cv.pdf");
+    ).toHaveAttribute("href", "/cv/gonzalo-cuadros-cv-en.pdf");
+    const cv = await request.get("/cv/gonzalo-cuadros-cv-en.pdf");
+    expect(cv.ok()).toBe(true);
+    expect((await cv.body()).subarray(0, 5).toString()).toBe("%PDF-");
     await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute(
       "content",
       "en_GB",

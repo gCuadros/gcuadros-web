@@ -1,7 +1,7 @@
 # Mantener el CV
 
-- Fuente editable: `content/cv.md`.
-- PDF publicado y versionado: `public/cv/gonzalo-cuadros-cv.pdf`.
+- Fuentes editables: `content/cv.md` (castellano) y `content/cv.en.md` (inglés).
+- PDFs versionados: `public/cv/gonzalo-cuadros-cv.pdf` y `public/cv/gonzalo-cuadros-cv-en.pdf`. La descarga sigue el idioma de la página.
 - Generador: `scripts/build_cv.py`; resuelve las rutas desde su ubicación, sin depender del directorio de ejecución.
 - La web ofrece la descarga en Trayectoria. Next.js sirve el archivo sin Python en producción.
 
@@ -12,14 +12,15 @@ Con Python 3.12, crear un entorno fuera del repositorio e instalar las dependenc
 ```sh
 python3 -m venv /tmp/gcuadros-cv-venv
 /tmp/gcuadros-cv-venv/bin/pip install -r scripts/requirements-cv.txt
-/tmp/gcuadros-cv-venv/bin/python scripts/build_cv.py
+/tmp/gcuadros-cv-venv/bin/python scripts/build_cv.py --lang es
+/tmp/gcuadros-cv-venv/bin/python scripts/build_cv.py --lang en
 ```
 
 Editar el Markdown, regenerar el PDF y revisar las dos páginas visualmente. El generador verifica páginas, texto y seis enlaces; actualizar esas comprobaciones si cambia intencionadamente la estructura. Abrir también la descarga desde la web. Incluir fuente y PDF en la misma PR.
 
 El generador admite los encabezados, listas, negritas y enlaces usados en la fuente actual; no es un conversor Markdown general. El salto de página se sitúa antes de Competencias técnicas. El PDF tiene texto seleccionable, pero no está certificado como PDF accesible etiquetado.
 
-Solo se versiona contenido público. PLAN.local.md, STATUS.local.md y las notas editoriales privadas del borrador no forman parte del CV. La fuente canónica para futuras ediciones es content/cv.md.
+Solo se versiona contenido público. PLAN.local.md, STATUS.local.md y las notas editoriales privadas del borrador no forman parte del CV. Mantener ambas fuentes sincronizadas cuando cambien experiencia, fechas o formación.
 
 ## Criterios editoriales
 
@@ -31,7 +32,7 @@ Revisión del 24 de septiembre de 2026. PDF de una columna y texto seleccionable
 
 El CV base prioriza Frontend Tech Lead. Mantener cargos reales y competencias respaldadas por experiencia; adaptar resumen y orden de aportaciones a cada oferta sin copiar requisitos no acreditados. Para Staff, aportar decisiones técnicas, alcance transversal y resultados verificables. Para Engineering Manager, distinguir mentoría y liderazgo técnico de gestión formal de personas. No sustituir el título actual por un cargo aspiracional.
 
-Antes de enviar una candidatura: comprobar campos autocompletados, usar el formato exigido por el portal y añadir el contacto profesional que el titular quiera compartir. El CV público no contiene email ni teléfono: no inferirlos. Preparar una versión inglesa solo cuando sea necesaria, sin inventar nivel de idioma. Las métricas requieren evidencia; no convertir responsabilidades en resultados numéricos ficticios.
+Antes de enviar una candidatura: comprobar campos autocompletados, usar el formato exigido por el portal y añadir el contacto profesional que el titular quiera compartir. El CV público no contiene email ni teléfono: no inferirlos. La versión inglesa traduce las mismas responsabilidades y no implica un nivel de inglés acreditado. Las métricas requieren evidencia; no convertir responsabilidades en resultados numéricos ficticios.
 
 Fuentes primarias consultadas:
 
@@ -42,7 +43,7 @@ No se ha subido el CV a servicios externos de scoring. Sin oferta objetivo ni ac
 
 ## Comprobación en cada PR
 
-El check obligatorio `Quality checks` ejecuta `scripts/verify_cv.py` sobre el PDF versionado, sin regenerarlo. Comprueba dos páginas, igualdad del texto visible en orden (ignorando viñetas y pies de página) y destinos de enlaces contra `content/cv.md`. Detecta cambios de fuente sin actualizar el PDF, incluso eliminaciones de texto o cambios de URL. El generador reutiliza esta misma comprobación.
+El check obligatorio `Quality checks` ejecuta `scripts/verify_cv.py` sobre ambos PDFs versionados, sin regenerarlo. Comprueba dos páginas, igualdad del texto visible en orden (ignorando viñetas y pies de página) y destinos de enlaces contra la fuente Markdown de cada idioma. Detecta cambios de fuente sin actualizar el PDF, incluso eliminaciones de texto o cambios de URL. El generador reutiliza esta misma comprobación.
 
 Para ejecutarla localmente con las dependencias instaladas:
 

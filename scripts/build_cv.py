@@ -5,8 +5,13 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
 root=Path(__file__).resolve().parents[1]
-source=(root/'content/cv.md').read_text()
-out=root/'public/cv/gonzalo-cuadros-cv.pdf'
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--lang', choices=['es', 'en'], default='es')
+lang = parser.parse_args().lang
+suffix = '.en' if lang == 'en' else ''
+source=(root/f'content/cv{suffix}.md').read_text()
+out=root/('public/cv/gonzalo-cuadros-cv-en.pdf' if lang == 'en' else 'public/cv/gonzalo-cuadros-cv.pdf')
 styles={
  'body':ParagraphStyle('body',fontName='Helvetica',fontSize=10,leading=13,textColor=HexColor('#242629'),spaceAfter=5),
  'name':ParagraphStyle('name',fontName='Helvetica-Bold',fontSize=27,leading=32,spaceAfter=10,textColor=HexColor('#16181b')),
@@ -20,7 +25,7 @@ def fmt(text):
 story=[]
 for line in source.splitlines():
  if not line.strip():continue
- if line.startswith('## Competencias técnicas'):story.append(PageBreak())
+ if line.startswith('## Technical skills' if lang == 'en' else '## Competencias técnicas'):story.append(PageBreak())
  kind='body'
  if line.startswith('# '):kind='name';line=line[2:]
  elif line.startswith('## '):kind='section';line=line[3:]
@@ -34,4 +39,4 @@ def footer(canvas,doc):
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=43,leftMargin=43,topMargin=40,bottomMargin=55,title='Gonzalo Cuadros - CV',author='Gonzalo Cuadros')
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
 from verify_cv import verify_cv
-verify_cv(root)
+verify_cv(root, lang)

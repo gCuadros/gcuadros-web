@@ -163,7 +163,15 @@ export function Experience({ locale }: { locale: Locale }) {
         ))}
       </ol>
       <div className="trajectory-foot">
-        <a className="button" href="/cv/gonzalo-cuadros-cv.pdf" download>
+        <a
+          className="button"
+          href={
+            locale === "en"
+              ? "/cv/gonzalo-cuadros-cv-en.pdf"
+              : "/cv/gonzalo-cuadros-cv.pdf"
+          }
+          download
+        >
           {t("Descargar CV (PDF)")}{" "}
         </a>
         <ArrowLink href={links.linkedin}>
