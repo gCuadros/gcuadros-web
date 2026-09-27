@@ -41,7 +41,7 @@ const english: Record<string, string> = {
     "Mentoring · Feedback · Shared decisions",
   Trayectoria: "Experience",
   "Una trayectoria construyendo frontend": "A career building frontend",
-  "Descargar CV (PDF)": "Download CV (PDF, Spanish)",
+  "Descargar CV (PDF)": "Download CV (PDF)",
   "Trayectoria completa en LinkedIn": "Full experience on LinkedIn",
   Formación: "Education",
   "Máster en DevOps & Cloud · UNIR · 2025–2026":
