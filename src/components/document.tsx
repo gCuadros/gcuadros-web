@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n";
 import localFont from "next/font/local";
 import "@fontsource-variable/manrope";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
 import "@fontsource/ibm-plex-mono/latin-700.css";
-import "./globals.css";
+import "@/app/globals.css";
 import { links } from "@/lib/portfolio";
 
 const editorial = localFont({
@@ -13,26 +13,6 @@ const editorial = localFont({
   display: "swap",
   weight: "200 800",
 });
-
-const title = "Gonzalo Cuadros | Frontend Tech Lead";
-const description =
-  "Arquitectura frontend, DevOps y liderazgo técnico. Conoce la trayectoria, los proyectos y las charlas de Gonzalo Cuadros, Tech Lead en MANGO.";
-
-const deploymentHost =
-  process.env.VERCEL_ENV === "production"
-    ? (process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL)
-    : process.env.VERCEL_URL;
-
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    deploymentHost ? `https://${deploymentHost}` : "http://localhost:3100",
-  ),
-  title,
-  description,
-  authors: [{ name: "Gonzalo Cuadros" }],
-  openGraph: { title, description, locale: "es_ES", type: "website" },
-  twitter: { card: "summary_large_image", title, description },
-};
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -50,9 +30,10 @@ const personJsonLd = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  locale,
+}: Readonly<{ children: React.ReactNode; locale: Locale }>) {
   return (
-    <html lang="es" className={editorial.variable}>
+    <html lang={locale} className={editorial.variable}>
       <body>
         <script
           type="application/ld+json"
