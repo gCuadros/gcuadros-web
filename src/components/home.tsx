@@ -1,4 +1,5 @@
-import { translator, type Locale } from "@/lib/i18n";
+import { cicdNote } from "@/lib/cicd-note";
+import { translator, localPath, type Locale } from "@/lib/i18n";
 import {
   ArrowLink,
   Contact,
@@ -51,6 +52,22 @@ export default function Home({ locale }: { locale: Locale }) {
         <Work locale={locale} />
         <Experience locale={locale} />
         <Project locale={locale} />
+        <section
+          id="notas"
+          className="section container"
+          aria-labelledby="notes-title"
+        >
+          <div className="section-heading">
+            <p className="eyebrow">{cicdNote[locale].label}</p>
+            <h2 id="notes-title">{cicdNote[locale].title}</h2>
+          </div>
+          <p>{cicdNote[locale].description}</p>
+          <div className="actions">
+            <ArrowLink href={localPath(locale, "/notas/cicd-frontend")}>
+              {cicdNote[locale].read}
+            </ArrowLink>
+          </div>
+        </section>
         <Talks locale={locale} />
         <Contact locale={locale} />
       </main>

@@ -287,3 +287,50 @@ test("language routes render translated HTML and switch without JavaScript", asy
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
   await context.close();
 });
+
+for (const width of [320, 1440]) {
+  test(`technical note preserves language and is accessible at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await page.getByRole("link", { name: "Leer la nota" }).click();
+    await expect(page).toHaveURL(/\/notas\/cicd-frontend$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "CI de frontend: qué significa un check verde",
+    );
+    await page.getByRole("link", { name: "EN — English" }).click();
+    await expect(page).toHaveURL(/\/en\/notas\/cicd-frontend$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page).toHaveTitle(
+      "Frontend CI: what a green check means | Gonzalo Cuadros",
+    );
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="es"]'),
+    ).toHaveAttribute("href", /\/notas\/cicd-frontend$/);
+    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
+      "content",
+      "article",
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+    ).toBe(false);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    await expect(
+      page.getByRole("link", { name: "GitHub Actions", exact: true }),
+    ).toHaveAttribute(
+      "href",
+      /e0376e67f1ba36cc48cecad694c02262d4a8459c\/\.github\/workflows\/ci.yml$/,
+    );
+    await page.getByRole("link", { name: "Back to portfolio" }).click();
+    await expect(page).toHaveURL(/\/en#notas$/);
+  });
+}
