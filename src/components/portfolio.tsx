@@ -17,17 +17,6 @@ export function ArrowLink({
   );
 }
 
-export function Signature({ locale }: { locale: Locale }) {
-  const t = translator(locale);
-  return (
-    <div className="signature" aria-hidden="true">
-      {["Arquitectura", "Producción", "Equipos"].map((label) => (
-        <span key={label}>{t(label)}</span>
-      ))}
-    </div>
-  );
-}
-
 function SectionHeading({
   eyebrow,
   children,
@@ -43,92 +32,6 @@ function SectionHeading({
   );
 }
 
-export function Work({ locale }: { locale: Locale }) {
-  const t = translator(locale);
-  return (
-    <section
-      id="trabajo"
-      className="section container"
-      tabIndex={-1}
-      aria-labelledby="work-title"
-    >
-      <div className="section-heading">
-        <p className="eyebrow">{t("Trabajo")}</p>
-        <h2 id="work-title">{t("Plataformas, producción y equipos")}</h2>
-      </div>
-      <div className="work-rows">
-        <article className="work-row">
-          <span className="row-number" aria-hidden="true">
-            01
-          </span>
-          <div className="work-copy">
-            <h3>{t("Arquitectura frontend")}</h3>
-            <p>
-              {t(
-                "Participo en decisiones compartidas de arquitectura y evolución de plataformas frontend, con foco en mantenibilidad, rendimiento y experiencia de desarrollo.",
-              )}{" "}
-            </p>
-          </div>
-          <div className="annotation">
-            <p className="caption">{t("Esquema conceptual")}</p>
-            <div className="migration">
-              <span>{t("Contexto")}</span>
-              <span aria-hidden="true">→</span>
-              <strong>{t("Decisiones")}</strong>
-              <span>{t("Validación")}</span>
-              <span aria-hidden="true">→</span>
-              <strong>{t("Aprendizaje")}</strong>
-            </div>
-          </div>
-        </article>
-        <article className="work-row">
-          <span className="row-number" aria-hidden="true">
-            02
-          </span>
-          <div className="work-copy">
-            <h3>{t("DevOps aplicado al frontend")}</h3>
-            <p>
-              {t(
-                "Trabajo en automatización, integración y entrega continua de frontend. Despliegues y observabilidad forman parte de mi enfoque para conectar el desarrollo con la operación.",
-              )}{" "}
-            </p>
-          </div>
-          <div className="annotation">
-            <p className="caption">{t("Esquema conceptual")}</p>
-            <div className="pipeline">
-              <span>{t("Revisión")}</span>
-              <span aria-hidden="true">→</span>
-              <span>{t("Validación")}</span>
-              <span aria-hidden="true">→</span>
-              <span>{t("Despliegue")}</span>
-            </div>
-            <p className="annotation-note">{t("CI/CD de frontend")}</p>
-          </div>
-        </article>
-        <article className="work-row">
-          <span className="row-number" aria-hidden="true">
-            03
-          </span>
-          <div className="work-copy">
-            <h3>{t("Liderazgo técnico")}</h3>
-            <p>
-              {t(
-                "Acompaño a equipos de desarrollo mediante mentoría, 1:1 y feedback, y participo en entrevistas y planes de desarrollo.",
-              )}{" "}
-            </p>
-          </div>
-          <div className="annotation">
-            <p className="caption">{t("Liderazgo técnico")}</p>
-            <p className="annotation-note">
-              {t("Mentoría · Feedback · Decisiones compartidas")}{" "}
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-  );
-}
-
 export function Experience({ locale }: { locale: Locale }) {
   const t = translator(locale);
   return (
@@ -140,9 +43,7 @@ export function Experience({ locale }: { locale: Locale }) {
     >
       <div className="section-heading">
         <p className="eyebrow">{t("Trayectoria")}</p>
-        <h2 id="experience-title">
-          {t("Una trayectoria construyendo frontend")}
-        </h2>
+        <h2 id="experience-title">{t("Dónde he trabajado")}</h2>
       </div>
       <ol className="timeline">
         {experience.map(({ company, roles, description }) => (
@@ -163,20 +64,22 @@ export function Experience({ locale }: { locale: Locale }) {
         ))}
       </ol>
       <div className="trajectory-foot">
-        <a
-          className="button"
-          href={
-            locale === "en"
-              ? "/cv/gonzalo-cuadros-cv-en.pdf"
-              : "/cv/gonzalo-cuadros-cv.pdf"
-          }
-          download
-        >
-          {t("Descargar CV (PDF)")}{" "}
-        </a>
-        <ArrowLink href={links.linkedin}>
-          {t("Trayectoria completa en LinkedIn")}{" "}
-        </ArrowLink>
+        <div className="actions">
+          <a
+            className="button"
+            href={
+              locale === "en"
+                ? "/cv/gonzalo-cuadros-cv-en.pdf"
+                : "/cv/gonzalo-cuadros-cv.pdf"
+            }
+            download
+          >
+            {t("Descargar CV (PDF)")}{" "}
+          </a>
+          <ArrowLink href={links.linkedin}>
+            {t("Trayectoria completa en LinkedIn")}{" "}
+          </ArrowLink>
+        </div>
         <div className="education">
           <p className="caption">{t("Formación")}</p>
           <p>{t("Máster en DevOps & Cloud · UNIR · 2025–2026")}</p>
@@ -197,34 +100,32 @@ export function Project({ locale }: { locale: Locale }) {
     <section
       id="proyecto"
       tabIndex={-1}
-      className="project section"
+      className="project"
       aria-labelledby="project-title"
     >
-      <div className="container project-grid">
+      <div className="project-grid">
         <div className="project-copy">
-          <p className="tag">{t("Proyecto propio · Open source")}</p>
-          <h2 id="project-title">{t("Hevy Coach MCP")}</h2>
+          <p className="eyebrow">{t("Un proyecto propio")}</p>
+          <h3 id="project-title">{t("Hevy Coach MCP")}</h3>
           <p>
             {t(
-              "Construí un servidor MCP que conecta los datos de entrenamiento de Hevy con asistentes de IA para analizar el progreso y gestionar rutinas. Lee entrenamientos y rutinas, calcula métricas de progreso, y puede crear rutinas y registrar peso corporal.",
+              "Construí un servidor MCP para consultar entrenamientos, calcular progreso y gestionar rutinas desde un asistente de IA.",
             )}{" "}
           </p>
           <p>
             {t(
-              "Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy para razonar sobre datos actuales. Las herramientas de lectura y escritura están declaradas por separado para que el cliente MCP pueda aplicar sus controles de confirmación.",
+              "Las decisiones que más me interesan aparecen cuando algo falla: qué se puede reintentar y cómo evitar cambios no deseados.",
             )}{" "}
           </p>
           <div className="actions">
-            <a className="button" href={links.hevy}>
-              {t("Ver código en GitHub")}{" "}
-            </a>
             <ArrowLink href={localPath(locale, "/proyectos/hevy")}>
               {t("Leer el caso técnico")}
             </ArrowLink>
+            <ArrowLink href={links.hevy}>{t("Ver código en GitHub")}</ArrowLink>
           </div>
         </div>
         <figure className="project-schema">
-          <figcaption>{t("Cómo funciona")}</figcaption>
+          <figcaption>{t("De los datos a la conversación")}</figcaption>
           <ol>
             {[
               ["Hevy API", "entrenamientos y rutinas"],
@@ -256,7 +157,7 @@ export function Talks({ locale }: { locale: Locale }) {
     >
       <div className="section-heading">
         <p className="eyebrow">{t("Charlas")}</p>
-        <h2 id="talks-title">{t("Compartir lo que aprendo")}</h2>
+        <h2 id="talks-title">{t("También lo cuento en voz alta")}</h2>
       </div>
       <article className="featured-talk">
         <div className="talk-cover">
@@ -266,7 +167,7 @@ export function Talks({ locale }: { locale: Locale }) {
         <div className="talk-description">
           <p>
             {t(
-              "Estrategias de renderizado y streaming para mejorar el rendimiento y la experiencia de usuario.",
+              "Una sesión de código en directo con Garaje de ideas sobre renderizado y streaming en Next.js.",
             )}{" "}
           </p>
           <ArrowLink href={links.nextTalk}>{t("Ver sesión")}</ArrowLink>
@@ -293,11 +194,11 @@ export function Contact({ locale }: { locale: Locale }) {
   return (
     <section className="contact section container">
       <SectionHeading eyebrow={t("Conectemos")}>
-        {t("Hablemos de plataformas y equipos")}{" "}
+        {t("¿Seguimos la conversación?")}{" "}
       </SectionHeading>
       <p>
         {t(
-          "Si estás trabajando en arquitectura frontend, DevOps o liderazgo técnico, podemos conversar.",
+          "Puedes encontrarme en LinkedIn o explorar mis proyectos en GitHub.",
         )}{" "}
       </p>
       <div className="actions">

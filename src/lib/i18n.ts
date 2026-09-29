@@ -1,6 +1,31 @@
 export type Locale = "es" | "en";
 
 const english: Record<string, string> = {
+  Notas: "Notes",
+  "Soy desarrollador frontend y Tech Lead. Me gusta construir interfaces, entender cómo funcionan por dentro y cuidar cómo llegan a producción.":
+    "I’m a frontend developer and Tech Lead. I like building interfaces, understanding how they work and looking after how they reach production.",
+  "He trabajado en Freepik, Wuolah y MANGO. Mi trabajo cruza arquitectura frontend, DevOps y acompañamiento técnico a otros desarrolladores.":
+    "I’ve worked at Freepik, Wuolah and MANGO. My work brings together frontend architecture, DevOps and technical support for other developers.",
+  "Ver mi trabajo": "See my work",
+  Ahora: "Now",
+  "Frontend Tech Lead en MANGO": "Frontend Tech Lead at MANGO",
+  "Lo que construyo y comparto": "Things I build and share",
+  "Dónde he trabajado": "Where I’ve worked",
+  "Un proyecto propio": "A personal project",
+  "Construí un servidor MCP para consultar entrenamientos, calcular progreso y gestionar rutinas desde un asistente de IA.":
+    "I built an MCP server to query workouts, calculate progress and manage routines through an AI assistant.",
+  "Las decisiones que más me interesan aparecen cuando algo falla: qué se puede reintentar y cómo evitar cambios no deseados.":
+    "The decisions I find most interesting come up when something fails: what can be retried and how to avoid unintended changes.",
+  "De los datos a la conversación": "From data to conversation",
+  "También lo cuento en voz alta": "I talk about it, too",
+  "Una sesión de código en directo con Garaje de ideas sobre renderizado y streaming en Next.js.":
+    "A live coding session with Garaje de ideas about rendering and streaming in Next.js.",
+  "¿Seguimos la conversación?": "Shall we keep talking?",
+  "Puedes encontrarme en LinkedIn o explorar mis proyectos en GitHub.":
+    "You can find me on LinkedIn or explore my projects on GitHub.",
+  "Una nota sobre este portfolio": "A note about this portfolio",
+  "Qué compruebo antes de publicar esta web, qué fallos detectan las pruebas y qué sigo revisando a mano.":
+    "What I check before publishing this website, which failures the tests catch and what I still review by hand.",
   "Saltar al contenido": "Skip to content",
   "Gonzalo Cuadros · Frontend Tech Lead en MANGO":
     "Gonzalo Cuadros · Frontend Tech Lead at MANGO",

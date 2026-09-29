@@ -1,15 +1,15 @@
 :root {
-  color-scheme: dark;
-  --background: #111214;
-  --surface: #1a1c20;
-  --surface-alt: #202226;
-  --border: #2b2d32;
-  --foreground: #f4f1eb;
-  --secondary: #b5b6b9;
-  --muted: #7d7e82;
-  --accent: #d9a17e;
-  --accent-hover: #e6b394;
-  --accent-pressed: #c48d68;
+  color-scheme: light;
+  --background: #f7f5ef;
+  --surface: #ecefe6;
+  --surface-alt: #e3e8dd;
+  --border: #d0d4ca;
+  --foreground: #203d35;
+  --secondary: #4c5750;
+  --muted: #626c63;
+  --accent: #285c46;
+  --accent-hover: #194631;
+  --accent-pressed: #103b27;
   --radius: 2px;
   --font-sans: "Manrope Variable", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
