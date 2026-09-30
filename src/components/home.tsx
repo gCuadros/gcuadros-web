@@ -5,9 +5,7 @@ import {
   Contact,
   Experience,
   Project,
-  Signature,
   Talks,
-  Work,
 } from "@/components/portfolio";
 import { SiteHeader } from "@/components/site-header";
 import { links } from "@/lib/portfolio";
@@ -26,42 +24,55 @@ export default function Home({ locale }: { locale: Locale }) {
           id="inicio"
           aria-labelledby="hero-title"
         >
-          <p className="identity">
-            {t("Gonzalo Cuadros · Frontend Tech Lead en MANGO")}{" "}
-          </p>
-          <h1 id="hero-title">
-            <span>{t("Arquitectura frontend.")}</span>{" "}
-            <span>{t("De las decisiones a producción.")}</span>
-          </h1>
-          <p className="hero-copy">
-            {t(
-              "Trabajo en arquitectura frontend y DevOps, y acompaño a equipos de desarrollo desde el liderazgo técnico. Comparto decisiones de arquitectura y ayudo a convertirlas en soluciones mantenibles.",
-            )}{" "}
-          </p>
-          <div className="actions">
-            <a className="button" href="#trabajo">
-              {t("Explorar mi trabajo")}{" "}
-            </a>
-            <ArrowLink href={links.linkedin}>
-              {t("Conectar en LinkedIn")}
-            </ArrowLink>
+          <div className="intro-copy">
+            <h1 id="hero-title">Gonzalo Cuadros</h1>
+            <p className="intro-lead">
+              {t(
+                "Soy desarrollador frontend y Tech Lead. Me gusta construir interfaces, entender cómo funcionan por dentro y cuidar cómo llegan a producción.",
+              )}
+            </p>
+            <p className="hero-copy">
+              {t(
+                "He trabajado en Freepik, Wuolah y MANGO. Mi trabajo cruza arquitectura frontend, DevOps y acompañamiento técnico a otros desarrolladores.",
+              )}
+            </p>
+            <div className="actions">
+              <a className="arrow-link" href="#trabajo">
+                {t("Ver mi trabajo")} <span aria-hidden="true">↓</span>
+              </a>
+              <ArrowLink href={links.linkedin}>LinkedIn</ArrowLink>
+            </div>
           </div>
-          <p className="location">{t("Madrid, España")}</p>
-          <Signature locale={locale} />
+          <aside className="intro-now" aria-label={t("Ahora")}>
+            <p className="caption">{t("Ahora")}</p>
+            <p className="current-role">{t("Frontend Tech Lead en MANGO")}</p>
+            <p>{t("Madrid, España")}</p>
+          </aside>
         </section>
-        <Work locale={locale} />
-        <Experience locale={locale} />
-        <Project locale={locale} />
+        <section
+          id="trabajo"
+          className="selected-work container"
+          tabIndex={-1}
+          aria-labelledby="work-title"
+        >
+          <h2 id="work-title">{t("Lo que construyo y comparto")}</h2>
+          <Project locale={locale} />
+        </section>
         <section
           id="notas"
-          className="section container"
+          className="note-feature section container"
+          tabIndex={-1}
           aria-labelledby="notes-title"
         >
           <div className="section-heading">
-            <p className="eyebrow">{cicdNote[locale].label}</p>
+            <p className="eyebrow">{t("Una nota sobre este portfolio")}</p>
             <h2 id="notes-title">{cicdNote[locale].title}</h2>
           </div>
-          <p>{cicdNote[locale].description}</p>
+          <p>
+            {t(
+              "Qué compruebo antes de publicar esta web, qué fallos detectan las pruebas y qué sigo revisando a mano.",
+            )}
+          </p>
           <div className="actions">
             <ArrowLink href={localPath(locale, "/notas/cicd-frontend")}>
               {cicdNote[locale].read}
@@ -69,6 +80,7 @@ export default function Home({ locale }: { locale: Locale }) {
           </div>
         </section>
         <Talks locale={locale} />
+        <Experience locale={locale} />
         <Contact locale={locale} />
       </main>
       <footer className="site-footer container">

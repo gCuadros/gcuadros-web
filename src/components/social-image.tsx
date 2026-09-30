@@ -12,13 +12,13 @@ export default function Image({ english = false }: { english?: boolean } = {}) {
         justifyContent: "space-between",
         width: "100%",
         height: "100%",
-        background: "#111214",
-        color: "#F4F1EB",
+        background: "#F7F5EF",
+        color: "#203D35",
         padding: "64px 72px",
       }}
     >
-      <div style={{ display: "flex", fontSize: 28, color: "#D9A17E" }}>
-        Gonzalo Cuadros · Frontend Tech Lead
+      <div style={{ display: "flex", fontSize: 28, color: "#285C46" }}>
+        Frontend Tech Lead · Madrid
       </div>
       <div
         style={{
@@ -29,16 +29,14 @@ export default function Image({ english = false }: { english?: boolean } = {}) {
           maxWidth: 1020,
         }}
       >
-        {english
-          ? "Frontend architecture. From decisions to production."
-          : "Arquitectura frontend. De las decisiones a producción."}
+        Gonzalo Cuadros
       </div>
       <div
         style={{
           display: "flex",
           fontSize: 26,
-          color: "#B5B6B9",
-          borderTop: "1px solid #44464a",
+          color: "#4C5750",
+          borderTop: "1px solid #D0D4CA",
           paddingTop: 28,
         }}
       >

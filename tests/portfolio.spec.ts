@@ -7,13 +7,13 @@ for (const width of [320, 390, 768, 1440]) {
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Arquitectura frontend. De las decisiones a producción.",
+      "Gonzalo Cuadros",
     );
     for (const title of [
-      "Plataformas, producción y equipos",
-      "Una trayectoria construyendo frontend",
+      "Lo que construyo y comparto",
+      "Dónde he trabajado",
       "Hevy Coach MCP",
-      "Compartir lo que aprendo",
+      "También lo cuento en voz alta",
     ]) {
       await expect(
         page.getByRole("heading", { name: title, exact: true }),
@@ -185,7 +185,7 @@ for (const width of [320, 768, 1440]) {
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Frontend architecture. From decisions to production.",
+      "Gonzalo Cuadros",
     );
     await expect(
       page.getByRole("link", {

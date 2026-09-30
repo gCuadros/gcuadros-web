@@ -11,9 +11,9 @@ export const links = {
 
 export const navigation = [
   { href: "#trabajo", label: "Trabajo" },
-  { href: "#trayectoria", label: "Trayectoria" },
-  { href: "#proyecto", label: "Proyecto" },
+  { href: "#notas", label: "Notas" },
   { href: "#charlas", label: "Charlas" },
+  { href: "#trayectoria", label: "Trayectoria" },
 ] as const;
 
 export const experience = [
