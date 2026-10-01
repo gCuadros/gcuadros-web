@@ -1,6 +1,5 @@
 import { translator, localPath, type Locale } from "@/lib/i18n";
-import { LanguageSwitch } from "./language-switch";
-import Link from "next/link";
+import { PageShell } from "./page-shell";
 import { links } from "@/lib/portfolio";
 
 const source =
@@ -9,22 +8,8 @@ const source =
 export default function HevyCase({ locale }: { locale: Locale }) {
   const t = translator(locale);
   return (
-    <>
-      <a className="skip-link" href="#caso">
-        {t("Saltar al contenido")}{" "}
-      </a>
-      <header className="site-header container">
-        <Link className="brand" href={localPath(locale)}>
-          {t("Gonzalo Cuadros")}{" "}
-        </Link>
-        <div className="header-controls">
-          <LanguageSwitch locale={locale} path="/proyectos/hevy" />
-          <Link className="arrow-link" href={`${localPath(locale)}#proyecto`}>
-            {t("Volver al portfolio")}{" "}
-          </Link>
-        </div>
-      </header>
-      <main id="caso" tabIndex={-1} className="case-study container">
+    <PageShell locale={locale} path="/proyectos/hevy">
+      <article id="caso" className="case-study container">
         <p className="eyebrow">{t("Proyecto propio · Open source")}</p>
         <h1>{t("Hevy Coach MCP")}</h1>
         <p>
@@ -218,14 +203,14 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </p>
         </section>
         <div className="actions">
-          <Link className="button" href={`${localPath(locale)}#proyecto`}>
-            {t("Volver al portfolio")}{" "}
-          </Link>
+          <a className="button" href={localPath(locale, "/proyectos")}>
+            {locale === "en" ? "Back to projects" : "Volver a proyectos"}{" "}
+          </a>
           <a className="arrow-link" href={links.linkedin}>
             {t("Conectar en LinkedIn")}{" "}
           </a>
         </div>
-      </main>
-    </>
+      </article>
+    </PageShell>
   );
 }

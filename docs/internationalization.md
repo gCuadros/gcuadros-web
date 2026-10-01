@@ -1,9 +1,9 @@
 # Languages
 
-Spanish keeps the original URLs (`/`, `/proyectos/hevy`). English uses `/en` and `/en/proyectos/hevy`. The URL is the language preference: direct links and refreshes retain it. There are no location-based redirects, cookies or browser-language overrides.
+Spanish uses `/`, `/proyectos`, `/proyectos/hevy`, `/blog`, `/blog/[slug]` and `/sobre-mi`. English uses the same paths prefixed by `/en`. The URL is the language preference: direct links and refreshes retain it. No location redirects, cookies or browser-language overrides are used.
 
-Both languages render through shared server components and `src/lib/i18n.ts`. Translate new copy in the same change; proper names remain unchanged. MobileMenu receives only translated navigation labels, rather than the full dictionary. Separate root layouts set the document language before hydration. Switching languages uses ordinary links and works without JavaScript, preserving the corresponding page.
+Both languages render through shared server components. Shared CV/experience copy lives in `src/lib/i18n.ts`; page-specific copy is colocated with components. Blog articles are paired Markdown files, documented in [blog.md](blog.md). Translate new copy in the same change; proper names remain unchanged. MobileMenu receives only navigation labels. Separate root layouts set the language before hydration. Ordinary language links preserve the corresponding page and work without JavaScript.
 
-Metadata, language alternatives and social images are localized. The custom domain remains a separate final step. Section anchors stay stable across locales. The CV download follows the page language: Spanish uses `gonzalo-cuadros-cv.pdf`, English uses `gonzalo-cuadros-cv-en.pdf`. Editable sources and verification instructions are in docs/cv.md. External talks/posts remain in their original language.
+Metadata, language alternatives, social images and RSS are localized. The CV follows the page language: Spanish uses `gonzalo-cuadros-cv.pdf`, English uses `gonzalo-cuadros-cv-en.pdf`. Editable sources and verification instructions are in [cv.md](cv.md). External talks/posts retain their original language.
 
-Validate both language journeys, direct case-study URLs, mobile navigation, accessibility, language alternatives and server-rendered content. Run the existing Playwright suite after `npm run check`.
+Run `npm run check` then `npm run test:e2e`. Tests cover both language journeys, page/article routes, mobile navigation, accessibility, server-rendered content, downloads and legacy redirects. Custom-domain configuration remains a separate final step.
