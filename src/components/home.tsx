@@ -23,13 +23,13 @@ export default function Home({ locale }: { locale: Locale }) {
           </h1>
           <p className="hero-statement">
             {en
-              ? "I build the interface. And care about everything behind it."
-              : "Construyo la interfaz. Y me importa todo lo que hay detrás."}
+              ? "I work on frontend architecture and how we ship it to production."
+              : "Trabajo en la arquitectura frontend y en cómo la llevamos a producción."}
           </p>
           <p className="hero-description">
             {en
-              ? "Frontend, DevOps and technical leadership. Currently at MANGO; previously at Freepik and Wuolah."
-              : "Frontend, DevOps y liderazgo técnico. Ahora en MANGO; antes en Freepik y Wuolah."}
+              ? "Tech Lead at MANGO, with a focus on DevOps and mentoring developers. Previously at Freepik and Wuolah."
+              : "Tech Lead en MANGO, con foco en DevOps y acompañamiento técnico a otros desarrolladores. Antes, en Freepik y Wuolah."}
           </p>
           <a className="text-link" href={localPath(locale, "/sobre-mi")}>
             {en ? "A little more about me" : "Un poco más sobre mí"}
@@ -46,8 +46,8 @@ export default function Home({ locale }: { locale: Locale }) {
             </p>
             <h2>
               {en
-                ? "Less abstract.\nMore built."
-                : "Menos abstracto.\nMás construido."}
+                ? "What I build\non my own time."
+                : "Lo que construyo\npor mi cuenta."}
             </h2>
           </div>
           <a className="text-link" href={localPath(locale, "/proyectos")}>
@@ -63,13 +63,13 @@ export default function Home({ locale }: { locale: Locale }) {
             <p className="kicker">02 / Blog</p>
             <h2>
               {en
-                ? "Notes from\nthe other side."
-                : "Notas desde\nel otro lado."}
+                ? "What I learn,\nwritten down."
+                : "Lo que aprendo,\npor escrito."}
             </h2>
             <p>
               {en
-                ? "Decisions, code and things that are worth explaining slowly."
-                : "Decisiones, código y cosas que merece la pena explicar con calma."}
+                ? "Notes on frontend architecture, automation and technical decisions, with examples and code."
+                : "Notas sobre arquitectura frontend, automatización y decisiones técnicas, con ejemplos y código."}
             </p>
             <a className="text-link" href={localPath(locale, "/blog")}>
               {en ? "Open the blog" : "Entrar al blog"}
@@ -107,11 +107,7 @@ export default function Home({ locale }: { locale: Locale }) {
       <section className="home-talk container">
         <p className="kicker">03 / {en ? "Out loud" : "En voz alta"}</p>
         <div>
-          <h2>
-            {en
-              ? "Ideas also\nneed a conversation."
-              : "Las ideas también\nnecesitan conversación."}
-          </h2>
+          <h2>{en ? "Sharing\nwhat I learn." : "Compartir\nlo aprendido."}</h2>
           <p>
             {en
               ? "Rendering and streaming in Next.js, in a live coding session with Garaje de ideas."
