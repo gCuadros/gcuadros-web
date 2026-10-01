@@ -20,11 +20,7 @@ export default function ProjectsPage({ locale }: { locale: Locale }) {
         </header>
         <ProjectPreview locale={locale} />
         <section className="project-afterword">
-          <h2>
-            {en
-              ? "The code is part\nof the conversation."
-              : "El código es parte\nde la conversación."}
-          </h2>
+          <h2>{en ? "Inside\nthe repository." : "Dentro del\nrepositorio."}</h2>
           <div>
             <p>
               {en
