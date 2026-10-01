@@ -7,7 +7,7 @@ export function MobileMenu({
   navigation,
   labels,
 }: {
-  navigation: readonly { href: string; label: string }[];
+  navigation: readonly { href: string; label: string; current?: boolean }[];
   labels: {
     open: string;
     close: string;
@@ -98,13 +98,16 @@ export function MobileMenu({
           </button>
         </div>
         <nav aria-label={labels.nav}>
-          {navigation.map(({ href, label }, index) => (
+          {navigation.map(({ href, label, current }, index) => (
             <a
               key={href}
               ref={index === 0 ? firstLink : undefined}
               href={href}
+              aria-current={current ? "page" : undefined}
               onClick={() => {
-                destination.current = href.slice(1);
+                destination.current = href.startsWith("#")
+                  ? href.slice(1)
+                  : null;
                 dialog.current?.close();
               }}
             >

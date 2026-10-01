@@ -1,41 +1,51 @@
 import { LanguageSwitch } from "./language-switch";
-import { translator, type Locale } from "@/lib/i18n";
-import { links, navigation } from "@/lib/portfolio";
+import { type Locale } from "@/lib/i18n";
+import { navigationFor } from "@/lib/site";
 import { MobileMenu } from "./mobile-menu";
-
-export function SiteHeader({ locale }: { locale: Locale }) {
-  const t = translator(locale);
+export function SiteHeader({
+  locale,
+  path = "/",
+}: {
+  locale: Locale;
+  path?: string;
+}) {
+  const en = locale === "en";
+  const navigation = navigationFor(locale).map((item) => ({
+    ...item,
+    current: item.path === "/" ? path === "/" : path.startsWith(item.path),
+  }));
   return (
     <header className="site-header container">
       <a
         className="brand"
-        href="#inicio"
-        aria-label={t("Gonzalo Cuadros, inicio")}
+        href={navigation[0].href}
+        aria-label={en ? "Gonzalo Cuadros, home" : "Gonzalo Cuadros, inicio"}
       >
-        {t("Gonzalo Cuadros")}{" "}
+        <span className="brand-mark" aria-hidden="true">
+          gc<span>.</span>
+        </span>
+        <span className="brand-name">
+          Gonzalo
+          <br />
+          Cuadros
+        </span>
       </a>
       <nav
         className="desktop-navigation"
-        aria-label={t("Navegación principal")}
+        aria-label={en ? "Main navigation" : "Navegación principal"}
       >
-        {navigation.map(({ href, label }) => (
-          <a key={href} href={href}>
-            {t(label)}
+        {navigation.map(({ href, label, current }) => (
+          <a key={href} href={href} aria-current={current ? "page" : undefined}>
+            {label}
           </a>
         ))}
-        <a className="button button-outline" href={links.linkedin}>
-          {t("Conectar")}{" "}
-        </a>
       </nav>
       <div className="header-controls">
-        <LanguageSwitch locale={locale} />
+        <LanguageSwitch locale={locale} path={path} />
         <MobileMenu
-          navigation={navigation.map((item) => ({
-            ...item,
-            label: t(item.label),
-          }))}
+          navigation={navigation}
           labels={
-            locale === "en"
+            en
               ? {
                   open: "Open menu",
                   close: "Close menu",

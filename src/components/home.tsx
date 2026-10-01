@@ -1,100 +1,131 @@
-import { cicdNote } from "@/lib/cicd-note";
-import { translator, localPath, type Locale } from "@/lib/i18n";
-import {
-  ArrowLink,
-  Contact,
-  Experience,
-  Project,
-  Talks,
-} from "@/components/portfolio";
-import { SiteHeader } from "@/components/site-header";
+import { PageShell } from "./page-shell";
+import { LayerExplorer } from "./layer-explorer";
+import { ProjectPreview } from "./project-preview";
+import { localPath, type Locale } from "@/lib/i18n";
+import { getPosts } from "@/lib/blog";
 import { links } from "@/lib/portfolio";
-
 export default function Home({ locale }: { locale: Locale }) {
-  const t = translator(locale);
+  const en = locale === "en";
+  const post = getPosts(locale)[0];
   return (
-    <>
-      <a className="skip-link" href="#contenido">
-        {t("Saltar al contenido")}{" "}
-      </a>
-      <SiteHeader locale={locale} />
-      <main id="contenido" tabIndex={-1}>
-        <section
-          className="hero container"
-          id="inicio"
-          aria-labelledby="hero-title"
-        >
-          <div className="intro-copy">
-            <h1 id="hero-title">Gonzalo Cuadros</h1>
-            <p className="intro-lead">
-              {t(
-                "Soy desarrollador frontend y Tech Lead. Me gusta construir interfaces, entender cómo funcionan por dentro y cuidar cómo llegan a producción.",
-              )}
-            </p>
-            <p className="hero-copy">
-              {t(
-                "He trabajado en Freepik, Wuolah y MANGO. Mi trabajo cruza arquitectura frontend, DevOps y acompañamiento técnico a otros desarrolladores.",
-              )}
-            </p>
-            <div className="actions">
-              <a className="arrow-link" href="#trabajo">
-                {t("Ver mi trabajo")} <span aria-hidden="true">↓</span>
-              </a>
-              <ArrowLink href={links.linkedin}>LinkedIn</ArrowLink>
-            </div>
-          </div>
-          <aside className="intro-now" aria-label={t("Ahora")}>
-            <p className="caption">{t("Ahora")}</p>
-            <p className="current-role">{t("Frontend Tech Lead en MANGO")}</p>
-            <p>{t("Madrid, España")}</p>
-          </aside>
-        </section>
-        <section
-          id="trabajo"
-          className="selected-work container"
-          tabIndex={-1}
-          aria-labelledby="work-title"
-        >
-          <h2 id="work-title">{t("Lo que construyo y comparto")}</h2>
-          <Project locale={locale} />
-        </section>
-        <section
-          id="notas"
-          className="note-feature section container"
-          tabIndex={-1}
-          aria-labelledby="notes-title"
-        >
-          <div className="section-heading">
-            <p className="eyebrow">{t("Una nota sobre este portfolio")}</p>
-            <h2 id="notes-title">{cicdNote[locale].title}</h2>
-          </div>
-          <p>
-            {t(
-              "Qué compruebo antes de publicar esta web, qué fallos detectan las pruebas y qué sigo revisando a mano.",
-            )}
+    <PageShell locale={locale} path="/">
+      <section className="hero container">
+        <div className="hero-editorial">
+          <p className="kicker hero-kicker">
+            <span className="status-dot" />
+            Frontend Tech Lead · Madrid
           </p>
-          <div className="actions">
-            <ArrowLink href={localPath(locale, "/notas/cicd-frontend")}>
-              {cicdNote[locale].read}
-            </ArrowLink>
+          <h1>
+            <span>Gonzalo</span>
+            <span>
+              Cuadros<span className="name-period">.</span>
+            </span>
+          </h1>
+          <p className="hero-statement">
+            {en
+              ? "I build the interface. And care about everything behind it."
+              : "Construyo la interfaz. Y me importa todo lo que hay detrás."}
+          </p>
+          <p className="hero-description">
+            {en
+              ? "Frontend, DevOps and technical leadership. Currently at MANGO; previously at Freepik and Wuolah."
+              : "Frontend, DevOps y liderazgo técnico. Ahora en MANGO; antes en Freepik y Wuolah."}
+          </p>
+          <a className="text-link" href={localPath(locale, "/sobre-mi")}>
+            {en ? "A little more about me" : "Un poco más sobre mí"}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <LayerExplorer locale={locale} />
+      </section>
+      <section className="home-work container">
+        <div className="section-title">
+          <div>
+            <p className="kicker">
+              01 / {en ? "In practice" : "En la práctica"}
+            </p>
+            <h2>
+              {en
+                ? "Less abstract.\nMore built."
+                : "Menos abstracto.\nMás construido."}
+            </h2>
           </div>
-        </section>
-        <Talks locale={locale} />
-        <Experience locale={locale} />
-        <Contact locale={locale} />
-      </main>
-      <footer className="site-footer container">
-        <a href="#inicio" className="brand">
-          {t("Gonzalo Cuadros")}{" "}
-        </a>
-        <nav aria-label={t("Enlaces sociales")}>
-          <a href={links.linkedin}>{t("LinkedIn")}</a>
-          <a href={links.github}>{t("GitHub")}</a>
-        </nav>
-        <p>
-          © {new Date().getFullYear()} {t("· Madrid, España")}
-        </p>
-      </footer>
-    </>
+          <a className="text-link" href={localPath(locale, "/proyectos")}>
+            {en ? "Explore projects" : "Explorar proyectos"}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <ProjectPreview locale={locale} />
+      </section>
+      <section className="home-journal">
+        <div className="container journal-grid">
+          <div>
+            <p className="kicker">02 / Blog</p>
+            <h2>
+              {en
+                ? "Notes from\nthe other side."
+                : "Notas desde\nel otro lado."}
+            </h2>
+            <p>
+              {en
+                ? "Decisions, code and things that are worth explaining slowly."
+                : "Decisiones, código y cosas que merece la pena explicar con calma."}
+            </p>
+            <a className="text-link" href={localPath(locale, "/blog")}>
+              {en ? "Open the blog" : "Entrar al blog"}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          {post && (
+            <a
+              className="journal-feature"
+              href={localPath(locale, `/blog/${post.slug}`)}
+            >
+              <span className="kicker">
+                {post.tags[0]} · {post.readingMinutes} min
+              </span>
+              <div className="check-art" aria-hidden="true">
+                {post.slug === "cicd-frontend" ? (
+                  <>
+                    <span>✓</span>
+                    <span>?</span>
+                  </>
+                ) : (
+                  <span>↗</span>
+                )}
+              </div>
+              <h3 style={{ viewTransitionName: `article-${post.slug}` }}>
+                {post.title}
+              </h3>
+              <span className="text-link">
+                {en ? "Read article" : "Leer artículo"} ↗
+              </span>
+            </a>
+          )}
+        </div>
+      </section>
+      <section className="home-talk container">
+        <p className="kicker">03 / {en ? "Out loud" : "En voz alta"}</p>
+        <div>
+          <h2>
+            {en
+              ? "Ideas also\nneed a conversation."
+              : "Las ideas también\nnecesitan conversación."}
+          </h2>
+          <p>
+            {en
+              ? "Rendering and streaming in Next.js, in a live coding session with Garaje de ideas."
+              : "Renderizado y streaming en Next.js, en una sesión de código en directo con Garaje de ideas."}
+          </p>
+          <a className="text-link" href={links.nextTalk}>
+            {en ? "Watch the session (Spanish)" : "Ver la sesión"}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <span className="talk-glyph" aria-hidden="true">
+          ↗
+        </span>
+      </section>
+    </PageShell>
   );
 }

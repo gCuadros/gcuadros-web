@@ -1,6 +1,6 @@
 # Gonzalo Cuadros · Web personal
 
-Arquitectura frontend, DevOps y liderazgo técnico. Portfolio en Next.js App Router, React y TypeScript estricto, a partir del diseño aprobado en Pen.dev.
+Arquitectura frontend, DevOps y liderazgo técnico. Portfolio en Next.js App Router, React y TypeScript estricto, con diseño propio, navegación multipágina y blog en Markdown.
 
 ## Desarrollo
 
@@ -26,14 +26,15 @@ GitHub Actions ejecuta `Quality checks`, `Production build` y `Browser and acces
 
 ## Estructura
 
-- `src/app`: home, metadatos, estilos y tokens del diseño.
-- `src/components`: secciones y navegación; solo el menú móvil necesita JavaScript de cliente.
+- `src/app`: rutas ES/EN, metadatos, feeds y estilos.
+- `src/components`: páginas compartidas, menú móvil y explorador interactivo de capas.
+- `content/blog`: artículos Markdown ES/EN; [guía para escribir](docs/blog.md).
 - `src/lib/portfolio.ts`: enlaces y trayectoria.
 - `tests`: pruebas de comportamiento y accesibilidad.
 - `.github`: CI, plantilla de PR y actualizaciones de dependencias.
 - `docs`: decisiones y guía de despliegue.
 
-La home contiene presentación, especialidades, trayectoria, Hevy Coach MCP, charlas y contacto. El dominio definitivo y los contenidos aún no disponibles (foto, CV y casos extensos) quedan fuera de esta entrega.
+La portada presenta a Gonzalo y enlaza a Proyectos, Blog y Sobre mí. La trayectoria, formación, charlas y CV están en Sobre mí. El caso de Hevy y los artículos tienen páginas propias. La web y el CV están disponibles en castellano e inglés. El dominio personalizado queda para el final.
 
 ## Flujo de trabajo
 

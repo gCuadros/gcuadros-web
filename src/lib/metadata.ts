@@ -1,4 +1,3 @@
-import { cicdNote } from "./cicd-note";
 import type { Metadata } from "next";
 import { localPath, type Locale } from "./i18n";
 
@@ -59,11 +58,15 @@ export function pageMetadata(locale: Locale, hevy = false): Metadata {
   };
 }
 
-export function cicdMetadata(locale: Locale): Metadata {
+export function routeMetadata(
+  locale: Locale,
+  path: string,
+  title: string,
+  description: string,
+  type: "article" | "website" = "website",
+): Metadata {
   const base = pageMetadata(locale);
-  const { title, description } = cicdNote[locale];
   const fullTitle = `${title} | Gonzalo Cuadros`;
-  const path = "/notas/cicd-frontend";
   return {
     ...base,
     title: fullTitle,
@@ -75,12 +78,7 @@ export function cicdMetadata(locale: Locale): Metadata {
         "x-default": localPath("es", path),
       },
     },
-    openGraph: {
-      ...base.openGraph,
-      title: fullTitle,
-      description,
-      type: "article",
-    },
+    openGraph: { ...base.openGraph, title: fullTitle, description, type },
     twitter: { ...base.twitter, title: fullTitle, description },
   };
 }

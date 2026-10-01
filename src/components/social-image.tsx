@@ -12,31 +12,31 @@ export default function Image({ english = false }: { english?: boolean } = {}) {
         justifyContent: "space-between",
         width: "100%",
         height: "100%",
-        background: "#F7F5EF",
-        color: "#203D35",
+        background: "#F5F2EA",
+        color: "#22231F",
         padding: "64px 72px",
       }}
     >
-      <div style={{ display: "flex", fontSize: 28, color: "#285C46" }}>
+      <div style={{ display: "flex", fontSize: 28, color: "#A83213" }}>
         Frontend Tech Lead · Madrid
       </div>
       <div
         style={{
           display: "flex",
-          fontSize: 68,
+          fontSize: 110,
           fontWeight: 700,
           lineHeight: 1.12,
           maxWidth: 1020,
         }}
       >
-        Gonzalo Cuadros
+        Gonzalo Cuadros.
       </div>
       <div
         style={{
           display: "flex",
           fontSize: 26,
-          color: "#4C5750",
-          borderTop: "1px solid #D0D4CA",
+          color: "#595B52",
+          borderTop: "1px solid #CDCBBF",
           paddingTop: 28,
         }}
       >
