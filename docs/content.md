@@ -14,3 +14,15 @@
 ## Confidencialidad
 
 Describir responsabilidades y competencias sin cifras de equipos/personas, topologías internas, rutas de migración entre proveedores ni detalles operativos de empresas. Los artículos técnicos deben usar ejemplos independientes y agnósticos, sin presentarlos como reconstrucciones de sistemas internos ni atribuir resultados no públicos a un empleador. No solicitar datos internos para completar casos.
+
+## Docencia y charlas
+
+Página `src/components/teaching-page.tsx`, rutas `/docencia` y `/en/docencia`, con resumen en inicio y sobre mí. Codespace Academy (junio 2023–agosto 2024) según perfil aportado: colaborador docente, sesiones de fundamentos y técnicas avanzadas, especialización Next.js. No confundir con su etapa como alumno ni inventar cifras de estudiantes/promociones.
+
+Fuentes públicas revisadas el 6 de octubre de 2026:
+
+- [Publicación del titular y álbum de Fabrics](https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/): confirma participación como ponente. Fotografía `public/images/fabrics-2025.jpg` procedente del álbum, no una recreación.
+- [Publicación oficial de MANGO](https://www.linkedin.com/posts/mango_lifeatmango-takingfashionfurther-takinginnovationfurther-activity-7335941887565938688-7I9n): segunda edición del encuentro tecnológico. No atribuir a Gonzalo todos los temas del evento; no consta el título exacto de su intervención en el texto consultado.
+- [Garaje de ideas](https://es.linkedin.com/posts/garajedeideas_en-este-live-coding-veremos-cómo-elegir-activity-7237419907972304897-7gnv): estrategias de renderizado y streaming en Next.js. [Grabación](https://www.youtube.com/watch?v=J4FLmBctSBs) en castellano, indicado en la versión inglesa.
+
+Enlazar a fuentes y vídeo sin cargar embeds ni rastreadores de terceros al abrir la página.

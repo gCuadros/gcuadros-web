@@ -1,5 +1,6 @@
 import { PageShell } from "./page-shell";
-import { Experience, Talks } from "./portfolio";
+import { Experience } from "./portfolio";
+import { TeachingPreview } from "./teaching-page";
 import type { Locale } from "@/lib/i18n";
 export default function AboutPage({ locale }: { locale: Locale }) {
   const en = locale === "en";
@@ -28,7 +29,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
         </div>
       </header>
       <Experience locale={locale} />
-      <Talks locale={locale} />
+      <TeachingPreview locale={locale} />
     </PageShell>
   );
 }

@@ -3,7 +3,7 @@ import { LayerExplorer } from "./layer-explorer";
 import { ProjectPreview } from "./project-preview";
 import { localPath, type Locale } from "@/lib/i18n";
 import { getPosts } from "@/lib/blog";
-import { links } from "@/lib/portfolio";
+import { TeachingPreview } from "./teaching-page";
 export default function Home({ locale }: { locale: Locale }) {
   const en = locale === "en";
   const post = getPosts(locale)[0];
@@ -104,24 +104,7 @@ export default function Home({ locale }: { locale: Locale }) {
           )}
         </div>
       </section>
-      <section className="home-talk container">
-        <p className="kicker">03 / {en ? "Out loud" : "En voz alta"}</p>
-        <div>
-          <h2>{en ? "Sharing\nwhat I learn." : "Compartir\nlo aprendido."}</h2>
-          <p>
-            {en
-              ? "Rendering and streaming in Next.js, in a live coding session with Garaje de ideas."
-              : "Renderizado y streaming en Next.js, en una sesión de código en directo con Garaje de ideas."}
-          </p>
-          <a className="text-link" href={links.nextTalk}>
-            {en ? "Watch the session (Spanish)" : "Ver la sesión"}
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-        <span className="talk-glyph" aria-hidden="true">
-          ↗
-        </span>
-      </section>
+      <TeachingPreview locale={locale} />
     </PageShell>
   );
 }

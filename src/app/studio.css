@@ -1191,3 +1191,124 @@ h3 {
 ::view-transition-group(*) {
   animation-duration: 0.35s;
 }
+
+.teaching-preview,
+.teaching-event {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: 5rem;
+}
+.teaching-preview p:not(.kicker),
+.teaching-event p:not(.kicker) {
+  max-width: 55ch;
+  margin-block: 1.5rem;
+}
+.teaching-preview .teaching-photo {
+  max-width: 380px;
+  justify-self: end;
+  width: 100%;
+}
+.teaching-photo {
+  margin: 0;
+}
+.teaching-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+.teaching-photo figcaption {
+  margin-top: 0.75rem;
+}
+.teaching-session-link {
+  margin-top: 1rem;
+  display: flex;
+  width: fit-content;
+}
+.teaching-intro h1 {
+  font-size: clamp(2.7rem, 7vw, 7rem);
+}
+.teaching-intro > p:last-child {
+  max-width: 58ch;
+  margin-top: 2rem;
+}
+.teaching-classroom,
+.teaching-live {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 2rem;
+  padding-block: 4rem;
+  border-top: 1px solid var(--foreground);
+}
+.teaching-classroom > div > p:not(.teaching-lead),
+.teaching-live > div > p {
+  max-width: 65ch;
+  margin-block: 1.5rem;
+}
+.teaching-lead {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  margin-block: 1.5rem;
+}
+.teaching-topics {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.teaching-topics li {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+.teaching-video-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  background: #e4ddf0;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.teaching-video-link > span:last-child {
+  margin-left: auto;
+}
+.teaching-video-link small {
+  display: block;
+  margin-top: 0.4rem;
+}
+.play-symbol {
+  font-size: 2rem;
+}
+.teaching-video-link:hover {
+  background: #d8cbe9;
+}
+.teaching-event {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  border-top: 1px solid var(--foreground);
+}
+.teaching-event-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .teaching-preview,
+  .teaching-event,
+  .teaching-classroom,
+  .teaching-live {
+    grid-template-columns: 1fr;
+    padding-block: 3rem;
+  }
+  .teaching-preview .teaching-photo {
+    max-width: none;
+  }
+  .teaching-event > .teaching-photo {
+    order: 2;
+  }
+}
