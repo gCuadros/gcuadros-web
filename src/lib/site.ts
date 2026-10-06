@@ -10,6 +10,11 @@ export const navigationFor = (locale: Locale) => [
     path: "/proyectos",
     label: locale === "es" ? "Proyectos" : "Projects",
   },
+  {
+    href: localPath(locale, "/docencia"),
+    path: "/docencia",
+    label: locale === "es" ? "Docencia" : "Teaching",
+  },
   { href: localPath(locale, "/blog"), path: "/blog", label: "Blog" },
   {
     href: localPath(locale, "/sobre-mi"),

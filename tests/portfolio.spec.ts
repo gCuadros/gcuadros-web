@@ -44,7 +44,13 @@ for (const width of [320, 390, 768, 1440]) {
     const hrefs = await page
       .locator(".desktop-navigation a")
       .evaluateAll((nodes) => nodes.map((n) => n.getAttribute("href")));
-    expect(hrefs).toEqual(["/", "/proyectos", "/blog", "/sobre-mi"]);
+    expect(hrefs).toEqual([
+      "/",
+      "/proyectos",
+      "/docencia",
+      "/blog",
+      "/sobre-mi",
+    ]);
   });
 }
 
@@ -60,6 +66,7 @@ for (const locale of ["es", "en"]) {
         "/proyectos",
         "/blog",
         "/sobre-mi",
+        "/docencia",
         "/blog/cicd-frontend",
         "/proyectos/hevy",
       ]) {
