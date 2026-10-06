@@ -68,6 +68,7 @@ for (const locale of ["es", "en"]) {
         "/sobre-mi",
         "/docencia",
         "/blog/cicd-frontend",
+        "/blog/fabrics-2025",
         "/proyectos/hevy",
       ]) {
         const response = await page.goto(prefix + path);
@@ -107,7 +108,7 @@ for (const locale of ["es", "en"]) {
       expect(cv.status()).toBe(200);
       expect((await cv.body()).subarray(0, 5).toString()).toBe("%PDF-");
       await page.goto(prefix + "/blog");
-      await page.getByRole("heading", { level: 2 }).getByRole("link").click();
+      await page.locator('h2 a[href$="/blog/cicd-frontend"]').click();
       await expect(page).toHaveURL(new RegExp(`${prefix}/blog/cicd-frontend$`));
       await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
         "content",
@@ -196,7 +197,7 @@ test("core navigation and article language switching work without JavaScript", a
     "Gonzalo",
   );
   await page.getByRole("link", { name: "Entrar al blog" }).click();
-  await page.getByRole("heading", { level: 2 }).getByRole("link").click();
+  await page.locator('h2 a[href$="/blog/cicd-frontend"]').click();
   await page.getByRole("link", { name: "EN — English", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator(".article-body")).toContainText(
