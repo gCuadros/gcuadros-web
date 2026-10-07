@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { LanguageSwitch } from "./language-switch";
 import { type Locale } from "@/lib/i18n";
 import { navigationFor } from "@/lib/site";
@@ -16,7 +17,8 @@ export function SiteHeader({
   }));
   return (
     <header className="site-header container">
-      <a
+      <SiteLink
+        locale={locale}
         className="brand"
         href={navigation[0].href}
         aria-label={en ? "Gonzalo Cuadros, home" : "Gonzalo Cuadros, inicio"}
@@ -29,20 +31,26 @@ export function SiteHeader({
           <br />
           Cuadros
         </span>
-      </a>
+      </SiteLink>
       <nav
         className="desktop-navigation"
         aria-label={en ? "Main navigation" : "Navegación principal"}
       >
         {navigation.map(({ href, label, current }) => (
-          <a key={href} href={href} aria-current={current ? "page" : undefined}>
+          <SiteLink
+            locale={locale}
+            key={href}
+            href={href}
+            aria-current={current ? "page" : undefined}
+          >
             {label}
-          </a>
+          </SiteLink>
         ))}
       </nav>
       <div className="header-controls">
         <LanguageSwitch locale={locale} path={path} />
         <MobileMenu
+          locale={locale}
           navigation={navigation}
           labels={
             en

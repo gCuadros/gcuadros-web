@@ -1,12 +1,17 @@
 "use client";
 
+import { SiteLink } from "./site-link";
+
 import { useEffect, useRef, useState } from "react";
+import type { Locale } from "@/lib/i18n";
 import { links } from "@/lib/portfolio";
 
 export function MobileMenu({
   navigation,
   labels,
+  locale,
 }: {
+  locale: Locale;
   navigation: readonly { href: string; label: string; current?: boolean }[];
   labels: {
     open: string;
@@ -99,7 +104,8 @@ export function MobileMenu({
         </div>
         <nav aria-label={labels.nav}>
           {navigation.map(({ href, label, current }, index) => (
-            <a
+            <SiteLink
+              locale={locale}
               key={href}
               ref={index === 0 ? firstLink : undefined}
               href={href}
@@ -112,15 +118,16 @@ export function MobileMenu({
               }}
             >
               {label}
-            </a>
+            </SiteLink>
           ))}
-          <a
+          <SiteLink
+            locale={locale}
             href={links.linkedin}
             className="button button-outline"
             onClick={() => dialog.current?.close()}
           >
             {labels.connect}
-          </a>
+          </SiteLink>
         </nav>
       </dialog>
     </div>

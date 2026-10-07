@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { translator, localPath, type Locale } from "@/lib/i18n";
 import { PageShell } from "./page-shell";
 import { links } from "@/lib/portfolio";
@@ -18,12 +19,16 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           )}{" "}
         </p>
         <div className="actions">
-          <a className="button" href={links.hevy}>
+          <SiteLink locale={locale} className="button" href={links.hevy}>
             {t("Explorar el código")}{" "}
-          </a>
-          <a className="arrow-link" href={links.hevyPost}>
-            {t("Ver la presentación")}{" "}
-          </a>
+          </SiteLink>
+          <SiteLink
+            locale={locale}
+            className="arrow-link"
+            href={localPath(locale, "/blog/hevy-coach-mcp")}
+          >
+            {locale === "en" ? "Why I built it" : "Por qué lo construí"}{" "}
+          </SiteLink>
         </div>
         <section aria-labelledby="problema">
           <h2 id="problema">
@@ -123,12 +128,20 @@ export default function HevyCase({ locale }: { locale: Locale }) {
             )}{" "}
           </p>
           <div className="actions">
-            <a className="arrow-link" href={`${source}/src/tools/write.ts`}>
+            <SiteLink
+              locale={locale}
+              className="arrow-link"
+              href={`${source}/src/tools/write.ts`}
+            >
               {t("Ver la preparación de escrituras")}{" "}
-            </a>
-            <a className="arrow-link" href={`${source}/src/hevy/client.ts`}>
+            </SiteLink>
+            <SiteLink
+              locale={locale}
+              className="arrow-link"
+              href={`${source}/src/hevy/client.ts`}
+            >
               {t("Ver la política de reintentos")}{" "}
-            </a>
+            </SiteLink>
           </div>
         </section>
         <section aria-labelledby="calidad">
@@ -151,18 +164,20 @@ export default function HevyCase({ locale }: { locale: Locale }) {
             )}{" "}
           </p>
           <div className="actions">
-            <a
+            <SiteLink
+              locale={locale}
               className="arrow-link"
               href={`${source}/src/tools/write.test.ts`}
             >
               {t("Revisar las pruebas de escritura")}{" "}
-            </a>
-            <a
+            </SiteLink>
+            <SiteLink
+              locale={locale}
               className="arrow-link"
               href={`${source}/src/engine/e1rm.test.ts`}
             >
               {t("Revisar las pruebas del cálculo")}{" "}
-            </a>
+            </SiteLink>
           </div>
         </section>
         <section aria-labelledby="ejemplo">
@@ -182,12 +197,13 @@ export default function HevyCase({ locale }: { locale: Locale }) {
               "Es una propuesta de consulta, no una captura de un resultado real. El repositorio incluye las instrucciones de conexión, las herramientas disponibles y sus límites.",
             )}{" "}
           </p>
-          <a
+          <SiteLink
+            locale={locale}
             className="arrow-link"
             href="https://github.com/gCuadros/hevy-mcp/blob/main/docs/CONNECTOR.md"
           >
             {t("Consultar la guía de conexión")}{" "}
-          </a>
+          </SiteLink>
         </section>
         <section aria-labelledby="evidencia">
           <h2 id="evidencia">{t("Qué demuestra este proyecto")}</h2>
@@ -203,12 +219,20 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </p>
         </section>
         <div className="actions">
-          <a className="button" href={localPath(locale, "/proyectos")}>
+          <SiteLink
+            locale={locale}
+            className="button"
+            href={localPath(locale, "/proyectos")}
+          >
             {locale === "en" ? "Back to projects" : "Volver a proyectos"}{" "}
-          </a>
-          <a className="arrow-link" href={links.linkedin}>
+          </SiteLink>
+          <SiteLink
+            locale={locale}
+            className="arrow-link"
+            href={links.linkedin}
+          >
             {t("Conectar en LinkedIn")}{" "}
-          </a>
+          </SiteLink>
         </div>
       </article>
     </PageShell>

@@ -2,8 +2,6 @@ export const links = {
   linkedin: "https://www.linkedin.com/in/gonzalo-cuadros/",
   github: "https://github.com/gCuadros",
   hevy: "https://github.com/gCuadros/hevy-mcp",
-  hevyPost:
-    "https://www.linkedin.com/feed/update/urn:li:activity:7491054566491324416/",
   nextTalk: "https://www.youtube.com/watch?v=J4FLmBctSBs",
   fabrics:
     "https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/",

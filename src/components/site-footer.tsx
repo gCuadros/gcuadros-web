@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { type Locale } from "@/lib/i18n";
 import { navigationFor } from "@/lib/site";
 import { links } from "@/lib/portfolio";
@@ -10,10 +11,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="kicker">
             {en ? "The next conversation" : "La siguiente conversación"}
           </p>
-          <a className="footer-invite" href={links.linkedin}>
+          <SiteLink
+            locale={locale}
+            className="footer-invite"
+            href={links.linkedin}
+          >
             {en ? "Let’s talk." : "¿Hablamos?"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
         <div className="footer-bottom">
           <p>
@@ -25,14 +30,18 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             {navigationFor(locale)
               .slice(1)
               .map((n) => (
-                <a key={n.href} href={n.href}>
+                <SiteLink locale={locale} key={n.href} href={n.href}>
                   {n.label}
-                </a>
+                </SiteLink>
               ))}
           </nav>
           <div className="footer-social">
-            <a href={links.github}>GitHub ↗</a>
-            <a href={links.linkedin}>LinkedIn ↗</a>
+            <SiteLink locale={locale} href={links.github}>
+              GitHub ↗
+            </SiteLink>
+            <SiteLink locale={locale} href={links.linkedin}>
+              LinkedIn ↗
+            </SiteLink>
           </div>
         </div>
         <p className="colophon">

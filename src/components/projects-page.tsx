@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { ProjectPreview } from "./project-preview";
 import { links } from "@/lib/portfolio";
@@ -27,9 +28,9 @@ export default function ProjectsPage({ locale }: { locale: Locale }) {
                 ? "The Hevy case covers retries, validation before writes and the difference between missing data and zero. The repository contains the implementation and tests."
                 : "El caso de Hevy recorre reintentos, validación antes de escribir y la diferencia entre datos ausentes y cero. El repositorio contiene la implementación y sus pruebas."}
             </p>
-            <a className="text-link" href={links.hevy}>
+            <SiteLink locale={locale} className="text-link" href={links.hevy}>
               {en ? "Explore the repository" : "Explorar el repositorio"} ↗
-            </a>
+            </SiteLink>
           </div>
         </section>
       </div>

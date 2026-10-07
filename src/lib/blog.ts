@@ -58,8 +58,17 @@ export function getPosts(locale: Locale): Post[] {
 export function getPost(locale: Locale, slug: string) {
   return getPosts(locale).find((post) => post.slug === slug);
 }
-export async function renderPost(content: string) {
-  return String(await remark().use(html, { sanitize: true }).process(content));
+export async function renderPost(content: string, locale: Locale = "es") {
+  const rendered = String(
+    await remark().use(html, { sanitize: true }).process(content),
+  );
+  const notice =
+    locale === "en" ? "opens in a new tab" : "abre en otra pestaña";
+  return rendered.replace(
+    /<a href="(https?:\/\/[^"]*)">([\s\S]*?)<\/a>/g,
+    (_, href: string, label: string) =>
+      `<a href="${href}" target="_blank" rel="noopener noreferrer" title="${notice}">${label}<span class="visually-hidden"> (${notice})</span></a>`,
+  );
 }
 export function postDate(date: string, locale: Locale) {
   return new Intl.DateTimeFormat(locale === "es" ? "es-ES" : "en-GB", {

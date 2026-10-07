@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import Image from "next/image";
 import { FabricsCover } from "./fabrics-cover";
 import { PageShell } from "./page-shell";
@@ -24,14 +25,22 @@ export function TeachingPreview({ locale }: { locale: Locale }) {
             ? "I’ve taught frontend at Codespace Academy’s bootcamp, coded live with Garaje de ideas and spoken at Fabrics, MANGO’s tech event."
             : "He sido docente de frontend en el bootcamp de Codespace Academy, he programado en directo con Garaje de ideas y he participado como ponente en Fabrics, el encuentro tecnológico de MANGO."}
         </p>
-        <a className="text-link" href={localPath(locale, "/docencia")}>
+        <SiteLink
+          locale={locale}
+          className="text-link"
+          href={localPath(locale, "/docencia")}
+        >
           {en ? "Explore teaching & talks" : "Ver docencia y charlas"}
           <span aria-hidden="true">↗</span>
-        </a>
-        <a className="text-link teaching-session-link" href={links.nextTalk}>
+        </SiteLink>
+        <SiteLink
+          locale={locale}
+          className="text-link teaching-session-link"
+          href={links.nextTalk}
+        >
           {en ? "Watch the session (Spanish)" : "Ver la sesión"}
           <span aria-hidden="true">↗</span>
-        </a>
+        </SiteLink>
       </div>
       <figure className="teaching-photo">
         <Image
@@ -100,12 +109,12 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             <li>React</li>
             <li>Next.js</li>
           </ul>
-          <a className="text-link" href={links.linkedin}>
+          <SiteLink locale={locale} className="text-link" href={links.linkedin}>
             {en
               ? "Teaching experience on LinkedIn"
               : "Mi experiencia docente en LinkedIn"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
       </section>
       <section className="teaching-live container" aria-labelledby="live-title">
@@ -124,7 +133,11 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               ? "A hands-on session on choosing rendering strategies and using streaming to improve performance and the user experience."
               : "Una sesión práctica sobre cómo elegir estrategias de renderizado y aprovechar el streaming para mejorar el rendimiento y la experiencia de usuario."}
           </p>
-          <a className="teaching-video-link" href={links.nextTalk}>
+          <SiteLink
+            locale={locale}
+            className="teaching-video-link"
+            href={links.nextTalk}
+          >
             <span className="play-symbol" aria-hidden="true">
               ▶
             </span>
@@ -137,7 +150,7 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               </small>
             </span>
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
       </section>
       <section
@@ -160,13 +173,14 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               ? "A chance to share ideas, learn from other speakers and discuss how technology is changing the industry."
               : "Una oportunidad para compartir ideas, aprender de otros ponentes y conversar sobre cómo la tecnología está transformando la industria."}
           </p>
-          <a
+          <SiteLink
+            locale={locale}
             className="text-link"
             href={localPath(locale, "/blog/fabrics-2025")}
           >
             {en ? "Read about Fabrics 2025" : "Leer sobre Fabrics 2025"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
       </section>
     </PageShell>
