@@ -1,24 +1,15 @@
 "use client";
 import { useSyncExternalStore } from "react";
 
-const query = "(prefers-color-scheme: dark)";
-
 function subscribe(onChange: () => void) {
-  const media = window.matchMedia(query);
   const observer = new MutationObserver(onChange);
-  media.addEventListener("change", onChange);
   observer.observe(document.documentElement, {
     attributeFilter: ["data-theme"],
   });
-  return () => {
-    media.removeEventListener("change", onChange);
-    observer.disconnect();
-  };
+  return () => observer.disconnect();
 }
 
-const isDark = () =>
-  (document.documentElement.dataset.theme ??
-    (window.matchMedia(query).matches ? "dark" : "light")) === "dark";
+const isDark = () => document.documentElement.dataset.theme === "dark";
 
 export function ThemeToggle({ label }: { label: string }) {
   const dark = useSyncExternalStore(subscribe, isDark, () => false);
