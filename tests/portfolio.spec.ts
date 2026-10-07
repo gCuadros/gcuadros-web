@@ -69,6 +69,7 @@ for (const locale of ["es", "en"]) {
         "/docencia",
         "/blog/cicd-frontend",
         "/blog/fabrics-2025",
+        "/blog/hevy-coach-mcp",
         "/proyectos/hevy",
       ]) {
         const response = await page.goto(prefix + path);
@@ -142,7 +143,9 @@ test("mobile menu preserves keyboard focus, closes and navigates to real pages",
   ).toBeFocused();
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
-  await dialog.getByRole("link", { name: "Conectar", exact: true }).focus();
+  await dialog
+    .getByRole("link", { name: "Conectar (abre en otra pestaña)", exact: true })
+    .focus();
   await page.keyboard.press("Tab");
   await expect(
     dialog.getByRole("button", { name: "Cerrar menú" }),
@@ -249,4 +252,50 @@ test("project links and social images are real", async ({ page, request }) => {
       "89504e470d0a1a0a",
     );
   }
+});
+
+test("Hevy story stays on site and external references preserve the current tab", async ({
+  page,
+  context,
+}) => {
+  for (const prefix of ["", "/en"]) {
+    await page.goto(prefix + "/proyectos/hevy");
+    await page
+      .getByRole("link", {
+        name: prefix ? "Why I built it" : "Por qué lo construí",
+        exact: true,
+      })
+      .click();
+    await expect(page).toHaveURL(new RegExp(prefix + "/blog/hevy-coach-mcp$"));
+    const internal = page.locator('.article-body a[href^="/"]');
+    await expect(internal).toHaveAttribute("href", prefix + "/proyectos/hevy");
+    await expect(internal).not.toHaveAttribute("target", "_blank");
+    for (const path of [
+      "/blog/hevy-coach-mcp",
+      "/blog/fabrics-2025",
+      "/docencia",
+      "/proyectos/hevy",
+      "/sobre-mi",
+    ]) {
+      await page.goto(prefix + path);
+      for (const link of await page.locator('a[href^="https://"]').all()) {
+        await expect(link).toHaveAttribute("target", "_blank");
+        await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+        await expect(link).toContainText(
+          prefix ? "opens in a new tab" : "abre en otra pestaña",
+        );
+      }
+    }
+  }
+  await page.goto("/blog/hevy-coach-mcp");
+  await context.route("https://github.com/**", (route) =>
+    route.fulfill({ body: "External destination" }),
+  );
+  const popupPromise = page.waitForEvent("popup");
+  await page
+    .locator('.article-body a[href="https://github.com/gCuadros/hevy-mcp"]')
+    .click();
+  const popup = await popupPromise;
+  await expect(page).toHaveURL(/\/blog\/hevy-coach-mcp$/);
+  await popup.close();
 });

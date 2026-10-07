@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { LayerExplorer } from "./layer-explorer";
 import { ProjectPreview } from "./project-preview";
@@ -31,10 +32,14 @@ export default function Home({ locale }: { locale: Locale }) {
               ? "Tech Lead at MANGO, with a focus on DevOps and mentoring developers. Previously at Freepik and Wuolah."
               : "Tech Lead en MANGO, con foco en DevOps y acompañamiento técnico a otros desarrolladores. Antes, en Freepik y Wuolah."}
           </p>
-          <a className="text-link" href={localPath(locale, "/sobre-mi")}>
+          <SiteLink
+            locale={locale}
+            className="text-link"
+            href={localPath(locale, "/sobre-mi")}
+          >
             {en ? "A little more about me" : "Un poco más sobre mí"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
         <LayerExplorer locale={locale} />
       </section>
@@ -50,10 +55,14 @@ export default function Home({ locale }: { locale: Locale }) {
                 : "Lo que construyo\npor mi cuenta."}
             </h2>
           </div>
-          <a className="text-link" href={localPath(locale, "/proyectos")}>
+          <SiteLink
+            locale={locale}
+            className="text-link"
+            href={localPath(locale, "/proyectos")}
+          >
             {en ? "Explore projects" : "Explorar proyectos"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </SiteLink>
         </div>
         <ProjectPreview locale={locale} />
       </section>
@@ -71,13 +80,18 @@ export default function Home({ locale }: { locale: Locale }) {
                 ? "Notes on frontend architecture, automation and technical decisions, with examples and code."
                 : "Notas sobre arquitectura frontend, automatización y decisiones técnicas, con ejemplos y código."}
             </p>
-            <a className="text-link" href={localPath(locale, "/blog")}>
+            <SiteLink
+              locale={locale}
+              className="text-link"
+              href={localPath(locale, "/blog")}
+            >
               {en ? "Open the blog" : "Entrar al blog"}
               <span aria-hidden="true">↗</span>
-            </a>
+            </SiteLink>
           </div>
           {post && (
-            <a
+            <SiteLink
+              locale={locale}
               className="journal-feature"
               href={localPath(locale, `/blog/${post.slug}`)}
             >
@@ -100,7 +114,7 @@ export default function Home({ locale }: { locale: Locale }) {
               <span className="text-link">
                 {en ? "Read article" : "Leer artículo"} ↗
               </span>
-            </a>
+            </SiteLink>
           )}
         </div>
       </section>

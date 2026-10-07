@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { translator, localPath, type Locale } from "@/lib/i18n";
 import type { ReactNode } from "react";
 import { experience, links } from "@/lib/portfolio";
@@ -5,15 +6,17 @@ import { experience, links } from "@/lib/portfolio";
 export function ArrowLink({
   href,
   children,
+  locale = "es",
 }: {
+  locale?: Locale;
   href: string;
   children: ReactNode;
 }) {
   return (
-    <a className="arrow-link" href={href}>
+    <SiteLink locale={locale} className="arrow-link" href={href}>
       {children}
       <span aria-hidden="true">↗</span>
-    </a>
+    </SiteLink>
   );
 }
 
@@ -65,7 +68,8 @@ export function Experience({ locale }: { locale: Locale }) {
       </ol>
       <div className="trajectory-foot">
         <div className="actions">
-          <a
+          <SiteLink
+            locale={locale}
             className="button"
             href={
               locale === "en"
@@ -75,8 +79,8 @@ export function Experience({ locale }: { locale: Locale }) {
             download
           >
             {t("Descargar CV (PDF)")}{" "}
-          </a>
-          <ArrowLink href={links.linkedin}>
+          </SiteLink>
+          <ArrowLink locale={locale} href={links.linkedin}>
             {t("Trayectoria completa en LinkedIn")}{" "}
           </ArrowLink>
         </div>
@@ -118,10 +122,15 @@ export function Project({ locale }: { locale: Locale }) {
             )}{" "}
           </p>
           <div className="actions">
-            <ArrowLink href={localPath(locale, "/proyectos/hevy")}>
+            <ArrowLink
+              locale={locale}
+              href={localPath(locale, "/proyectos/hevy")}
+            >
               {t("Leer el caso técnico")}
             </ArrowLink>
-            <ArrowLink href={links.hevy}>{t("Ver código en GitHub")}</ArrowLink>
+            <ArrowLink locale={locale} href={links.hevy}>
+              {t("Ver código en GitHub")}
+            </ArrowLink>
           </div>
         </div>
         <figure className="project-schema">
@@ -170,14 +179,18 @@ export function Talks({ locale }: { locale: Locale }) {
               "Una sesión de código en directo con Garaje de ideas sobre renderizado y streaming en Next.js.",
             )}{" "}
           </p>
-          <ArrowLink href={links.nextTalk}>{t("Ver sesión")}</ArrowLink>
+          <ArrowLink locale={locale} href={links.nextTalk}>
+            {t("Ver sesión")}
+          </ArrowLink>
         </div>
       </article>
       <article className="secondary-talk">
         <p className="caption">{t("Ponente · MANGO")}</p>
         <div>
           <h3>{t("Fabrics 2025")}</h3>
-          <ArrowLink href={links.fabrics}>{t("Ver publicación")}</ArrowLink>
+          <ArrowLink locale={locale} href={links.fabrics}>
+            {t("Ver publicación")}
+          </ArrowLink>
         </div>
       </article>
       <p className="codespace-note">
@@ -202,10 +215,12 @@ export function Contact({ locale }: { locale: Locale }) {
         )}{" "}
       </p>
       <div className="actions">
-        <a className="button" href={links.linkedin}>
+        <SiteLink locale={locale} className="button" href={links.linkedin}>
           {t("Conectar en LinkedIn")}{" "}
-        </a>
-        <ArrowLink href={links.github}>{t("GitHub")}</ArrowLink>
+        </SiteLink>
+        <ArrowLink locale={locale} href={links.github}>
+          {t("GitHub")}
+        </ArrowLink>
       </div>
     </section>
   );

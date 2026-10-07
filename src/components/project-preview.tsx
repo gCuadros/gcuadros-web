@@ -1,8 +1,13 @@
+import { SiteLink } from "./site-link";
 import { localPath, type Locale } from "@/lib/i18n";
 export function ProjectPreview({ locale }: { locale: Locale }) {
   const en = locale === "en";
   return (
-    <a className="project-preview" href={localPath(locale, "/proyectos/hevy")}>
+    <SiteLink
+      locale={locale}
+      className="project-preview"
+      href={localPath(locale, "/proyectos/hevy")}
+    >
       <div className="project-art" aria-hidden="true">
         <div className="art-topline">
           <span>HEVY / MCP</span>
@@ -42,6 +47,6 @@ export function ProjectPreview({ locale }: { locale: Locale }) {
           ↗
         </span>
       </div>
-    </a>
+    </SiteLink>
   );
 }

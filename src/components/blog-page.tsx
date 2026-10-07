@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { localPath, type Locale } from "@/lib/i18n";
 import { getPosts, postDate } from "@/lib/blog";
@@ -18,9 +19,13 @@ export default function BlogPage({ locale }: { locale: Locale }) {
                 ? "Notes on building software: decisions, mistakes to avoid and code to inspect. One article at a time."
                 : "Apuntes sobre construir software: decisiones, errores que evitar y código que revisar. Un artículo cada vez."}
             </p>
-            <a className="text-link" href={localPath(locale, "/blog/feed.xml")}>
+            <SiteLink
+              locale={locale}
+              className="text-link"
+              href={localPath(locale, "/blog/feed.xml")}
+            >
               {en ? "Follow via RSS" : "Seguir por RSS"} ↗
-            </a>
+            </SiteLink>
           </div>
         </header>
         <div className="blog-list">
@@ -39,10 +44,13 @@ export default function BlogPage({ locale }: { locale: Locale }) {
                   </span>
                 </div>
                 <h2 style={{ viewTransitionName: `article-${post.slug}` }}>
-                  <a href={localPath(locale, `/blog/${post.slug}`)}>
+                  <SiteLink
+                    locale={locale}
+                    href={localPath(locale, `/blog/${post.slug}`)}
+                  >
                     {post.title}
                     <span aria-hidden="true">↗</span>
-                  </a>
+                  </SiteLink>
                 </h2>
                 <p>{post.summary}</p>
                 <ul className="post-tags" aria-label={en ? "Topics" : "Temas"}>

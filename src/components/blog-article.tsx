@@ -1,3 +1,4 @@
+import { SiteLink } from "./site-link";
 import { FabricsCover } from "./fabrics-cover";
 import { PageShell } from "./page-shell";
 import { localPath, type Locale } from "@/lib/i18n";
@@ -10,14 +11,18 @@ export default async function BlogArticle({
   locale: Locale;
 }) {
   const en = locale === "en";
-  const content = await renderPost(post.content);
+  const content = await renderPost(post.content, locale);
   return (
     <PageShell locale={locale} path={`/blog/${post.slug}`}>
       <article className="article-page container">
         <header className="article-heading">
-          <a className="text-link" href={localPath(locale, "/blog")}>
+          <SiteLink
+            locale={locale}
+            className="text-link"
+            href={localPath(locale, "/blog")}
+          >
             ← {en ? "All articles" : "Todos los artículos"}
-          </a>
+          </SiteLink>
           <div className="post-meta">
             <span>Gonzalo Cuadros</span>
             <time dateTime={post.date}>{postDate(post.date, locale)}</time>
@@ -51,9 +56,13 @@ export default async function BlogArticle({
         />
         <footer className="article-end">
           <p>{en ? "Thanks for reading." : "Gracias por leer."}</p>
-          <a className="text-link" href={localPath(locale, "/blog")}>
+          <SiteLink
+            locale={locale}
+            className="text-link"
+            href={localPath(locale, "/blog")}
+          >
             ← {en ? "Back to the blog" : "Volver al blog"}
-          </a>
+          </SiteLink>
         </footer>
       </article>
     </PageShell>

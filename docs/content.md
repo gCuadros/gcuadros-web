@@ -32,3 +32,9 @@ Enlazar a fuentes y vídeo sin cargar embeds ni rastreadores de terceros al abri
 `content/blog/fabrics-2025.{es,en}.md` adapta la publicación del titular en primera persona. Fecha del artículo: 2026-10-06; evento: 2025. No atribuir al ponente el temario general ni añadir detalles internos. La ficha de docencia enlaza al artículo propio; LinkedIn permanece como fuente al final.
 
 Cabecera elegida expresamente por el titular: `public/images/fabrics-2025-cover.jpg`, original1280×853 del álbum (entrega del micrófono), sin controles del visor. Se comparte entre ficha y artículo mediante `FabricsCover`. La foto anterior con portátil se conserva para el resumen de docencia.
+
+### Hevy: relato y navegación
+
+`content/blog/hevy-coach-mcp.{es,en}.md` cuenta el origen del proyecto, a partir de la [publicación del titular](https://www.linkedin.com/feed/update/urn:li:activity:7491054566491324416/) consultada el7/10/2026 y del caso técnico existente. No reproduce métricas personales ni la garantía absoluta de ausencia de persistencia en clientes externos. El caso técnico enlaza al artículo propio y este vuelve al caso, en el mismo idioma.
+
+Los enlaces de componentes usan `SiteLink`: los destinos HTTP(S) externos abren en otra pestaña con `noopener noreferrer`, título y aviso accesible localizado. En este sitio los destinos internos se expresan como rutas relativas a la raíz y permanecen en la misma pestaña. El renderizado de artículos aplica el mismo comportamiento a los enlaces externos después de sanear Markdown. No usar JavaScript para interceptar clics ni alterar descargas de CV, anclas o navegación interna.
