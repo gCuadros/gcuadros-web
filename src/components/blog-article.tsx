@@ -1,3 +1,4 @@
+import { FabricsCover } from "./fabrics-cover";
 import { PageShell } from "./page-shell";
 import { localPath, type Locale } from "@/lib/i18n";
 import { type Post, postDate, renderPost } from "@/lib/blog";
@@ -32,6 +33,7 @@ export default async function BlogArticle({
             ))}
           </ul>
         </header>
+        {post.slug === "fabrics-2025" && <FabricsCover locale={locale} />}
         {post.slug === "cicd-frontend" && (
           <div className="article-cover" aria-hidden="true">
             <span>BUILD</span>
@@ -48,11 +50,7 @@ export default async function BlogArticle({
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <footer className="article-end">
-          <p>
-            {en
-              ? "The code is open. So is the conversation."
-              : "El código está abierto. La conversación también."}
-          </p>
+          <p>{en ? "Thanks for reading." : "Gracias por leer."}</p>
           <a className="text-link" href={localPath(locale, "/blog")}>
             ← {en ? "Back to the blog" : "Volver al blog"}
           </a>

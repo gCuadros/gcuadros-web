@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FabricsCover } from "./fabrics-cover";
 import { PageShell } from "./page-shell";
 import { localPath, type Locale } from "@/lib/i18n";
 import { links } from "@/lib/portfolio";
@@ -143,22 +144,7 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
         className="teaching-event container"
         aria-labelledby="fabrics-title"
       >
-        <figure className="teaching-photo">
-          <Image
-            src={fabricsPhoto}
-            alt={
-              en
-                ? "Gonzalo preparing with his laptop on the Fabrics 2025 stage"
-                : "Gonzalo preparando su intervención con el portátil en el escenario de Fabrics 2025"
-            }
-            sizes="(max-width: 700px) 90vw, 480px"
-          />
-          <figcaption className="caption">
-            {en
-              ? "From my Fabrics 2025 photo album."
-              : "Del álbum de mi participación en Fabrics 2025."}
-          </figcaption>
-        </figure>
+        <FabricsCover locale={locale} />
         <div>
           <p className="kicker">
             03 / {en ? "Speaker · MANGO" : "Ponente · MANGO"}
@@ -174,19 +160,13 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               ? "A chance to share ideas, learn from other speakers and discuss how technology is changing the industry."
               : "Una oportunidad para compartir ideas, aprender de otros ponentes y conversar sobre cómo la tecnología está transformando la industria."}
           </p>
-          <div className="teaching-event-links">
-            <a className="text-link" href={links.fabrics}>
-              {en ? "My post & photos" : "Mi publicación y fotos"}
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a
-              className="text-link"
-              href="https://www.linkedin.com/posts/mango_lifeatmango-takingfashionfurther-takinginnovationfurther-activity-7335941887565938688-7I9n"
-            >
-              {en ? "MANGO’s event recap" : "El resumen de MANGO"}
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+          <a
+            className="text-link"
+            href={localPath(locale, "/blog/fabrics-2025")}
+          >
+            {en ? "Read about Fabrics 2025" : "Leer sobre Fabrics 2025"}
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </section>
     </PageShell>

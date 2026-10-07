@@ -26,3 +26,9 @@ Fuentes públicas revisadas el 6 de octubre de 2026:
 - [Garaje de ideas](https://es.linkedin.com/posts/garajedeideas_en-este-live-coding-veremos-cómo-elegir-activity-7237419907972304897-7gnv): estrategias de renderizado y streaming en Next.js. [Grabación](https://www.youtube.com/watch?v=J4FLmBctSBs) en castellano, indicado en la versión inglesa.
 
 Enlazar a fuentes y vídeo sin cargar embeds ni rastreadores de terceros al abrir la página.
+
+### Artículo Fabrics 2025
+
+`content/blog/fabrics-2025.{es,en}.md` adapta la publicación del titular en primera persona. Fecha del artículo: 2026-10-06; evento: 2025. No atribuir al ponente el temario general ni añadir detalles internos. La ficha de docencia enlaza al artículo propio; LinkedIn permanece como fuente al final.
+
+Cabecera elegida expresamente por el titular: `public/images/fabrics-2025-cover.jpg`, original1280×853 del álbum (entrega del micrófono), sin controles del visor. Se comparte entre ficha y artículo mediante `FabricsCover`. La foto anterior con portátil se conserva para el resumen de docencia.

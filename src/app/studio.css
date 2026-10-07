@@ -1312,3 +1312,23 @@ h3 {
     order: 2;
   }
 }
+
+.fabrics-cover {
+  margin: 0;
+}
+.fabrics-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fabrics-cover figcaption {
+  margin-top: 0.75rem;
+}
+.article-page > .fabrics-cover {
+  margin-block: 2rem 4rem;
+}
+@media (max-width: 700px) {
+  .teaching-event > .fabrics-cover {
+    order: 2;
+  }
+}
