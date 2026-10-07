@@ -151,6 +151,14 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             </span>
             <span aria-hidden="true">↗</span>
           </SiteLink>
+          <SiteLink
+            locale={locale}
+            className="text-link"
+            href={localPath(locale, "/blog/nextjs-rendering-strategies")}
+          >
+            {en ? "Read the session notes" : "Leer el contenido de la sesión"}
+            <span aria-hidden="true">↗</span>
+          </SiteLink>
         </div>
       </section>
       <section

@@ -784,7 +784,9 @@ h3 {
   overflow-wrap: anywhere;
 }
 .article-body pre {
-  overflow-x: auto;
+  /* Wraps instead of scrolling, so narrow screens need no keyboard-focusable region. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   padding: 1.5rem;
   background: var(--ink);
   color: var(--on-ink);
