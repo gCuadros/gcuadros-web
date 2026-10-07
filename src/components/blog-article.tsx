@@ -56,6 +56,19 @@ export default async function BlogArticle({
           </ul>
         </header>
         {post.slug === "fabrics-2025" && <FabricsCover locale={locale} />}
+        {post.slug === "nextjs-rendering-strategies" && (
+          <div className="article-cover" aria-hidden="true">
+            <span>SSG</span>
+            <span>SSR</span>
+            <span>ISR</span>
+            <span>CSR</span>
+            <i>→</i>
+            <strong>
+              <em>?</em>
+            </strong>
+          </div>
+        )}
+
         {post.slug === "cicd-frontend" && (
           <div className="article-cover" aria-hidden="true">
             <span>BUILD</span>

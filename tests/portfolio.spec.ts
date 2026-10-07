@@ -70,6 +70,7 @@ for (const locale of ["es", "en"]) {
         "/blog/cicd-frontend",
         "/blog/fabrics-2025",
         "/blog/hevy-coach-mcp",
+        "/blog/nextjs-rendering-strategies",
         "/proyectos/hevy",
       ]) {
         const response = await page.goto(prefix + path);
@@ -273,6 +274,7 @@ test("Hevy story stays on site and external references preserve the current tab"
     for (const path of [
       "/blog/hevy-coach-mcp",
       "/blog/fabrics-2025",
+      "/blog/nextjs-rendering-strategies",
       "/docencia",
       "/proyectos/hevy",
       "/sobre-mi",
@@ -374,4 +376,23 @@ test("theme follows the system, the toggle persists and dark pages stay accessib
     .withTags(["wcag2a", "wcag2aa"])
     .analyze();
   expect(article.violations).toEqual([]);
+});
+
+test("the live coding session links to its blog notes", async ({ page }) => {
+  for (const prefix of ["", "/en"]) {
+    await page.goto(prefix + "/docencia");
+    await page
+      .getByRole("link", {
+        name: prefix
+          ? "Read the session notes"
+          : "Leer el contenido de la sesión",
+      })
+      .click();
+    await expect(page).toHaveURL(
+      new RegExp(prefix + "/blog/nextjs-rendering-strategies$"),
+    );
+    await expect(page.locator(".article-body pre code")).toContainText(
+      '"use client"',
+    );
+  }
 });
