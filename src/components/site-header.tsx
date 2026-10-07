@@ -3,6 +3,7 @@ import { LanguageSwitch } from "./language-switch";
 import { type Locale } from "@/lib/i18n";
 import { navigationFor } from "@/lib/site";
 import { MobileMenu } from "./mobile-menu";
+import { ThemeToggle } from "./theme-toggle";
 export function SiteHeader({
   locale,
   path = "/",
@@ -48,6 +49,7 @@ export function SiteHeader({
         ))}
       </nav>
       <div className="header-controls">
+        <ThemeToggle label={en ? "Dark mode" : "Modo oscuro"} />
         <LanguageSwitch locale={locale} path={path} />
         <MobileMenu
           locale={locale}

@@ -341,3 +341,37 @@ test("crawlers and agents get robots, sitemap, llms.txt and Markdown articles", 
   await page.goto("/proyectos/hevy");
   expect(await schemas()).toContain("SoftwareSourceCode");
 });
+
+test("theme follows the system, the toggle persists and dark pages stay accessible", async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("/docencia");
+  const toggle = page.getByRole("button", { name: "Modo oscuro" });
+  const background = () =>
+    page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  expect(await background()).toBe("rgb(25, 26, 22)");
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa"])
+    .analyze();
+  expect(results.violations).toEqual([]);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  expect(await background()).toBe("rgb(245, 242, 234)");
+  await page.goto("/en/blog/cicd-frontend");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await expect(page.getByRole("button", { name: "Dark mode" })).toHaveAttribute(
+    "aria-pressed",
+    "false",
+  );
+
+  await page.getByRole("button", { name: "Dark mode" }).click();
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  const article = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa"])
+    .analyze();
+  expect(article.violations).toEqual([]);
+});
