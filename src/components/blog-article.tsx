@@ -1,5 +1,6 @@
 import { SiteLink } from "./site-link";
 import { FabricsCover } from "./fabrics-cover";
+import { RenderingDiagram } from "./rendering-diagram";
 import { PageShell } from "./page-shell";
 import { JsonLd } from "./json-ld";
 import { localPath, type Locale } from "@/lib/i18n";
@@ -57,18 +58,8 @@ export default async function BlogArticle({
         </header>
         {post.slug === "fabrics-2025" && <FabricsCover locale={locale} />}
         {post.slug === "nextjs-rendering-strategies" && (
-          <div className="article-cover" aria-hidden="true">
-            <span>SSG</span>
-            <span>SSR</span>
-            <span>ISR</span>
-            <span>CSR</span>
-            <i>→</i>
-            <strong>
-              <em>?</em>
-            </strong>
-          </div>
+          <RenderingDiagram locale={locale} />
         )}
-
         {post.slug === "cicd-frontend" && (
           <div className="article-cover" aria-hidden="true">
             <span>BUILD</span>

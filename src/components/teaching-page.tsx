@@ -18,7 +18,9 @@ export function TeachingPreview({ locale }: { locale: Locale }) {
           {en ? "Teaching & talks" : "Docencia y charlas"}
         </p>
         <h2 id="teaching-preview-title">
-          {en ? "Frontend,\nin good company." : "Frontend,\nen buena compañía."}
+          {en
+            ? "I like sharing\nwhat I learn."
+            : "Me gusta compartir\nlo que aprendo."}
         </h2>
         <p>
           {en

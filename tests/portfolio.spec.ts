@@ -392,5 +392,8 @@ test("the live coding session links to its blog notes", async ({ page }) => {
     await expect(page.locator(".article-body pre code")).toContainText(
       '"use client"',
     );
+    await expect(
+      page.getByRole("img", { name: /SSG.*ISR.*SSR.*CSR/ }),
+    ).toBeVisible();
   }
 });

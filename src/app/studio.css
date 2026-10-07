@@ -756,6 +756,290 @@ h3 {
   color: var(--tint-text);
   font-style: normal;
 }
+/* Rendering strategies: the still frame is the end of the loop, so reduced motion keeps a readable diagram. */
+.render-diagram {
+  margin-block: 2.5rem 3.5rem;
+}
+.render-diagram figcaption {
+  margin-top: 0.75rem;
+}
+.render-grid {
+  --build: 16.667%;
+  --server: 50%;
+  --browser: 83.333%;
+  background: var(--tint);
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(6.5rem, auto) repeat(3, 1fr);
+  align-items: center;
+  row-gap: 1.25rem;
+  font: 500 0.75rem var(--font-mono);
+}
+.render-column {
+  text-align: center;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.render-row {
+  display: contents;
+}
+.render-row p {
+  display: grid;
+  margin: 0;
+}
+.render-row strong {
+  font-size: 0.95rem;
+}
+.render-row small {
+  color: var(--secondary);
+  font-size: 0.7rem;
+}
+.render-track {
+  grid-column: 2 / -1;
+  position: relative;
+  height: 2.5rem;
+}
+.render-track::before {
+  content: "";
+  position: absolute;
+  inset: 50% calc(100% - var(--browser)) auto var(--build);
+  border-top: 1px dashed var(--line);
+}
+.render-track > * {
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+}
+.render-track > i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--foreground);
+  background: var(--tint);
+}
+.render-track > i:nth-child(1) {
+  left: var(--build);
+}
+.render-track > i:nth-child(2) {
+  left: var(--server);
+}
+.render-track > i:nth-child(3) {
+  left: var(--browser);
+}
+.render-work {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--tint-text);
+  border-radius: 50%;
+  left: var(--build);
+}
+.render-ssr .render-work,
+.render-revalidate {
+  left: var(--server);
+}
+.render-csr .render-work {
+  left: var(--browser);
+}
+.render-page {
+  width: 0.9rem;
+  height: 1.15rem;
+  border: 2px solid var(--foreground);
+  background: var(--foreground);
+  left: var(--browser);
+}
+.render-fresh {
+  border-color: var(--accent);
+  background: var(--accent);
+  left: var(--server);
+}
+.render-request {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  left: var(--server);
+  opacity: 0;
+}
+.render-track > b {
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.render-ssg .render-work,
+.render-isr .render-work:not(.render-revalidate) {
+  animation-name: render-build;
+}
+.render-ssg .render-page,
+.render-isr .render-page:not(.render-fresh) {
+  animation-name: render-cached;
+}
+.render-ssr .render-request {
+  animation-name: render-request;
+}
+.render-ssr .render-work {
+  animation-name: render-on-request;
+}
+.render-ssr .render-page {
+  animation-name: render-late;
+}
+.render-revalidate {
+  animation-name: render-revalidate;
+}
+.render-fresh {
+  animation-name: render-fresh;
+}
+.render-csr .render-work {
+  animation-name: render-in-browser;
+}
+.render-csr .render-page {
+  animation-name: render-shell;
+}
+@keyframes render-build {
+  0%,
+  20% {
+    opacity: 1;
+    scale: 1;
+  }
+  10% {
+    scale: 1.25;
+  }
+  24%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes render-cached {
+  0%,
+  6% {
+    left: var(--build);
+    opacity: 0;
+  }
+  10% {
+    left: var(--build);
+    opacity: 1;
+  }
+  20%,
+  32% {
+    left: var(--server);
+  }
+  42%,
+  100% {
+    left: var(--browser);
+  }
+}
+@keyframes render-request {
+  0%,
+  28% {
+    left: var(--browser);
+    opacity: 0;
+  }
+  30% {
+    left: var(--browser);
+    opacity: 1;
+  }
+  40% {
+    left: var(--server);
+    opacity: 1;
+  }
+  42%,
+  100% {
+    left: var(--server);
+    opacity: 0;
+  }
+}
+@keyframes render-on-request {
+  0%,
+  38%,
+  66%,
+  100% {
+    opacity: 0;
+  }
+  42%,
+  62% {
+    opacity: 1;
+  }
+  52% {
+    scale: 1.25;
+  }
+}
+@keyframes render-late {
+  0%,
+  62% {
+    left: var(--server);
+    opacity: 0;
+  }
+  64% {
+    left: var(--server);
+    opacity: 1;
+  }
+  74%,
+  100% {
+    left: var(--browser);
+  }
+}
+@keyframes render-revalidate {
+  0%,
+  46%,
+  72%,
+  100% {
+    opacity: 0;
+  }
+  50%,
+  68% {
+    opacity: 1;
+  }
+  59% {
+    scale: 1.25;
+  }
+}
+@keyframes render-fresh {
+  0%,
+  68% {
+    opacity: 0;
+  }
+  72%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes render-in-browser {
+  0%,
+  42%,
+  70%,
+  100% {
+    opacity: 0;
+  }
+  46%,
+  66% {
+    opacity: 1;
+  }
+  56% {
+    scale: 1.25;
+  }
+}
+@keyframes render-shell {
+  0%,
+  28% {
+    left: var(--server);
+    opacity: 0;
+    background: transparent;
+  }
+  30% {
+    left: var(--server);
+    opacity: 1;
+  }
+  40%,
+  66% {
+    left: var(--browser);
+    background: transparent;
+  }
+  70%,
+  100% {
+    left: var(--browser);
+    background: var(--foreground);
+  }
+}
 .article-body {
   max-width: 43rem;
   margin-inline: auto;
@@ -1100,6 +1384,19 @@ h3 {
   }
   .article-deck {
     font-size: 1.05rem;
+  }
+  .render-grid {
+    grid-template-columns: minmax(4.75rem, auto) repeat(3, 1fr);
+    padding-inline: 0.75rem;
+    column-gap: 0.25rem;
+    font-size: 0.6rem;
+  }
+  .render-column {
+    font-size: 0.5rem;
+    letter-spacing: 0;
+  }
+  .render-row small {
+    font-size: 0.6rem;
   }
   .article-cover {
     min-height: 180px;
