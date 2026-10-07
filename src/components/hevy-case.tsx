@@ -2,6 +2,8 @@ import { SiteLink } from "./site-link";
 import { translator, localPath, type Locale } from "@/lib/i18n";
 import { PageShell } from "./page-shell";
 import { links } from "@/lib/portfolio";
+import { siteUrl } from "@/lib/site";
+import { JsonLd } from "./json-ld";
 
 const source =
   "https://github.com/gCuadros/hevy-mcp/blob/c3a232630934cbe6c42c1a845b9da0d156bc9650";
@@ -10,6 +12,21 @@ export default function HevyCase({ locale }: { locale: Locale }) {
   const t = translator(locale);
   return (
     <PageShell locale={locale} path="/proyectos/hevy">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          name: "Hevy Coach MCP",
+          description: t(
+            "Conectar un asistente con el registro de entrenamiento para que pueda trabajar con datos reales y cálculos explícitos, en lugar de estimar el progreso a partir de una conversación.",
+          ),
+          codeRepository: links.hevy,
+          programmingLanguage: "TypeScript",
+          license: "https://opensource.org/licenses/MIT",
+          url: `${siteUrl}${localPath(locale, "/proyectos/hevy")}`,
+          author: { "@id": `${siteUrl}/#person`, name: "Gonzalo Cuadros" },
+        }}
+      />
       <article id="caso" className="case-study container">
         <p className="eyebrow">{t("Proyecto propio · Open source")}</p>
         <h1>{t("Hevy Coach MCP")}</h1>

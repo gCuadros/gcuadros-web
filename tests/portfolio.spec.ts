@@ -299,3 +299,45 @@ test("Hevy story stays on site and external references preserve the current tab"
   await expect(page).toHaveURL(/\/blog\/hevy-coach-mcp$/);
   await popup.close();
 });
+
+test("crawlers and agents get robots, sitemap, llms.txt and Markdown articles", async ({
+  page,
+  request,
+}) => {
+  const robots = await (await request.get("/robots.txt")).text();
+  expect(robots).toContain("User-Agent: ClaudeBot");
+  expect(robots).toContain("User-Agent: GPTBot");
+  expect(robots).toMatch(/Sitemap: https:\/\/.+\/sitemap\.xml/);
+
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  for (const path of ["/en/proyectos/hevy", "/blog/cicd-frontend"]) {
+    expect(sitemap).toContain(`${path}</loc>`);
+  }
+  expect(sitemap).toContain('hreflang="en"');
+  expect(sitemap).not.toContain("/notas/");
+
+  const llms = await request.get("/llms.txt");
+  expect(llms.headers()["content-type"]).toContain("text/plain");
+  expect(await llms.text()).toContain("/en/blog/hevy-coach-mcp.md");
+
+  const markdown = await request.get("/en/blog/hevy-coach-mcp.md");
+  expect(markdown.headers()["content-type"]).toContain("text/markdown");
+  expect(markdown.headers()["link"]).toMatch(
+    /\/en\/blog\/hevy-coach-mcp>; rel="canonical"/,
+  );
+  expect(await markdown.text()).toContain("# Why I built Hevy Coach MCP");
+  expect((await request.get("/blog/missing.md")).status()).toBe(404);
+
+  const schemas = async () =>
+    (
+      await page.locator('script[type="application/ld+json"]').allTextContents()
+    ).map((text) => JSON.parse(text)["@type"]);
+  await page.goto("/en/blog/cicd-frontend");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    /\/en\/blog\/cicd-frontend$/,
+  );
+  expect(await schemas()).toEqual(["Person", "BlogPosting"]);
+  await page.goto("/proyectos/hevy");
+  expect(await schemas()).toContain("SoftwareSourceCode");
+});

@@ -80,6 +80,6 @@ Automatización de despliegues, infraestructura como código, contenedores y clo
 
 **Computer Software Engineering — Universitat Oberta de Catalunya** · Octubre de 2012 — junio de 2018
 
-**Full Stack Development Bootcamp — Code Space** · 2018 — 2019
+**Full Stack Development Bootcamp — Codespace Academy** · 2018 — 2019
 
 **Web/Multimedia Management and Webmaster — Cesur** · Octubre de 2010 — octubre de 2012
