@@ -3,16 +3,7 @@ export const links = {
   github: "https://github.com/gCuadros",
   hevy: "https://github.com/gCuadros/hevy-mcp",
   nextTalk: "https://www.youtube.com/watch?v=J4FLmBctSBs",
-  fabrics:
-    "https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/",
 } as const;
-
-export const navigation = [
-  { href: "#trabajo", label: "Trabajo" },
-  { href: "#notas", label: "Notas" },
-  { href: "#charlas", label: "Charlas" },
-  { href: "#trayectoria", label: "Trayectoria" },
-] as const;
 
 export const experience = [
   {

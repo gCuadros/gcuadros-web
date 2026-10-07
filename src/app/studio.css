@@ -524,20 +524,6 @@ h3 {
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   margin-block: 0.5rem 1rem;
 }
-.home-talk {
-  padding-block: 6rem;
-  display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) 150px;
-  gap: 2rem;
-}
-.home-talk p:not(.kicker) {
-  max-width: 49ch;
-  margin-block: 1.5rem 0.75rem;
-}
-.talk-glyph {
-  font: 400 10rem/1 var(--font-editorial);
-  color: var(--accent);
-}
 .site-footer {
   display: block;
   background: var(--ink);
@@ -883,12 +869,6 @@ h3 {
   .layer-detail {
     min-height: 220px;
   }
-  .home-talk {
-    grid-template-columns: 130px minmax(0, 1fr) 90px;
-  }
-  .talk-glyph {
-    font-size: 7rem;
-  }
 }
 @media (max-width: 59.99rem) {
   .hero {
@@ -935,12 +915,6 @@ h3 {
   }
   .project-preview-copy {
     padding-left: 2rem;
-  }
-  .home-talk {
-    grid-template-columns: 1fr 90px;
-  }
-  .home-talk > .kicker {
-    grid-column: 1/-1;
   }
   .blog-intro {
     grid-template-columns: 1fr;
@@ -1072,14 +1046,6 @@ h3 {
   .check-art {
     height: 125px;
     font-size: 7rem;
-  }
-  .home-talk {
-    padding-block: 3rem;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .talk-glyph {
-    display: none;
   }
   .footer-top {
     grid-template-columns: 1fr;
@@ -1307,11 +1273,6 @@ h3 {
 .teaching-event {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   border-top: 1px solid var(--foreground);
-}
-.teaching-event-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
 }
 @media (max-width: 700px) {
   .teaching-preview,

@@ -2,70 +2,27 @@ export type Locale = "es" | "en";
 
 const english: Record<string, string> = {
   Notas: "Notes",
-  "Soy desarrollador frontend y Tech Lead. Me gusta construir interfaces, entender cómo funcionan por dentro y cuidar cómo llegan a producción.":
-    "I’m a frontend developer and Tech Lead. I like building interfaces, understanding how they work and looking after how they reach production.",
-  "He trabajado en Freepik, Wuolah y MANGO. Mi trabajo cruza arquitectura frontend, DevOps y acompañamiento técnico a otros desarrolladores.":
-    "I’ve worked at Freepik, Wuolah and MANGO. My work brings together frontend architecture, DevOps and technical support for other developers.",
-  "Ver mi trabajo": "See my work",
   Ahora: "Now",
   "Frontend Tech Lead en MANGO": "Frontend Tech Lead at MANGO",
-  "Lo que construyo y comparto": "Things I build and share",
   "Dónde he trabajado": "Where I’ve worked",
-  "Un proyecto propio": "A personal project",
-  "Construí un servidor MCP para consultar entrenamientos, calcular progreso y gestionar rutinas desde un asistente de IA.":
-    "I built an MCP server to query workouts, calculate progress and manage routines through an AI assistant.",
-  "Las decisiones que más me interesan aparecen cuando algo falla: qué se puede reintentar y cómo evitar cambios no deseados.":
-    "The decisions I find most interesting come up when something fails: what can be retried and how to avoid unintended changes.",
-  "De los datos a la conversación": "From data to conversation",
-  "También lo cuento en voz alta": "I talk about it, too",
-  "Una sesión de código en directo con Garaje de ideas sobre renderizado y streaming en Next.js.":
-    "A live coding session with Garaje de ideas about rendering and streaming in Next.js.",
-  "¿Seguimos la conversación?": "Shall we keep talking?",
-  "Puedes encontrarme en LinkedIn o explorar mis proyectos en GitHub.":
-    "You can find me on LinkedIn or explore my projects on GitHub.",
-  "Una nota sobre este portfolio": "A note about this portfolio",
-  "Qué compruebo antes de publicar esta web, qué fallos detectan las pruebas y qué sigo revisando a mano.":
-    "What I check before publishing this website, which failures the tests catch and what I still review by hand.",
   "Saltar al contenido": "Skip to content",
-  "Gonzalo Cuadros · Frontend Tech Lead en MANGO":
-    "Gonzalo Cuadros · Frontend Tech Lead at MANGO",
-  "Arquitectura frontend.": "Frontend architecture.",
-  "De las decisiones a producción.": "From decisions to production.",
-  "Trabajo en arquitectura frontend y DevOps, y acompaño a equipos de desarrollo desde el liderazgo técnico. Comparto decisiones de arquitectura y ayudo a convertirlas en soluciones mantenibles.":
-    "I work on frontend architecture and DevOps, supporting development teams through technical leadership. I share architectural decisions and help turn them into maintainable solutions.",
-  "Explorar mi trabajo": "Explore my work",
   "Conectar en LinkedIn": "Connect on LinkedIn",
-  "Madrid, España": "Madrid, Spain",
   "Gonzalo Cuadros": "Gonzalo Cuadros",
-  "Enlaces sociales": "Social links",
   LinkedIn: "LinkedIn",
   GitHub: "GitHub",
   "©": "©",
-  "· Madrid, España": "· Madrid, Spain",
   "↗": "↗",
   Trabajo: "Work",
-  "Plataformas, producción y equipos": "Platforms, production and teams",
   "Arquitectura frontend": "Frontend architecture",
-  "Participo en decisiones compartidas de arquitectura y evolución de plataformas frontend, con foco en mantenibilidad, rendimiento y experiencia de desarrollo.":
-    "I contribute to shared architectural decisions and the evolution of frontend platforms, focusing on maintainability, performance and developer experience.",
-  "Esquema conceptual": "Conceptual diagram",
   Contexto: "Context",
   Decisiones: "Decisions",
   Validación: "Validation",
   Aprendizaje: "Learning",
   "DevOps aplicado al frontend": "DevOps for frontend",
-  "Trabajo en automatización, integración y entrega continua de frontend. Despliegues y observabilidad forman parte de mi enfoque para conectar el desarrollo con la operación.":
-    "I work on frontend automation, continuous integration and delivery. Deployment and observability are part of how I connect development with operations.",
   Revisión: "Review",
   Despliegue: "Deployment",
-  "CI/CD de frontend": "Frontend CI/CD",
   "Liderazgo técnico": "Technical leadership",
-  "Acompaño a equipos de desarrollo mediante mentoría, 1:1 y feedback, y participo en entrevistas y planes de desarrollo.":
-    "I support development teams through mentoring, one-to-ones and feedback, and contribute to interviews and development plans.",
-  "Mentoría · Feedback · Decisiones compartidas":
-    "Mentoring · Feedback · Shared decisions",
   Trayectoria: "Experience",
-  "Una trayectoria construyendo frontend": "A career building frontend",
   "Descargar CV (PDF)": "Download CV (PDF)",
   "Trayectoria completa en LinkedIn": "Full experience on LinkedIn",
   Formación: "Education",
@@ -79,34 +36,13 @@ const english: Record<string, string> = {
     "Web/Multimedia Management and Webmaster · Cesur · 2010–2012",
   "Proyecto propio · Open source": "Personal project · Open source",
   "Hevy Coach MCP": "Hevy Coach MCP",
-  "Construí un servidor MCP que conecta los datos de entrenamiento de Hevy con asistentes de IA para analizar el progreso y gestionar rutinas. Lee entrenamientos y rutinas, calcula métricas de progreso, y puede crear rutinas y registrar peso corporal.":
-    "I built an MCP server that connects Hevy training data with AI assistants to analyse progress and manage routines. It reads workouts and routines, calculates progress metrics, and can create routines and log bodyweight.",
-  "Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy para razonar sobre datos actuales. Las herramientas de lectura y escritura están declaradas por separado para que el cliente MCP pueda aplicar sus controles de confirmación.":
-    "No cache or database: every query calls the Hevy API live to work with current data. Read and write tools are declared separately so the MCP client can apply its confirmation controls.",
-  "Ver código en GitHub": "View code on GitHub",
-  "Leer el caso técnico": "Read the technical case study",
-  "Cómo funciona": "How it works",
   Charlas: "Talks",
-  "Compartir lo que aprendo": "Sharing what I learn",
-  "Live coding · Garaje de ideas": "Live coding · Garaje de ideas",
-  "Estrategias en Next.js": "Rendering strategies in Next.js",
-  "Estrategias de renderizado y streaming para mejorar el rendimiento y la experiencia de usuario.":
-    "Rendering strategies and streaming to improve performance and user experience.",
-  "Ver sesión": "Watch session (Spanish)",
   "Ponente · MANGO": "Speaker · MANGO",
   "Fabrics 2025": "Fabrics 2025",
-  "Ver publicación": "View post",
-  "Entre junio de 2023 y agosto de 2024 colaboré como docente en Codespace Academy, diseñando e impartiendo sesiones desde fundamentos de frontend hasta técnicas avanzadas con Next.js.":
-    "From June 2023 to August 2024, I taught at Codespace Academy, designing and delivering sessions from frontend fundamentals to advanced Next.js techniques.",
   Conectemos: "Let’s connect",
-  "Hablemos de plataformas y equipos": "Let’s talk platforms and teams",
-  "Si estás trabajando en arquitectura frontend, DevOps o liderazgo técnico, podemos conversar.":
-    "If you work on frontend architecture, DevOps or technical leadership, let’s talk.",
-  "Volver al portfolio": "Back to portfolio",
   "Conectar un asistente con el registro de entrenamiento para que pueda trabajar con datos reales y cálculos explícitos, en lugar de estimar el progreso a partir de una conversación.":
     "Connecting an assistant to a training log so it can work with real data and explicit calculations, instead of estimating progress from a conversation.",
   "Explorar el código": "Explore the code",
-  "Ver la presentación": "View the introduction",
   "El problema: dar contexto fiable al asistente":
     "The problem: giving the assistant reliable context",
   "Los entrenamientos, las rutinas y las medidas están en Hevy. Para analizarlos en una conversación hace falta conectar ese historial y convertirlo en información comparable. Construí un servidor MCP que consulta la API de Hevy y calcula métricas de progreso, volumen y constancia.":
@@ -208,11 +144,7 @@ const english: Record<string, string> = {
   Arquitectura: "Architecture",
   Producción: "Production",
   Equipos: "Teams",
-  "entrenamientos y rutinas": "workouts and routines",
-  "MCP + cálculos": "MCP + calculations",
-  "lee, calcula y gestiona": "reads, calculates and manages",
   Asistente: "Assistant",
-  "responde con contexto real": "responds with real context",
 };
 
 export function translator(locale: Locale) {
