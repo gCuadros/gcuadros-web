@@ -8,6 +8,16 @@ updates:
     groups:
       development:
         dependency-type: development
+    ignore:
+      # @types/node follows the runtime in .nvmrc, not the latest Node.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # Blocked until eslint-plugin-import, jsx-a11y and react support ESLint 10.
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      # Blocked until typescript-eslint supports TypeScript 7 (peer <6.1.0).
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
