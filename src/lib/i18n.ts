@@ -73,8 +73,8 @@ const english: Record<string, string> = {
     "Master’s in DevOps & Cloud · UNIR · 2025–2026",
   "Computer Software Engineering · UOC · 2012–2018":
     "Computer Software Engineering · UOC · 2012–2018",
-  "Full Stack Development Bootcamp · Code Space · 2018–2019":
-    "Full Stack Development Bootcamp · Code Space · 2018–2019",
+  "Full Stack Development Bootcamp · Codespace Academy · 2018–2019":
+    "Full Stack Development Bootcamp · Codespace Academy · 2018–2019",
   "Web/Multimedia Management and Webmaster · Cesur · 2010–2012":
     "Web/Multimedia Management and Webmaster · Cesur · 2010–2012",
   "Proyecto propio · Open source": "Personal project · Open source",

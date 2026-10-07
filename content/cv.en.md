@@ -80,6 +80,6 @@ Deployment automation, infrastructure as code, containers and cloud. Academic tr
 
 **Computer Software Engineering - Universitat Oberta de Catalunya** · October 2012 - June 2018
 
-**Full Stack Development Bootcamp - Code Space** · 2018 - 2019
+**Full Stack Development Bootcamp - Codespace Academy** · 2018 - 2019
 
 **Web/Multimedia Management and Webmaster - Cesur** · October 2010 - October 2012

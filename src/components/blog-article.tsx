@@ -1,8 +1,10 @@
 import { SiteLink } from "./site-link";
 import { FabricsCover } from "./fabrics-cover";
 import { PageShell } from "./page-shell";
+import { JsonLd } from "./json-ld";
 import { localPath, type Locale } from "@/lib/i18n";
 import { type Post, postDate, renderPost } from "@/lib/blog";
+import { siteUrl } from "@/lib/site";
 export default async function BlogArticle({
   post,
   locale,
@@ -12,8 +14,23 @@ export default async function BlogArticle({
 }) {
   const en = locale === "en";
   const content = await renderPost(post.content, locale);
+  const url = `${siteUrl}${localPath(locale, `/blog/${post.slug}`)}`;
   return (
     <PageShell locale={locale} path={`/blog/${post.slug}`}>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.summary,
+          datePublished: post.date,
+          inLanguage: locale,
+          keywords: post.tags,
+          url,
+          mainEntityOfPage: url,
+          author: { "@id": `${siteUrl}/#person`, name: "Gonzalo Cuadros" },
+        }}
+      />
       <article className="article-page container">
         <header className="article-heading">
           <SiteLink

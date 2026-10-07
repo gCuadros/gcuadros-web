@@ -88,7 +88,11 @@ export function Experience({ locale }: { locale: Locale }) {
           <p className="caption">{t("Formación")}</p>
           <p>{t("Máster en DevOps & Cloud · UNIR · 2025–2026")}</p>
           <p>{t("Computer Software Engineering · UOC · 2012–2018")}</p>
-          <p>{t("Full Stack Development Bootcamp · Code Space · 2018–2019")}</p>
+          <p>
+            {t(
+              "Full Stack Development Bootcamp · Codespace Academy · 2018–2019",
+            )}
+          </p>
           <p>
             {t("Web/Multimedia Management and Webmaster · Cesur · 2010–2012")}
           </p>

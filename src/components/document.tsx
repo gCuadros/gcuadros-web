@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n";
+import { localPath, type Locale } from "@/lib/i18n";
 import localFont from "next/font/local";
 import "@fontsource-variable/manrope";
 import "@fontsource/ibm-plex-mono/latin-400.css";
@@ -7,6 +7,8 @@ import "@fontsource/ibm-plex-mono/latin-700.css";
 import "@/app/globals.css";
 import "@/app/studio.css";
 import { links } from "@/lib/portfolio";
+import { siteUrl } from "@/lib/site";
+import { JsonLd } from "./json-ld";
 
 const editorial = localFont({
   src: "../../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-standard-normal.woff2",
@@ -15,10 +17,14 @@ const editorial = localFont({
   weight: "200 800",
 });
 
-const personJsonLd = {
+const school = (name: string) => ({ "@type": "EducationalOrganization", name });
+
+const personJsonLd = (locale: Locale) => ({
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteUrl}/#person`,
   name: "Gonzalo Cuadros",
+  url: `${siteUrl}${localPath(locale)}`,
   jobTitle: "Frontend Tech Lead",
   worksFor: { "@type": "Organization", name: "MANGO" },
   address: {
@@ -26,8 +32,24 @@ const personJsonLd = {
     addressLocality: "Madrid",
     addressCountry: "ES",
   },
+  knowsAbout: [
+    "Frontend architecture",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "DevOps",
+    "CI/CD",
+    "Cloud",
+    "Model Context Protocol",
+  ],
+  alumniOf: [
+    school("UNIR"),
+    school("Universitat Oberta de Catalunya"),
+    school("Codespace Academy"),
+    school("Cesur"),
+  ],
   sameAs: [links.linkedin, links.github],
-};
+});
 
 export default function RootLayout({
   children,
@@ -36,10 +58,7 @@ export default function RootLayout({
   return (
     <html lang={locale} className={editorial.variable}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <JsonLd data={personJsonLd(locale)} />
         {children}
       </body>
     </html>

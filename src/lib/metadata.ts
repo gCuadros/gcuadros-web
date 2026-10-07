@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { localPath, type Locale } from "./i18n";
+import { siteUrl } from "./site";
 
 const deploymentHost =
   process.env.VERCEL_ENV === "production"
@@ -18,8 +19,8 @@ export function pageMetadata(locale: Locale, hevy = false): Metadata {
       ? "An MCP server for querying workouts, calculating progress and managing routines: architecture, trade-offs and limitations."
       : "Un servidor MCP para consultar entrenamientos, calcular progreso y gestionar rutinas: arquitectura, compromisos y límites del proyecto."
     : en
-      ? "Frontend architecture, DevOps and technical leadership. Explore the experience, projects and talks of Gonzalo Cuadros, Tech Lead at MANGO."
-      : "Arquitectura frontend, DevOps y liderazgo técnico. Conoce la trayectoria, los proyectos y las charlas de Gonzalo Cuadros, Tech Lead en MANGO.";
+      ? "I'm Gonzalo Cuadros, Frontend Tech Lead at MANGO. I work on frontend architecture and how we ship it to production: projects, talks, teaching and notes."
+      : "Soy Gonzalo Cuadros, Frontend Tech Lead en MANGO. Trabajo en la arquitectura frontend y en cómo la llevamos a producción: proyectos, charlas, docencia y notas.";
   return {
     metadataBase: new URL(
       deploymentHost ? `https://${deploymentHost}` : "http://localhost:3100",
@@ -28,6 +29,7 @@ export function pageMetadata(locale: Locale, hevy = false): Metadata {
     description,
     authors: [{ name: "Gonzalo Cuadros" }],
     alternates: {
+      canonical: `${siteUrl}${localPath(locale, path)}`,
       languages: {
         es: localPath("es", path),
         en: localPath("en", path),
@@ -72,6 +74,7 @@ export function routeMetadata(
     title: fullTitle,
     description,
     alternates: {
+      canonical: `${siteUrl}${localPath(locale, path)}`,
       languages: {
         es: localPath("es", path),
         en: localPath("en", path),
