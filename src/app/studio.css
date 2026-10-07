@@ -1,7 +1,7 @@
 /* Multipage identity: oversized type, a working layer explorer and graphic essays. */
 :root {
-  /* Light by default; dark follows the system unless the visitor picks a theme. */
-  color-scheme: light dark;
+  /* Light by default; dark only when the visitor picks it with the toggle. */
+  color-scheme: light;
   --background: light-dark(#f5f2ea, #191a16);
   --surface: light-dark(#e9e5da, #22231e);
   --surface-alt: light-dark(#ded9cc, #2c2d27);
@@ -22,9 +22,6 @@
   --tint-text: light-dark(#76509b, #c7a6ea);
   --line: light-dark(#22231f55, #ecebe355);
   --gutter: clamp(1.25rem, 5vw, 5rem);
-}
-:root[data-theme="light"] {
-  color-scheme: light;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
