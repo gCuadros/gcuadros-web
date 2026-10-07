@@ -17,6 +17,8 @@ const editorial = localFont({
   weight: "200 800",
 });
 
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 const school = (name: string) => ({ "@type": "EducationalOrganization", name });
 
 const personJsonLd = (locale: Locale) => ({
@@ -56,8 +58,10 @@ export default function RootLayout({
   locale,
 }: Readonly<{ children: React.ReactNode; locale: Locale }>) {
   return (
-    <html lang={locale} className={editorial.variable}>
+    <html lang={locale} className={editorial.variable} suppressHydrationWarning>
       <body>
+        {/* Applies a saved theme before first paint to avoid a flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <JsonLd data={personJsonLd(locale)} />
         {children}
       </body>

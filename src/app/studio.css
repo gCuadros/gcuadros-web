@@ -1,17 +1,33 @@
 /* Multipage identity: oversized type, a working layer explorer and graphic essays. */
 :root {
-  --background: #f5f2ea;
-  --surface: #e9e5da;
-  --surface-alt: #ded9cc;
-  --foreground: #22231f;
-  --secondary: #595b52;
-  --muted: #64665e;
-  --border: #cdcbbf;
-  --accent: #a83213;
-  --accent-hover: #792309;
-  --accent-pressed: #60200f;
+  /* Light by default; dark follows the system unless the visitor picks a theme. */
+  color-scheme: light dark;
+  --background: light-dark(#f5f2ea, #191a16);
+  --surface: light-dark(#e9e5da, #22231e);
+  --surface-alt: light-dark(#ded9cc, #2c2d27);
+  --foreground: light-dark(#22231f, #ecebe3);
+  --secondary: light-dark(#595b52, #bdbeb2);
+  --muted: light-dark(#64665e, #a9ab9f);
+  --border: light-dark(#cdcbbf, #3f403a);
+  --accent: light-dark(#a83213, #ff8a62);
+  --accent-hover: light-dark(#792309, #ffa585);
+  --accent-pressed: light-dark(#60200f, #ffbca3);
+  --on-accent: light-dark(#f5f2ea, #191a16);
   --signal: #ff764b;
+  /* Inverted bands (layer explorer, code, footer) stay dark in both themes. */
+  --ink: light-dark(#22231f, #0e0f0c);
+  --on-ink: #f5f2ea;
+  --tint: light-dark(#e7e1f0, #27222f);
+  --tint-strong: light-dark(#d8cbe9, #352d42);
+  --tint-text: light-dark(#76509b, #c7a6ea);
+  --line: light-dark(#22231f55, #ecebe355);
   --gutter: clamp(1.25rem, 5vw, 5rem);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 body {
   font-size: 1rem;
@@ -172,8 +188,8 @@ h3 {
   margin-top: 1.4rem;
 }
 .layer-explorer {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--ink);
+  color: var(--on-ink);
   padding: 1.5rem;
   position: relative;
   box-shadow: 8px 8px 0 var(--surface-alt);
@@ -214,7 +230,7 @@ h3 {
   top: 55px;
   transform-style: preserve-3d;
   padding: 1rem 1.5rem;
-  color: var(--foreground);
+  color: #22231f;
   border: 1px solid #22231f;
   transition:
     transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -308,7 +324,7 @@ h3 {
   margin-bottom: 0.15rem;
 }
 .layer-controls button[aria-pressed="true"] {
-  color: var(--foreground);
+  color: #22231f;
   background: var(--signal);
   padding-left: 0.65rem;
 }
@@ -462,7 +478,7 @@ h3 {
   transform: translate(12px, -12px) rotate(8deg);
 }
 .home-journal {
-  background: #e7e1f0;
+  background: var(--tint);
   padding-block: 5rem;
   border-block: 1px solid var(--foreground);
 }
@@ -483,7 +499,7 @@ h3 {
 .journal-feature {
   display: block;
   padding: 1.5rem 0 0 2rem;
-  border-left: 1px solid #22231f55;
+  border-left: 1px solid var(--line);
 }
 .check-art {
   height: 160px;
@@ -499,7 +515,7 @@ h3 {
   transition: transform 0.4s;
 }
 .check-art span:last-child {
-  color: #76509b;
+  color: var(--tint-text);
 }
 .journal-feature:hover .check-art span:first-child {
   transform: rotate(5deg) translateY(-6px);
@@ -524,8 +540,8 @@ h3 {
 }
 .site-footer {
   display: block;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--ink);
+  color: var(--on-ink);
   padding-block: 3.5rem 1.5rem;
   margin: 0;
   border: 0;
@@ -568,7 +584,7 @@ h3 {
   gap: 2rem;
 }
 .footer-bottom p {
-  color: var(--background);
+  color: var(--on-ink);
   font-size: 0.95rem;
 }
 .footer-bottom p span {
@@ -730,7 +746,7 @@ h3 {
   font-size: 1.2rem;
 }
 .article-cover {
-  background: #e7e1f0;
+  background: var(--tint);
   margin-block: 2.5rem 3.5rem;
   min-height: 240px;
   display: flex;
@@ -754,7 +770,7 @@ h3 {
   transform: rotate(-8deg);
 }
 .article-cover em {
-  color: #76509b;
+  color: var(--tint-text);
   font-style: normal;
 }
 .article-body {
@@ -784,8 +800,8 @@ h3 {
 .article-body pre {
   overflow-x: auto;
   padding: 1.5rem;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--ink);
+  color: var(--on-ink);
   font-size: 0.85rem;
 }
 .article-body img {
@@ -1050,7 +1066,7 @@ h3 {
   }
   .journal-feature {
     border-left: 0;
-    border-top: 1px solid #22231f55;
+    border-top: 1px solid var(--line);
     padding: 1.5rem 0 0;
   }
   .check-art {
@@ -1271,7 +1287,7 @@ h3 {
   gap: 1.5rem;
   padding: 1.5rem;
   margin-top: 2rem;
-  background: #e4ddf0;
+  background: var(--tint);
   color: var(--foreground);
   text-decoration: none;
 }
@@ -1286,7 +1302,7 @@ h3 {
   font-size: 2rem;
 }
 .teaching-video-link:hover {
-  background: #d8cbe9;
+  background: var(--tint-strong);
 }
 .teaching-event {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);

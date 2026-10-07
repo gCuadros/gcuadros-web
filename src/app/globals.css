@@ -16,7 +16,7 @@ body {
 }
 ::selection {
   background: var(--accent);
-  color: var(--background);
+  color: var(--on-accent);
 }
 a {
   color: inherit;
@@ -125,7 +125,7 @@ p {
   line-height: 1.35;
   font-weight: 600;
   background: var(--accent);
-  color: var(--background);
+  color: var(--on-accent);
   border: 1px solid transparent;
   border-radius: var(--radius);
   transition:
@@ -434,7 +434,7 @@ p {
   z-index: 10;
   transform: translateY(-200%);
   background: var(--accent);
-  color: var(--background);
+  color: var(--on-accent);
   padding: 0.75rem 1rem;
   font-weight: 700;
 }
@@ -569,6 +569,29 @@ p {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.75rem;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--secondary);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.theme-toggle:hover,
+.theme-toggle[aria-pressed="true"] {
+  color: var(--accent);
+}
+.theme-toggle > span[aria-hidden] {
+  transition: transform 0.3s ease;
+}
+.theme-toggle[aria-pressed="true"] > span[aria-hidden] {
+  transform: rotate(180deg);
 }
 .language-switch {
   display: flex;
