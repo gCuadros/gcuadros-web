@@ -3,13 +3,13 @@
 **Frontend Tech Lead · Arquitectura frontend · DevOps & Cloud**  
 Madrid, España · [linkedin.com/in/gonzalo-cuadros](https://www.linkedin.com/in/gonzalo-cuadros/)
 
-[gcuadros-web.vercel.app](https://gcuadros-web.vercel.app/) · [github.com/gCuadros](https://github.com/gCuadros)
+[gcuadros.dev](https://gcuadros.dev/) · [github.com/gCuadros](https://github.com/gCuadros)
 
 ## Perfil profesional
 
-Frontend Tech Lead especializado en arquitectura frontend con React, Next.js y TypeScript, migraciones a monorepos y DevOps aplicado al frontend. Experiencia en CI/CD, infraestructura como código y despliegues en Google Cloud Platform (GCP).
+Frontend Tech Lead especializado en arquitectura frontend con React, Next.js y TypeScript, monorepos y DevOps. Experiencia en integración y entrega continua (CI/CD), infraestructura como código y despliegues en Google Cloud Platform (GCP).
 
-En MANGO ejerzo liderazgo técnico y acompaño a equipos de desarrollo. Comparto con otros Tech Leads las decisiones de arquitectura y el enfoque de las migraciones, combinando evolución de plataforma, automatización y mentoría.
+En MANGO comparto con otros Tech Leads las decisiones de arquitectura y la planificación de migraciones. Combino ese trabajo con la automatización de procesos y la mentoría a desarrolladores.
 
 ## Experiencia profesional
 
@@ -17,18 +17,18 @@ En MANGO ejerzo liderazgo técnico y acompaño a equipos de desarrollo. Comparto
 
 Enero de 2025 — actualidad
 
-- Liderazgo técnico y acompañamiento de equipos mediante mentoría, 1:1, feedback y acompañamiento del desarrollo profesional.
-- Decisiones de arquitectura compartidas con otros Tech Leads para la evolución y mantenibilidad de plataformas frontend.
-- Trabajo en integración y entrega continua de frontend, automatización de despliegues y observabilidad.
-- Participación en entrevistas y planes de desarrollo desde el rol de líder técnico.
+- Mentoría técnica, reuniones 1:1 y feedback a desarrolladores.
+- Decisiones de arquitectura compartidas con otros Tech Leads, con foco en la mantenibilidad de las plataformas frontend.
+- Integración y entrega continua de frontend, automatización de despliegues y observabilidad.
+- Participación en entrevistas técnicas y planes de desarrollo profesional desde el rol de Tech Lead.
 
 ### GFT · proyecto MANGO
 
 **Frontend Tech Lead** · Julio de 2024 — enero de 2025  
 **Senior Frontend Engineer** · Junio de 2023 — julio de 2024
 
-- Desarrollo frontend y participación en la evolución de la plataforma.
-- Como Tech Lead, definición de arquitectura, estándares y roadmap técnico, e impulso de la evolución de la plataforma.
+- Desarrollo frontend para la plataforma de MANGO.
+- Como Tech Lead, definición compartida de arquitectura, estándares de desarrollo y hoja de ruta técnica.
 
 ### Wuolah
 
@@ -62,21 +62,21 @@ Marzo de 2019 — julio de 2020 · Málaga
 
 ### Hevy Coach MCP
 
-Servidor Model Context Protocol (MCP) que conecta datos de entrenamiento de Hevy con asistentes de IA. Permite leer entrenamientos y rutinas, calcular métricas de progreso, crear rutinas y registrar peso corporal. Sin caché ni base de datos: cada consulta llama en vivo a la API de Hevy; las herramientas de escritura se declaran aparte para que el cliente MCP pueda aplicar sus controles de confirmación.
+Servidor Model Context Protocol (MCP) que conecta los entrenamientos de Hevy con asistentes de IA. Consulta entrenamientos y rutinas, calcula métricas de progreso y permite crear rutinas y registrar peso corporal. Accede a la API sin caché ni base de datos local; identifica las herramientas de escritura para que el cliente MCP pueda aplicar sus controles de confirmación.
 
 [Código del proyecto](https://github.com/gCuadros/hevy-mcp)
 
 ## Charlas y formación impartida
 
-- **Estrategias en Next.js — Garaje de ideas:** sesión sobre estrategias de renderizado y streaming. [Ver sesión](https://www.youtube.com/watch?v=J4FLmBctSBs).
-- **Fabrics 2025 — MANGO:** participación como ponente. [Ver publicación](https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/).
-- **Codespace Academy · junio de 2023 — agosto de 2024:** colaboración docente. Diseño e impartición de sesiones desde fundamentos frontend hasta técnicas avanzadas con Next.js.
+- **Estrategias en Next.js — Garaje de ideas:** live coding sobre renderizado y streaming. [Ver sesión](https://www.youtube.com/watch?v=J4FLmBctSBs).
+- **Fabrics 2025 — MANGO:** participación como ponente. [Leer artículo](https://gcuadros.dev/blog/fabrics-2025).
+- **Codespace Academy · junio de 2023 — agosto de 2024:** colaboración docente. Diseño e impartición de sesiones sobre fundamentos frontend y técnicas avanzadas con Next.js.
 
 ## Educación y formación
 
 **Máster en DevOps & Cloud — UNIR** · Septiembre de 2025 — junio de 2026 · Nota: 9
 
-Automatización de despliegues, infraestructura como código, contenedores y cloud. Formación en AWS, Azure, Kubernetes y Ansible.
+Automatización de despliegues, infraestructura como código, contenedores y cloud. Formación académica en AWS, Azure, Kubernetes y Ansible.
 
 **Computer Software Engineering — Universitat Oberta de Catalunya** · Octubre de 2012 — junio de 2018
 

@@ -4,7 +4,7 @@ export const metadata = routeMetadata(
   "es",
   "/sobre-mi",
   "Sobre m\u00ed",
-  "Trayectoria, formaci\u00f3n, charlas y CV de Gonzalo Cuadros.",
+  "Mi trayectoria como Frontend Tech Lead, de Freepik y Wuolah a MANGO. Experiencia, formación y CV descargable.",
 );
 export default function Page() {
   return <AboutPage locale="es" />;

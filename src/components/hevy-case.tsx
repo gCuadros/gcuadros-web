@@ -18,7 +18,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           "@type": "SoftwareSourceCode",
           name: "Hevy Coach MCP",
           description: t(
-            "Conectar un asistente con el registro de entrenamiento para que pueda trabajar con datos reales y cálculos explícitos, en lugar de estimar el progreso a partir de una conversación.",
+            "Construí un servidor MCP que conecta un asistente de IA con mis entrenamientos en Hevy. El servidor calcula las métricas; el asistente trabaja con esos resultados para analizar el progreso.",
           ),
           codeRepository: links.hevy,
           programmingLanguage: "TypeScript",
@@ -32,7 +32,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
         <h1>{t("Hevy Coach MCP")}</h1>
         <p>
           {t(
-            "Conectar un asistente con el registro de entrenamiento para que pueda trabajar con datos reales y cálculos explícitos, en lugar de estimar el progreso a partir de una conversación.",
+            "Construí un servidor MCP que conecta un asistente de IA con mis entrenamientos en Hevy. El servidor calcula las métricas; el asistente trabaja con esos resultados para analizar el progreso.",
           )}{" "}
         </p>
         <div className="actions">
@@ -53,7 +53,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </h2>
           <p>
             {t(
-              "Los entrenamientos, las rutinas y las medidas están en Hevy. Para analizarlos en una conversación hace falta conectar ese historial y convertirlo en información comparable. Construí un servidor MCP que consulta la API de Hevy y calcula métricas de progreso, volumen y constancia.",
+              "Hevy guarda entrenamientos, rutinas y medidas corporales. Quería analizar ese historial con un asistente sin copiar los registros a mano ni dejarle hacer las cuentas. Usé Model Context Protocol (MCP) para conectar la conversación con herramientas que consultan la API y calculan progreso, volumen y constancia.",
             )}{" "}
           </p>
         </section>
@@ -63,7 +63,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </h2>
           <p>
             {t(
-              "El servidor obtiene los datos en vivo y realiza los cálculos; el cliente MCP recibe los resultados para elaborar una respuesta. Esta separación hace explícita la diferencia entre una métrica calculada y la interpretación del asistente.",
+              "El servidor consulta Hevy y realiza los cálculos. El cliente MCP recibe los resultados y los incorpora a la conversación. Así puedo comprobar las fórmulas por separado y distinguir el cálculo de la interpretación del asistente.",
             )}{" "}
           </p>
           <ul>
@@ -74,11 +74,11 @@ export default function HevyCase({ locale }: { locale: Locale }) {
             <li>
               <strong>{t("Servidor MCP:")}</strong>{" "}
               {t(
-                "herramientas de consulta, cálculo y escritura con responsabilidades separadas.",
+                "herramientas separadas para consultar registros, calcular métricas y modificar datos.",
               )}{" "}
             </li>
             <li>
-              <strong>{t("Cliente compatible:")}</strong>{" "}
+              <strong>{t("Cliente MCP:")}</strong>{" "}
               {t(
                 "conversación, interpretación y controles de autorización.",
               )}{" "}
@@ -91,9 +91,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </p>
         </section>
         <section aria-labelledby="limites">
-          <h2 id="limites">
-            {t("Los límites de escritura forman parte del diseño")}
-          </h2>
+          <h2 id="limites">{t("Qué puede modificar el asistente")}</h2>
           <p>
             {t(
               "El proyecto permite crear y actualizar rutinas, crear carpetas y registrar medidas corporales. No escribe en el historial de entrenamientos, que es la base de los cálculos.",
@@ -112,7 +110,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
         </section>
         <section aria-labelledby="fallos">
           <h2 id="fallos">
-            {t("Diseñar para una escritura que no se puede deshacer")}{" "}
+            {t("Cuando una petición falla, pero el cambio ya está hecho")}{" "}
           </h2>
           <p>
             {t(
@@ -121,13 +119,17 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </p>
           <ul>
             <li>
-              <strong>{t("Resolver antes de enviar.")}</strong>{" "}
+              <strong>
+                {t("Resolver los ejercicios antes de crear la rutina.")}
+              </strong>{" "}
               {t(
                 "Al crear una rutina, primero se resuelven los nombres de todos sus ejercicios. Si uno es desconocido o ambiguo, la herramienta devuelve el problema y no envía una rutina incompleta.",
               )}{" "}
             </li>
             <li>
-              <strong>{t("Reintentar según la operación.")}</strong>{" "}
+              <strong>
+                {t("Distinguir entre leer y escribir al reintentar.")}
+              </strong>{" "}
               {t(
                 "El cliente permite reintentos acotados ante respuestas 5xx en lecturas, pero no en escrituras. Las respuestas 429 se tratan aparte. Se acepta devolver un error antes que arriesgar una creación duplicada.",
               )}{" "}
@@ -141,7 +143,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </ul>
           <p>
             {t(
-              "Son defensas frente a fallos concretos, no una transacción distribuida ni una garantía de ejecución exactamente una vez. Una modificación concurrente entre la lectura y la escritura sigue siendo un límite de este enfoque.",
+              "La lectura y la escritura son operaciones separadas: otro cliente podría modificar el registro entre ambas. Estas comprobaciones reducen riesgos concretos, pero no garantizan que cada operación se ejecute exactamente una vez.",
             )}{" "}
           </p>
           <div className="actions">
@@ -177,7 +179,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </p>
           <p>
             {t(
-              "Las pruebas públicas incluyen nombres ambiguos que no producen escrituras, conservación de campos al actualizar, creaciones fallidas que no se repiten y series que no pueden puntuarse. Estas pruebas comprueban reglas del servidor con datos controlados; no demuestran por sí solas la disponibilidad de Hevy ni la calidad de las respuestas de un modelo.",
+              "Las pruebas cubren nombres ambiguos, conservación de campos, reintentos y series sin datos suficientes para calcular. Comprueban las reglas del servidor con entradas controladas; la disponibilidad de Hevy y las respuestas del asistente requieren comprobaciones aparte.",
             )}{" "}
           </p>
           <div className="actions">
@@ -198,7 +200,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </div>
         </section>
         <section aria-labelledby="ejemplo">
-          <h2 id="ejemplo">{t("Una forma de comprobarlo")}</h2>
+          <h2 id="ejemplo">{t("Pruébalo con tu historial")}</h2>
           <p>
             {t(
               "Con una cuenta Hevy PRO y una clave API configurada en un cliente compatible, se puede empezar por comprobar la conexión y comparar dos periodos:",
@@ -211,7 +213,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </pre>
           <p>
             {t(
-              "Es una propuesta de consulta, no una captura de un resultado real. El repositorio incluye las instrucciones de conexión, las herramientas disponibles y sus límites.",
+              "Puedes adaptar esta consulta a tu historial. La guía del repositorio explica cómo conectar el servidor y qué herramientas tienes disponibles.",
             )}{" "}
           </p>
           <SiteLink
@@ -223,10 +225,10 @@ export default function HevyCase({ locale }: { locale: Locale }) {
           </SiteLink>
         </section>
         <section aria-labelledby="evidencia">
-          <h2 id="evidencia">{t("Qué demuestra este proyecto")}</h2>
+          <h2 id="evidencia">{t("Lo que quería resolver bien")}</h2>
           <p>
             {t(
-              "Una integración entre una API externa y clientes de IA, con cálculos separados de la conversación y un alcance de escritura delimitado. El resultado verificable es el código y su documentación pública; no se presentan métricas de adopción ni mejoras deportivas no medidas.",
+              "Conectar una API externa con un asistente obliga a decidir dónde se hacen los cálculos, qué datos faltan y qué cambios se permiten. Esas decisiones están en el código y en las pruebas: son la parte del proyecto que más me interesa compartir.",
             )}{" "}
           </p>
           <p className="caption">

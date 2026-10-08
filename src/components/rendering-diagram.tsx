@@ -17,8 +17,8 @@ export function RenderingDiagram({ locale }: { locale: Locale }) {
         role="img"
         aria-label={
           en
-            ? "Animation: with SSG and ISR the HTML is generated at build time and served from cache, and ISR regenerates it in the background; with SSR the server generates it on every request; with CSR the browser receives an empty page and fills it with JavaScript."
-            : "Animación: en SSG e ISR el HTML se genera en el build y se sirve desde caché, e ISR lo regenera en segundo plano; en SSR el servidor lo genera en cada petición; en CSR el navegador recibe una página vacía y la completa con JavaScript."
+            ? "Animation: with SSG and ISR the HTML is generated at build time and served from cache, and ISR regenerates it in the background; with SSR the server generates it on every request; with CSR JavaScript renders the content in the browser. This diagram shows simplified flows."
+            : "Animación: en SSG e ISR el HTML se genera en el build y se sirve desde caché, e ISR lo regenera en segundo plano; en SSR el servidor lo genera en cada petición; en CSR JavaScript renderiza el contenido en el navegador. El diagrama muestra flujos simplificados."
         }
       >
         <span />

@@ -9,7 +9,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       <div className="container">
         <div className="footer-top">
           <p className="kicker">
-            {en ? "The next conversation" : "La siguiente conversación"}
+            {en ? "Contact · LinkedIn" : "Contacto · LinkedIn"}
           </p>
           <SiteLink
             locale={locale}
@@ -45,10 +45,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
         <p className="colophon">
-          © {new Date().getFullYear()} ·{" "}
-          {en
-            ? "Built with care. Always a work in progress."
-            : "Hecha con intención. Siempre en construcción."}
+          © {new Date().getFullYear()} · Gonzalo Cuadros
         </p>
       </div>
     </footer>

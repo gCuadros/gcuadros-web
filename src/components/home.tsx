@@ -24,20 +24,20 @@ export default function Home({ locale }: { locale: Locale }) {
           </h1>
           <p className="hero-statement">
             {en
-              ? "I work on frontend architecture and how we ship it to production."
-              : "Trabajo en la arquitectura frontend y en cómo la llevamos a producción."}
+              ? "I build frontend platforms. From architecture to deployment."
+              : "Desarrollo plataformas frontend. De la arquitectura al despliegue."}
           </p>
           <p className="hero-description">
             {en
-              ? "Tech Lead at MANGO, with a focus on DevOps and mentoring developers. Previously at Freepik and Wuolah."
-              : "Tech Lead en MANGO, con foco en DevOps y acompañamiento técnico a otros desarrolladores. Antes, en Freepik y Wuolah."}
+              ? "I’m a Tech Lead at MANGO, working with fellow leads on architecture, automating development workflows and mentoring developers. Previously at Freepik and Wuolah."
+              : "Soy Tech Lead en MANGO: comparto decisiones de arquitectura, automatizo procesos de desarrollo y acompaño a otros desarrolladores. Antes trabajé en Freepik y Wuolah."}
           </p>
           <SiteLink
             locale={locale}
             className="text-link"
             href={localPath(locale, "/sobre-mi")}
           >
-            {en ? "A little more about me" : "Un poco más sobre mí"}
+            {en ? "My background" : "Conocer mi trayectoria"}
             <span aria-hidden="true">↗</span>
           </SiteLink>
         </div>
@@ -50,9 +50,7 @@ export default function Home({ locale }: { locale: Locale }) {
               01 / {en ? "In practice" : "En la práctica"}
             </p>
             <h2>
-              {en
-                ? "What I build\non my own time."
-                : "Lo que construyo\npor mi cuenta."}
+              {en ? "Projects\nof my own." : "Lo que construyo\npor mi cuenta."}
             </h2>
           </div>
           <SiteLink
@@ -77,15 +75,15 @@ export default function Home({ locale }: { locale: Locale }) {
             </h2>
             <p>
               {en
-                ? "Notes on frontend architecture, automation and technical decisions, with examples and code."
-                : "Notas sobre arquitectura frontend, automatización y decisiones técnicas, con ejemplos y código."}
+                ? "I write about frontend architecture, automation and personal projects: the decisions, the code and what I learn along the way."
+                : "Escribo sobre arquitectura frontend, automatización y proyectos propios: las decisiones, el código y lo que aprendo al desarrollarlos."}
             </p>
             <SiteLink
               locale={locale}
               className="text-link"
               href={localPath(locale, "/blog")}
             >
-              {en ? "Open the blog" : "Entrar al blog"}
+              {en ? "Read the blog" : "Entrar al blog"}
               <span aria-hidden="true">↗</span>
             </SiteLink>
           </div>
