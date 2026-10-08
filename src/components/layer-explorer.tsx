@@ -5,41 +5,41 @@ const content = {
   es: [
     {
       name: "Interfaz",
-      title: "Construir la interfaz.",
-      text: "Componentes, estados y navegación. Me interesan tanto el recorrido habitual como la espera, los errores y el uso con teclado.",
-      code: '<Interfaz estado="cargando" />',
+      title: "Pensar en quien la usa.",
+      text: "Disfruto tomando decisiones de arquitectura que se notan al usar el producto: qué se carga primero, dónde se renderiza y cómo responde cada interacción. Me interesa resolver esa complejidad para que quien está al otro lado encuentre una experiencia rápida, clara y accesible.",
+      caption: "Renderizado · rendimiento · accesibilidad",
     },
     {
       name: "Validación",
-      title: "Comprobar cada cambio.",
-      text: "Tipos, compilación y pruebas de los recorridos de usuario para detectar errores antes de desplegar.",
-      code: "cambio → build → pruebas",
+      title: "Facilitar el trabajo al equipo.",
+      text: "Pienso también en quien tocará el código después. Busco que las pruebas expliquen qué debe funcionar y que la automatización quite trabajo repetitivo al equipo.",
+      caption: "cambio → build → pruebas",
     },
     {
       name: "Producción",
-      title: "Verificar en producción.",
-      text: "Despliegues, observabilidad y comprobaciones sobre la versión publicada para saber cómo se comporta la web en uso.",
-      code: "desplegar → observar → aprender",
+      title: "Entender qué pasa en producción.",
+      text: "Me interesa cómo llega un cambio a producción y qué ocurre después. Automatizar despliegues y observar la aplicación me ayuda a detectar problemas y decidir qué mejorar.",
+      caption: "desplegar → observar → aprender",
     },
   ],
   en: [
     {
       name: "Interface",
-      title: "Building the interface.",
-      text: "Components, states and navigation. I care about the everyday experience, loading and error states, and keyboard access.",
-      code: '<Interface state="loading" />',
+      title: "Think about the person using it.",
+      text: "I enjoy making architecture decisions that shape how a product feels: what loads first, where rendering happens and how each interaction responds. I like working through that complexity to give people an experience that is fast, clear and accessible.",
+      caption: "Rendering · performance · accessibility",
     },
     {
       name: "Validation",
-      title: "Checking each change.",
-      text: "Type checks, builds and user journey tests to catch errors before deployment.",
-      code: "change → build → tests",
+      title: "Make the team’s work easier.",
+      text: "I think about whoever works on the code next. I want tests to explain what should work and automation to take repetitive tasks off the team’s hands.",
+      caption: "change → build → tests",
     },
     {
       name: "Production",
-      title: "Verifying in production.",
-      text: "Deployments, observability and checks on the live site to understand how it behaves in use.",
-      code: "deploy → observe → learn",
+      title: "Understand what happens in production.",
+      text: "I’m interested in how a change reaches production and what happens afterwards. Automating deployments and observing the application helps me spot problems and decide what to improve.",
+      caption: "deploy → observe → learn",
     },
   ],
 } as const;
@@ -52,14 +52,14 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       className="layer-explorer"
       aria-label={
         locale === "es"
-          ? "Explora las capas de una web"
-          : "Explore the layers of a website"
+          ? "Explora cómo me gusta trabajar"
+          : "Explore how I like to work"
       }
       data-active={active}
     >
       <div className="explorer-heading">
         <span className="kicker">
-          {locale === "es" ? "Una web, por dentro" : "Inside a website"}
+          {locale === "es" ? "Cómo me gusta trabajar" : "How I like to work"}
         </span>
         <span className="explorer-count" aria-hidden="true">
           0{active + 1} / 03
@@ -113,7 +113,7 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       >
         <h2>{item.title}</h2>
         <p>{item.text}</p>
-        <code>{item.code}</code>
+        <p className="layer-caption">{item.caption}</p>
       </div>
       <noscript>
         <p>

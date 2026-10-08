@@ -349,7 +349,7 @@ h3 {
   line-height: 1.65;
   margin-top: 0.5rem;
 }
-.layer-detail code {
+.layer-detail .layer-caption {
   display: block;
   font: 0.67rem/1.5 var(--font-mono);
   color: #fda788;
