@@ -1,45 +1,51 @@
 ---
 title: "Frontend CI: what a green check means"
-summary: "How I use this portfolio to check code, user journeys and documents before publishing, and what those checks cannot establish."
+summary: "A keyboard-accessible menu, the CV in the right language and an up-to-date PDF. How I turn this website's risks into checks before publishing."
 date: "2026-09-28"
 tags: ["CI/CD", "Frontend", "DevOps"]
 ---
 
 ## Start with what can break
 
-Publishing a change to this portfolio can break more than the build: a CV link might point to the wrong language, keyboard navigation might stop working, or the PDF might fall behind its editable source. I start by turning those specific risks into checks.
+A change to this portfolio can build successfully and still break something important: a CV link might point to the wrong language, keyboard navigation might stop working, or the PDF might fall behind its editable source. I start by identifying those failures and turning them into checks.
 
-The example is this website’s public repository. It does not describe any company’s internal processes. The references below pin the version I discuss, so readers can check the claims against the code.
+The example is this website's public repository. The links at the end point to the code version discussed here, so you can follow each decision through to its implementation.
 
 ## Three checks, three different questions
 
-Continuous integration runs on pull requests and changes to main. The quality job checks formatting, lint, types and CV consistency with their sources. The build job checks whether the production application can be built. The browser job builds the application again and runs Playwright against it.
+Continuous integration runs on pull requests and changes to main. The work is split into three jobs:
 
-Separate jobs help locate failures: a type error and an inaccessible menu need different responses. This repeats the build across two jobs. That is an explicit cost of the current design, not a speed improvement I have measured.
+- **Quality**: formatting, lint, types and CV consistency with their sources.
+- **Build**: compiling the production application.
+- **Browser**: building the application again and running Playwright against it.
+
+Separate jobs help locate failures: a type error and an inaccessible menu need different responses. The trade-off is building twice. Reducing that duplication would mean reviewing how to share the output between jobs.
 
 ## Test journeys that matter
 
-Browser tests visit the homepage at several widths and check links, keyboard navigation and language switching. They also run automated accessibility checks with axe and verify that each language offers the corresponding PDF. The language switch is tested with JavaScript disabled too.
+Browser tests visit the homepage at several widths and check links, keyboard navigation and language switching. They include automated accessibility checks with axe and verify that each language offers the right PDF. The language switch is also tested without JavaScript.
 
-A green check means those scenarios passed in Chromium. It does not establish compatibility with every browser or replace testing with assistive technology. A laboratory test is not a measurement of the performance experienced by real users either.
+These tests focus on what a visitor needs to do: navigate, read and download the right document. A failure becomes a specific journey we can reproduce, rather than “the website is broken”.
 
-## Published content needs a contract too
+## Keep the CV up to date
 
-The CV has one Markdown source per language and a versioned PDF. The verifier compares extracted visible text, its order, links and the expected page count. If the source changes but the document is not regenerated, CI can catch that mismatch.
+Each language has a Markdown source and a versioned PDF. The verifier compares extracted visible text, its order, links and the expected page count. If I change the source and forget to regenerate the document, CI can catch the mismatch.
 
-That contract prevents a specific kind of drift. It does not assess whether the writing persuades a hiring professional or guarantee a screening score. The PDF layout still needs a visual review after regeneration.
+This is a useful content check too. The PDF is part of what I publish, and it needs to match the text I maintain in the repository.
 
-## Make failures possible to investigate
+## Keep evidence when something fails
 
-The workflow cancels older runs for the same reference when a new change arrives. Jobs have time limits and read-only repository permissions. If the browser suite fails, its results are retained as artifacts for seven days.
+The workflow cancels older runs for the same reference when a new change arrives. Jobs have time limits and read-only repository permissions. If the browser suite fails, its results are retained as artefacts for seven days.
 
-These decisions help avoid obsolete work and preserve context for investigation. Playwright allows one retry in CI. A test passing on retry does not explain the initial failure: the issue still needs investigation to distinguish product, test and environment problems.
+Playwright allows one retry in CI. If a test passes on retry, there is still a question to answer: what caused the first failure? The saved results help distinguish a product issue from a test or environment problem.
 
-## Publishing does not end with a build
+## What I can conclude from a green check
 
-Vercel handles deployment. After merging changes, I check the public URL, language switching and downloads. That follow-up check is manual in the process described here; it is not an automated stage of the GitHub Actions workflow.
+It tells me the defined checks passed: those journeys work in Chromium, and the documents match their sources. Other browsers, testing with assistive technology, real-user performance and visual inspection of the PDF remain outside their scope. The checks do not assess the CV's quality for a job application either.
 
-A reasonable next step would be a short automated check against the correct deployment, with broader browser coverage when the risk warrants it. Before adding a check, I want to explain which failure it detects, what evidence it leaves and where its limits lie. A green check is a bounded signal for a decision, not a guarantee that everything works.
+After deployment to Vercel, I make a manual check of the public URL, language switching and downloads. That completes the process described here, although it is not yet an automated stage in GitHub Actions.
+
+The next improvement would be a short test against the correct deployment. I would add other browsers according to the risks I needed to cover. Before adding a check, I want to know which failure it looks for and what information it will leave if it finds one.
 
 ## Code behind this note
 

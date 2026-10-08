@@ -1,25 +1,21 @@
 ---
 title: "Speaking at Fabrics 2025"
-summary: "A look back at speaking at MANGO’s technology event, alongside colleagues and other technology professionals."
+summary: "Taking the stage and hearing from others: my experience as a speaker at MANGO’s technology event."
 date: "2026-10-06"
 tags: ["Talks", "Community"]
 ---
 
-In 2025, I took part as a speaker at Fabrics, MANGO’s technology event. It was the event’s second edition: a day for sharing ideas and learning about the work of other technology professionals.
+In 2025, I spoke at Fabrics, MANGO’s technology event. Its second edition brought colleagues and people from across the industry together to share their work and exchange ideas.
 
-## Sharing and listening
+Both sides of the experience stayed with me: sharing ideas from the stage and hearing different perspectives on how we build and collaborate in technology.
 
-In the post I wrote after the event, I highlighted both sides of the experience: sharing ideas and learning from others. Alongside speaking, I had the opportunity to hear different perspectives on how technology is changing the way we create and collaborate.
+The programme covered generative AI, platform engineering and data strategy. It was an opportunity to learn about other people's work and talk with them outside our day-to-day roles.
 
-The programme brought together people from MANGO and the wider industry around topics including generative AI, platform engineering and data strategy. That is the context of the event; this post looks back at my participation without going into the internal content of the sessions.
+Thank you to MANGO for the opportunity to take part, to everyone who came to listen and to the colleagues I shared the day with.
 
-## A shared experience
+## More from the event
 
-Thank you to MANGO for the opportunity to take part, and to the speakers and attendees for the conversations. Thanks also to the colleagues I shared the day with: they were part of what made the experience special.
-
-The cover photograph comes from the album I published after the event. I’m revisiting that moment here so this part of my work has a place on the blog too.
-
-## Original posts
+The cover photograph comes from the album I published afterwards. These posts have the rest of the photographs and a recap of the day:
 
 - [My Fabrics 2025 post and photo album (Spanish)](https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/).
 - [MANGO’s event recap](https://www.linkedin.com/posts/mango_lifeatmango-takingfashionfurther-takinginnovationfurther-activity-7335941887565938688-7I9n).

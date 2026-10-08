@@ -1,25 +1,21 @@
 ---
 title: "Mi participación en Fabrics 2025"
-summary: "Una mirada a mi participación como ponente en el encuentro tecnológico de MANGO, junto a compañeros y otros profesionales del sector."
+summary: "Subir al escenario y escuchar a otros: mi experiencia como ponente en el encuentro tecnológico de MANGO."
 date: "2026-10-06"
 tags: ["Charlas", "Comunidad"]
 ---
 
-En 2025 participé como ponente en Fabrics, el encuentro tecnológico de MANGO. Fue la segunda edición del evento: una jornada para compartir ideas y conocer el trabajo de otros profesionales de la tecnología.
+En 2025 participé como ponente en Fabrics, el encuentro tecnológico de MANGO. Era su segunda edición y reunió a compañeros y profesionales del sector para compartir su trabajo e intercambiar ideas.
 
-## Compartir y escuchar
+Me quedo con las dos partes de la experiencia: la oportunidad de compartir ideas desde el escenario y la de escuchar otras perspectivas sobre cómo creamos y colaboramos en tecnología.
 
-En la publicación que escribí después del evento destacaba las dos caras de la experiencia: poder compartir ideas y aprender de los demás. Además de participar como ponente, tuve la oportunidad de escuchar otras perspectivas sobre cómo la tecnología está transformando nuestra forma de crear y colaborar.
+El programa abordó inteligencia artificial generativa, ingeniería de plataformas y estrategia de datos. Fue una ocasión para conocer el trabajo de otros profesionales y conversar con ellos fuera del día a día.
 
-El programa reunió a profesionales de MANGO y del sector alrededor de temas como la inteligencia artificial generativa, la ingeniería de plataformas y la estrategia de datos. Ese es el contexto del encuentro; esta entrada recoge mi participación, sin entrar en el contenido interno de las sesiones.
+Gracias a MANGO por la oportunidad de participar, a quienes se acercaron a escuchar y a los compañeros con los que compartí la jornada.
 
-## Una experiencia compartida
+## Más sobre el encuentro
 
-Gracias a MANGO por darme la oportunidad de participar, y a los ponentes y asistentes por las conversaciones. También a los compañeros con quienes compartí la jornada: fueron parte de lo que hizo especial la experiencia.
-
-La fotografía de cabecera pertenece al álbum que publiqué tras el evento. Recupero aquí aquel momento para que esta parte de mi trayectoria tenga también su espacio en el blog.
-
-## Publicaciones originales
+La fotografía de cabecera forma parte del álbum que publiqué después del evento. Estas son las publicaciones con el resto de las imágenes y el resumen de la jornada:
 
 - [Mi publicación y álbum de Fabrics 2025](https://www.linkedin.com/feed/update/urn:li:activity:7335604924593901568/).
 - [El resumen del evento publicado por MANGO](https://www.linkedin.com/posts/mango_lifeatmango-takingfashionfurther-takinginnovationfurther-activity-7335941887565938688-7I9n).
