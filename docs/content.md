@@ -51,3 +51,7 @@ La presentación prioriza plataformas frontend, arquitectura, despliegue, DevOps
 - Las notas sobre renderizado distinguen la sesión de 2024 (Next.js 14) de las capacidades actuales. Client Components no equivale a CSR exclusivo; SSR no garantiza frescura de datos; ISR depende del estado de la caché. No asignar garantías de rendimiento o SEO por estrategia. Las capacidades de Cache Components se presentan como optativas y posteriores a la sesión.
 
 Cobertura: Inicio, Proyectos, caso Hevy, Docencia, Sobre mí, índice del blog, los cuatro artículos en ambos idiomas, navegación y pie, textos accesibles, metadatos y ambos CV. Se conservan cargos, fechas, fuentes y límites de confidencialidad.
+
+## Voz personal de la portada
+
+El titular expresa motivación: construir plataformas frontend y ayudar a otros a crecer. La descripción lo respalda con el rol actual, la arquitectura compartida y DevOps. El gráfico «Cómo me gusta trabajar» conecta cada capa con una prioridad: la persona que usa la interfaz, el equipo que mantiene el código y el aprendizaje en producción. Describir prácticas concretas en primera persona; evitar eslóganes intercambiables y promesas absolutas. Mantener esta intención al adaptar el inglés.

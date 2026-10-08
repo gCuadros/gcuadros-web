@@ -18,12 +18,12 @@ for (const width of [320, 390, 768, 1440]) {
       page.getByRole("button", { name: "02 Validación" }),
     ).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Comprobar cada cambio.",
+      "Facilitar el trabajo al equipo.",
     );
     await page.getByRole("button", { name: "03 Producción" }).focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Verificar en producción.",
+      "Entender qué pasa en producción.",
     );
     await expect(page.locator(".layer-explorer")).toHaveAttribute(
       "data-active",
@@ -186,7 +186,7 @@ test("reduced motion keeps interaction and skip navigation usable", async ({
   ).toBe("0s");
   await page.getByRole("button", { name: "03 Producción" }).click();
   await expect(page.locator("#layer-detail")).toContainText(
-    "Verificar en producción.",
+    "Entender qué pasa en producción.",
   );
 });
 

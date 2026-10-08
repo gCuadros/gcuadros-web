@@ -5,40 +5,40 @@ const content = {
   es: [
     {
       name: "Interfaz",
-      title: "Construir la interfaz.",
-      text: "Componentes, estados y navegación. Me interesan tanto el recorrido habitual como la espera, los errores y el uso con teclado.",
+      title: "Pensar en quien la usa.",
+      text: "Disfruto convirtiendo requisitos en interfaces que se entienden. Me fijo también en lo que ocurre cuando toca esperar, algo falla o se navega solo con teclado.",
       code: '<Interfaz estado="cargando" />',
     },
     {
       name: "Validación",
-      title: "Comprobar cada cambio.",
-      text: "Tipos, compilación y pruebas de los recorridos de usuario para detectar errores antes de desplegar.",
+      title: "Facilitar el trabajo al equipo.",
+      text: "Pienso también en quien tocará el código después. Busco que las pruebas expliquen qué debe funcionar y que la automatización quite trabajo repetitivo al equipo.",
       code: "cambio → build → pruebas",
     },
     {
       name: "Producción",
-      title: "Verificar en producción.",
-      text: "Despliegues, observabilidad y comprobaciones sobre la versión publicada para saber cómo se comporta la web en uso.",
+      title: "Entender qué pasa en producción.",
+      text: "Me interesa cómo llega un cambio a producción y qué ocurre después. Automatizar despliegues y observar la aplicación me ayuda a detectar problemas y decidir qué mejorar.",
       code: "desplegar → observar → aprender",
     },
   ],
   en: [
     {
       name: "Interface",
-      title: "Building the interface.",
-      text: "Components, states and navigation. I care about the everyday experience, loading and error states, and keyboard access.",
+      title: "Think about the person using it.",
+      text: "I enjoy turning requirements into interfaces that make sense. I also care about what happens when someone has to wait, something fails or they navigate using only a keyboard.",
       code: '<Interface state="loading" />',
     },
     {
       name: "Validation",
-      title: "Checking each change.",
-      text: "Type checks, builds and user journey tests to catch errors before deployment.",
+      title: "Make the team’s work easier.",
+      text: "I think about whoever works on the code next. I want tests to explain what should work and automation to take repetitive tasks off the team’s hands.",
       code: "change → build → tests",
     },
     {
       name: "Production",
-      title: "Verifying in production.",
-      text: "Deployments, observability and checks on the live site to understand how it behaves in use.",
+      title: "Understand what happens in production.",
+      text: "I’m interested in how a change reaches production and what happens afterwards. Automating deployments and observing the application helps me spot problems and decide what to improve.",
       code: "deploy → observe → learn",
     },
   ],
@@ -52,14 +52,14 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       className="layer-explorer"
       aria-label={
         locale === "es"
-          ? "Explora las capas de una web"
-          : "Explore the layers of a website"
+          ? "Explora cómo me gusta trabajar"
+          : "Explore how I like to work"
       }
       data-active={active}
     >
       <div className="explorer-heading">
         <span className="kicker">
-          {locale === "es" ? "Una web, por dentro" : "Inside a website"}
+          {locale === "es" ? "Cómo me gusta trabajar" : "How I like to work"}
         </span>
         <span className="explorer-count" aria-hidden="true">
           0{active + 1} / 03
