@@ -1,60 +1,59 @@
 ---
 title: "Rendering strategies in Next.js: SSG, SSR, ISR and CSR"
-summary: "The content of my live coding session with Garaje de ideas: what each rendering strategy does, when it fits and how to combine them in one application."
+summary: "When to generate HTML, what can wait and what the browser needs to do. The decisions behind my live coding session with Garaje de ideas."
 date: "2026-10-07"
 tags: ["Next.js", "React", "Performance", "Talks"]
 ---
 
-In 2024 I ran a live coding session with Garaje de ideas about rendering strategies in Next.js. This post collects the content of that session for anyone who would rather read it than watch the full video. The session is on [YouTube](https://www.youtube.com/watch?v=J4FLmBctSBs) (in Spanish).
+In 2024, I ran a live coding session with Garaje de ideas about rendering strategies in Next.js. We started with a practical question: what does each part of a page need to reach the user promptly, with the right data?
 
-To prepare it I relied on Vercel's article [How to choose the best rendering strategy for your app](https://vercel.com/blog/how-to-choose-the-best-rendering-strategy-for-your-app). I recommend it as a companion read.
+These are the main ideas, in the context of Next.js 14, which we used at the time. You can watch the [full session on YouTube](https://www.youtube.com/watch?v=J4FLmBctSBs) in Spanish and read the Vercel article I used to prepare it: [How to choose the best rendering strategy for your app](https://vercel.com/blog/how-to-choose-the-best-rendering-strategy-for-your-app).
 
 ## Why the rendering strategy matters
 
-Deciding where and when a page's HTML is generated is not an implementation detail. It affects four things:
+Where and when we generate HTML affects how quickly useful content appears, how much work the browser does and what the server costs to run. It also determines which content search engines receive without executing JavaScript.
 
-- **Load speed**: how long the user waits before seeing useful content.
-- **User experience**: whether the page responds quickly and shows consistent data.
-- **Search indexing**: whether search engines get the content in the HTML or have to wait for JavaScript.
-- **Scalability and infrastructure cost**: how much work the server does on every request.
-
-Since Next.js 13 and the App Router, the starting point changed. Routes use a new routing system, components are React Server Components by default, and layouts let pages share structure. With that context, the session went through four strategies.
+These decisions are related, but distinct: a page can deliver HTML from the server and still need JavaScript to respond to an interaction. Similarly, rendering on the server does not mean fetching every piece of data again on each visit.
 
 ## SSG: static generation
 
-With Static Site Generation, pages are generated once during the build. The build server fetches the origin data, generates the HTML and that output is deployed to the network. When a request arrives, the pre-generated HTML is served.
+With Static Site Generation, HTML is generated during the build and reused on later visits. It works well when different people can receive the same content and that content does not need to change on every request.
 
-- **Advantages**: optimal performance, very good SEO and lower infrastructure cost, because there is no rendering work per request.
-- **Limitation**: the data is whatever it was at build time. Changing it means generating the page again.
-- **Use cases**: blogs, documentation and landing pages.
+- **What it offers**: no repeated rendering for each visit, with output that can be served from a CDN.
+- **What it requires**: regeneration when the content changes. Without revalidation, the data comes from the last build.
+- **Where it fits**: articles, documentation and landing pages.
+
+Having HTML available from the start makes content easier to access. Overall performance still depends on images, JavaScript and the page's other resources.
 
 ## SSR: server-side rendering
 
-With Server-Side Rendering, the full HTML is generated on every request. The server queries the origin data when the user arrives and responds with the finished page.
+With Server-Side Rendering, the server generates a response for each request. This allows it to use information only available when that request arrives, such as the user's session. Streaming lets the response arrive in parts as they become ready.
 
-- **Advantages**: always-fresh data and good SEO, because the content arrives in the HTML.
-- **Limitation**: every request has a server cost, and response time depends on how long the data takes.
-- **Use cases**: dashboards, social networks and any page with personalised or real-time data.
+- **What it offers**: content tailored to the request, without relying on the browser to build it for the first time.
+- **What it requires**: server work for each visit; slow queries can delay the response.
+- **Where it fits**: pages that need session data or information that must be fetched at request time.
+
+SSR does not guarantee fresh data. A dynamically rendered route can reuse cached data, so fetching and revalidation remain separate decisions. The [Next.js 14 documentation](https://nextjs.org/docs/14/app/building-your-application/rendering/server-components) explains how these work together.
 
 ## ISR: incremental static regeneration
 
-Incremental Static Regeneration lets you update specific pages after the build without rebuilding the whole site. It keeps the advantages of SSG and scales to sites with a very large number of pages.
+Incremental Static Regeneration lets us update static content after the build without rebuilding the whole site. For an already generated page with time-based revalidation, the flow is:
 
-This is the flow I showed in the session. Pages are generated at build time and deployed as static. When a request arrives, Next.js checks whether the revalidation time has passed:
+1. While the content remains fresh, the cached version is served.
+2. The first request after the interval expires receives that version and starts background regeneration.
+3. Once regeneration succeeds, subsequent requests receive the updated content.
 
-- If it has not, it serves the cached page.
-- If it has, it still serves the version it has, fetches the origin data again and updates the page for the next requests.
+That visit does not wait for regeneration, but it may show older data. If the page has not been generated yet, the first request behaves differently. The [ISR guide](https://nextjs.org/docs/app/guides/incremental-static-regeneration) covers this distinction.
 
-The user never waits for the regeneration, at the cost of some requests receiving a slightly older version.
-
-- **Advantages**: a balance between performance and freshness, scalable for large sites and with less server load than SSR.
-- **Use cases**: e-commerce and news portals.
+ISR suits shared content that changes regularly and can tolerate that delay, such as a catalogue or news archive. The acceptable delay depends on the data: a product description and its availability need not follow the same policy.
 
 ## CSR: client-side rendering
 
-Client-Side Rendering relies on JavaScript in the browser. It enables highly interactive interfaces, but the initial load is slower. The point I wanted to make is that it does not compete with the others: it complements them.
+With Client-Side Rendering, the browser uses JavaScript to build content. If it also needs to fetch data before displaying that content, the user waits for those tasks to finish. The cost depends on the code, network and device.
 
-In the App Router that means Client Components. They are declared with the `'use client'` directive, have access to every React hook and are the natural choice for forms, buttons or an interactive cart. They also have a cost: they increase the JavaScript the browser downloads. A detail that often surprises people is that they render on the server first and then hydrate on the client.
+CSR and App Router Client Components are different concepts. The `'use client'` directive enables state, effects and event handlers; it does not mean “only rendered in the browser”. On the initial load, Next.js can also generate their HTML on the server. React then hydrates it to enable interaction. Subsequent navigation follows a different flow, described in the [Client Components documentation](https://nextjs.org/docs/14/app/building-your-application/rendering/client-components).
+
+This button needs state and an event handler, which makes it a Client Component:
 
 ```tsx
 "use client";
@@ -73,36 +72,36 @@ export function AddToCart() {
 
 ## Combining Server and Client Components
 
-A Server Component can contain Client Components. The usual strategy is to use Server Components for the main content and keep Client Components for the interactive parts.
+On a product page, the description and reviews can be handled by Server Components. The add-to-cart button needs state and event handlers, so that part belongs in a Client Component.
 
-The example in the session was an e-commerce product page:
+Keeping the client boundary close to the interaction reduces the code sent to the browser. Its imports matter too: those dependencies become part of the client code.
 
-- The product description is a Server Component: it needs no interaction.
-- The "Add to cart" button is a Client Component: it needs state and events.
-- The reviews are a Server Component again.
-
-That way, the browser only receives JavaScript for what is actually interactive.
+This separation does not, by itself, determine whether the page is static or dynamic. A Server Component can run during the build or when handling a request.
 
 ## Comparison
 
-This is the comparison that closed the theory part, across four criteria: performance, SEO, data freshness and server load.
+Rather than giving each acronym a performance score, I find it more useful to compare the work involved and when it happens:
 
-- **SSG**: excellent performance, excellent SEO, low freshness and low server load.
-- **SSR**: good performance, excellent SEO, high freshness and medium server load.
-- **ISR**: very good performance, excellent SEO, configurable freshness and medium server load.
-- **CSR**: variable performance, limited SEO, high freshness and medium-to-high server load.
+- **SSG**: generate in advance and reuse the result until it is generated again.
+- **SSR**: render when a request arrives and choose which data can be reused.
+- **ISR**: reuse static content and regenerate it according to the revalidation policy.
+- **CSR**: let the browser build or update content with JavaScript.
+
+Delivering relevant content in the HTML reduces reliance on JavaScript rendering for indexing. None of these strategies guarantees good search rankings or a fast website on its own.
 
 ## How to choose
 
-There is no winning strategy. The questions I suggested for deciding are:
+Before choosing, I would ask:
 
-- How often does the content change?
-- Does it matter that search engines index it?
-- How much interactivity does the page need?
-- Is the content personalised for each user? If it is, SSG is ruled out.
+- Which content needs to appear in the first response?
+- Which data can everyone share, and which is personal?
+- How long can that data go without being refreshed?
+- Which interactions need JavaScript in the browser?
 
-And one recommendation: start with the simplest option, combine strategies within the same application and measure before optimising.
+Personalisation does not rule out all static content. It can sit alongside dynamic sections or data fetched on the client. The decision is what each part needs, followed by measuring the result.
 
 ## A note on Next.js today
 
-The session was prepared with Next.js 14. In later versions, Next.js draws the line between static and dynamic at the component level rather than the route level: with Partial Prerendering and Cache Components (`use cache`), a single page can have a static part that loads instantly and dynamic sections that stream in. The criteria for choosing are still the same; what changes is how granularly they apply.
+The session was prepared with Next.js 14. In Next.js 16, [Cache Components](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) is an opt-in feature enabled with `cacheComponents: true`. It combines partial prerendering, explicit caching through `use cache` and dynamic content streamed through `Suspense`.
+
+This model came after the talk and needs to be enabled. The questions about freshness, personalisation and waiting time still apply; the APIs and caching rules need checking against the version your project uses.

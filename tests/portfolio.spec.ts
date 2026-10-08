@@ -18,12 +18,12 @@ for (const width of [320, 390, 768, 1440]) {
       page.getByRole("button", { name: "02 Validación" }),
     ).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Lo que compruebas.",
+      "Comprobar cada cambio.",
     );
     await page.getByRole("button", { name: "03 Producción" }).focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Lo que sucede después.",
+      "Verificar en producción.",
     );
     await expect(page.locator(".layer-explorer")).toHaveAttribute(
       "data-active",
@@ -145,7 +145,7 @@ test("mobile menu preserves keyboard focus, closes and navigates to real pages",
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await dialog
-    .getByRole("link", { name: "Conectar (abre en otra pestaña)", exact: true })
+    .getByRole("link", { name: "LinkedIn (abre en otra pestaña)", exact: true })
     .focus();
   await page.keyboard.press("Tab");
   await expect(
@@ -186,7 +186,7 @@ test("reduced motion keeps interaction and skip navigation usable", async ({
   ).toBe("0s");
   await page.getByRole("button", { name: "03 Producción" }).click();
   await expect(page.locator("#layer-detail")).toContainText(
-    "Lo que sucede después.",
+    "Verificar en producción.",
   );
 });
 
@@ -224,9 +224,7 @@ test("legacy articles redirect, RSS is localized and unknown articles are 404", 
     expect(feed.headers()["content-type"]).toContain("application/rss+xml");
     const xml = await feed.text();
     expect(xml).toContain(`<language>${prefix ? "en" : "es"}</language>`);
-    expect(xml).toContain(
-      `https://gcuadros-web.vercel.app${prefix}/blog/cicd-frontend`,
-    );
+    expect(xml).toContain(`https://gcuadros.dev${prefix}/blog/cicd-frontend`);
     expect(
       (await request.get(prefix + "/blog/not-a-real-article")).status(),
     ).toBe(404);
@@ -235,9 +233,12 @@ test("legacy articles redirect, RSS is localized and unknown articles are 404", 
 
 test("project links and social images are real", async ({ page, request }) => {
   await page.goto("/");
+  await page.getByRole("link", { name: "Ver docencia y charlas" }).click();
+  await expect(page).toHaveURL(/\/docencia$/);
   await expect(
-    page.getByRole("link", { name: "Ver la sesión" }),
+    page.getByRole("link", { name: "Ver la sesión completa" }),
   ).toHaveAttribute("href", "https://www.youtube.com/watch?v=J4FLmBctSBs");
+  await page.goto("/");
   await page
     .getByRole("link", { name: /Proyecto propio.*Hevy Coach MCP/ })
     .click();
@@ -344,7 +345,7 @@ test("crawlers and agents get robots, sitemap, llms.txt and Markdown articles", 
   expect(await schemas()).toContain("SoftwareSourceCode");
 });
 
-test("theme follows the system, the toggle persists and dark pages stay accessible", async ({
+test("light is the default, the toggle persists and dark pages stay accessible", async ({
   page,
 }) => {
   await page.emulateMedia({ colorScheme: "dark" });
@@ -352,6 +353,10 @@ test("theme follows the system, the toggle persists and dark pages stay accessib
   const toggle = page.getByRole("button", { name: "Modo oscuro" });
   const background = () =>
     page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  expect(await background()).toBe("rgb(245, 242, 234)");
+
+  await toggle.click();
   await expect(toggle).toHaveAttribute("aria-pressed", "true");
   expect(await background()).toBe("rgb(25, 26, 22)");
   const results = await new AxeBuilder({ page })
@@ -359,23 +364,17 @@ test("theme follows the system, the toggle persists and dark pages stay accessib
     .analyze();
   expect(results.violations).toEqual([]);
 
-  await toggle.click();
-  await expect(toggle).toHaveAttribute("aria-pressed", "false");
-  expect(await background()).toBe("rgb(245, 242, 234)");
   await page.goto("/en/blog/cicd-frontend");
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  await expect(page.getByRole("button", { name: "Dark mode" })).toHaveAttribute(
-    "aria-pressed",
-    "false",
-  );
-
-  await page.getByRole("button", { name: "Dark mode" }).click();
-  await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   const article = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa"])
     .analyze();
   expect(article.violations).toEqual([]);
+
+  await page.getByRole("button", { name: "Dark mode" }).click();
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  expect(await background()).toBe("rgb(245, 242, 234)");
 });
 
 test("the live coding session links to its blog notes", async ({ page }) => {
@@ -383,9 +382,7 @@ test("the live coding session links to its blog notes", async ({ page }) => {
     await page.goto(prefix + "/docencia");
     await page
       .getByRole("link", {
-        name: prefix
-          ? "Read the session notes"
-          : "Leer el contenido de la sesión",
+        name: prefix ? "Read the session notes" : "Leer las notas de la sesión",
       })
       .click();
     await expect(page).toHaveURL(
@@ -394,5 +391,8 @@ test("the live coding session links to its blog notes", async ({ page }) => {
     await expect(page.locator(".article-body pre code")).toContainText(
       '"use client"',
     );
+    await expect(
+      page.getByRole("img", { name: /SSG.*ISR.*SSR.*CSR/ }),
+    ).toBeVisible();
   }
 });

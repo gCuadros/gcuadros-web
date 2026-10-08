@@ -66,7 +66,7 @@ export function Experience({ locale }: { locale: Locale }) {
             {t("Descargar CV (PDF)")}{" "}
           </SiteLink>
           <ArrowLink locale={locale} href={links.linkedin}>
-            {t("Trayectoria completa en LinkedIn")}{" "}
+            {t("Ver mi perfil en LinkedIn")}
           </ArrowLink>
         </div>
         <div className="education">

@@ -1,30 +1,30 @@
 ---
 title: "Por qué construí Hevy Coach MCP"
-summary: "Un análisis de entrenamiento sonaba convincente, pero los números no cuadraban. Ese fue el punto de partida de mi servidor MCP para Hevy."
+summary: "Pedí a una IA que analizara mi entrenamiento. La respuesta convencía; las cuentas no cuadraban. Así empezó Hevy Coach MCP."
 date: "2026-10-07"
 tags: ["MCP", "Proyectos", "IA"]
 ---
 
 Llevaba tiempo registrando mis entrenamientos en Hevy. Un día pedí a un asistente de IA que analizara cómo iba mi press de banca. La respuesta tenía porcentajes, explicaciones y aspecto de análisis serio. Al comprobar las cuentas a mano, los resultados no cuadraban.
 
-Lo que me hizo parar no fue solo el error: fue darme cuenta de que, si no lo hubiera revisado, me lo habría creído.
+Lo que me hizo parar no fue solo el error: si no lo hubiera revisado, me lo habría creído.
 
 ## Calcular antes de interpretar
 
-De ahí salió Hevy Coach MCP. Quería que el asistente pudiera consultar mi historial y recibir las métricas calculadas, en lugar de reconstruirlas a partir de una conversación.
+De ahí salió Hevy Coach MCP. Quería que el asistente pudiera consultar mi historial y recibir las métricas ya calculadas, en lugar de reconstruirlas a partir de una conversación.
 
-El servidor conecta con la API de Hevy y separa dos tareas: obtener y calcular los datos, e interpretarlos. El asistente recibe resultados sobre progreso, volumen y constancia para trabajar con ellos. Eso no convierte automáticamente su respuesta en correcta, pero permite comprobar de dónde salen los números.
+El servidor consulta la API de Hevy y calcula métricas de progreso, volumen y constancia. El asistente puede interpretarlas después. Esa separación permite revisar las cuentas y comprobar de dónde sale cada resultado, aunque la interpretación siga necesitando criterio.
 
-## Leer el historial y delimitar los cambios
+## Consultar datos y decidir qué se puede cambiar
 
-El proyecto consulta el historial de entrenamientos sin exponer herramientas para modificarlo. También permite crear y actualizar rutinas y registrar medidas, con un alcance de escritura separado de las consultas.
+Las herramientas del servidor permiten leer el historial de entrenamientos, pero no modificarlo. Las operaciones de escritura se limitan a rutinas, carpetas de rutinas y medidas corporales.
 
-Esa distinción importa: leer datos y cambiar una rutina no tienen las mismas consecuencias. Las indicaciones de las herramientas ayudan al cliente MCP a decidir cuándo pedir confirmación; no sustituyen los controles de autorización del cliente.
+Leer el historial y cambiar una rutina tienen consecuencias distintas. Por eso las herramientas indican si consultan o modifican datos. El cliente MCP puede usar esas indicaciones para pedir confirmación; sus controles de autorización siguen siendo necesarios.
 
 ## Las decisiones detrás del proyecto
 
-En el caso técnico explico cómo separé los cálculos de la conversación, qué pasa cuando faltan datos y cómo trato los reintentos de escritura para reducir el riesgo de duplicados. Incluye enlaces al código revisado y a sus pruebas.
+En el caso técnico explico cómo separé los cálculos de la conversación, qué ocurre cuando faltan datos y cómo trato los reintentos de escritura para reducir el riesgo de duplicados. Incluye enlaces al código revisado y a las pruebas de esos comportamientos.
 
 [Leer el caso técnico de Hevy Coach MCP](/proyectos/hevy).
 
-El código y las instrucciones de instalación están en [GitHub](https://github.com/gCuadros/hevy-mcp). La integración requiere una cuenta Hevy PRO y una clave API configurada en un cliente compatible.
+El código y las instrucciones de instalación están en [GitHub](https://github.com/gCuadros/hevy-mcp). Para conectarlo necesitas una cuenta Hevy PRO, una clave API y un cliente MCP compatible.

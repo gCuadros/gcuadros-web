@@ -39,8 +39,8 @@ export function ProjectPreview({ locale }: { locale: Locale }) {
           <h3>Hevy Coach MCP</h3>
           <p>
             {en
-              ? "Training data, progress calculations and routines connected to an AI assistant."
-              : "Datos de entrenamiento, cálculos de progreso y rutinas conectados a un asistente de IA."}
+              ? "An MCP server that connects your Hevy workout data to an AI assistant to analyse progress and create routines."
+              : "Un servidor MCP que conecta tus entrenamientos de Hevy con un asistente de IA para analizar el progreso y crear rutinas."}
           </p>
         </div>
         <span className="round-arrow" aria-hidden="true">

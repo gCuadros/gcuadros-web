@@ -4,7 +4,7 @@ export const metadata = routeMetadata(
   "en",
   "/proyectos",
   "Projects",
-  "Personal projects, public code and engineering decisions.",
+  "Open source projects of my own. Hevy Coach MCP: how I connect workout records to AI assistants and the engineering decisions behind it.",
 );
 export default function Page() {
   return <ProjectsPage locale="en" />;

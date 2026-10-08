@@ -4,7 +4,7 @@ export const metadata = routeMetadata(
   "es",
   "/blog",
   "Blog",
-  "Art\u00edculos sobre frontend, DevOps y decisiones de ingenier\u00eda.",
+  "Artículos y notas de Gonzalo Cuadros sobre Next.js, CI/CD, proyectos con IA y docencia. Decisiones técnicas explicadas con ejemplos propios.",
 );
 export default function Page() {
   return <BlogPage locale="es" />;

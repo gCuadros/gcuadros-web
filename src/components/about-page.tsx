@@ -18,13 +18,13 @@ export default function AboutPage({ locale }: { locale: Locale }) {
         <div className="about-copy">
           <p>
             {en
-              ? "I’m a frontend developer and Tech Lead at MANGO. Before that, I worked at Freepik and Wuolah. I work on interfaces, shared architecture decisions and how software reaches production."
-              : "Soy desarrollador frontend y Tech Lead en MANGO. Antes pasé por Freepik y Wuolah. Trabajo en interfaces, decisiones compartidas de arquitectura y en cómo llega el software a producción."}
+              ? "I’m a Frontend Tech Lead at MANGO. I build interfaces, make architecture decisions with other Tech Leads and support the team’s technical work. Before that, I worked at Freepik and Wuolah."
+              : "Soy Frontend Tech Lead en MANGO. Desarrollo interfaces, comparto decisiones de arquitectura con otros Tech Leads y acompaño al equipo en su trabajo técnico. Antes trabajé en Freepik y Wuolah."}
           </p>
           <p>
             {en
-              ? "DevOps is part of that work: automation, CI/CD, infrastructure as code and observability. Technical leadership also means mentoring, feedback and helping other developers grow."
-              : "DevOps forma parte de ese trabajo: automatización, CI/CD, infraestructura como código y observabilidad. El liderazgo técnico también implica mentoría, feedback y acompañar a otros desarrolladores."}
+              ? "My DevOps work covers automation, CI/CD, infrastructure as code and observability. As a Tech Lead, I spend part of my time mentoring developers and giving feedback. I’ve also taught frontend and Next.js at Codespace Academy."
+              : "Mi trabajo en DevOps incluye automatización, CI/CD, infraestructura como código y observabilidad. Como Tech Lead, dedico parte de mi trabajo a la mentoría y al feedback; como docente, he impartido sesiones de frontend y Next.js en Codespace Academy."}
           </p>
         </div>
       </header>

@@ -61,14 +61,14 @@ export function SiteHeader({
                   close: "Close menu",
                   dialog: "Navigation menu",
                   nav: "Mobile navigation",
-                  connect: "Connect",
+                  connect: "LinkedIn",
                 }
               : {
                   open: "Abrir menú",
                   close: "Cerrar menú",
                   dialog: "Menú de navegación",
                   nav: "Navegación móvil",
-                  connect: "Conectar",
+                  connect: "LinkedIn",
                 }
           }
         />
