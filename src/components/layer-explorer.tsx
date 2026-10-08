@@ -6,40 +6,40 @@ const content = {
     {
       name: "Interfaz",
       title: "Pensar en quien la usa.",
-      text: "Disfruto convirtiendo requisitos en interfaces que se entienden. Me fijo también en lo que ocurre cuando toca esperar, algo falla o se navega solo con teclado.",
-      code: '<Interfaz estado="cargando" />',
+      text: "Disfruto tomando decisiones de arquitectura que se notan al usar el producto: qué se carga primero, dónde se renderiza y cómo responde cada interacción. Me interesa resolver esa complejidad para que quien está al otro lado encuentre una experiencia rápida, clara y accesible.",
+      caption: "Renderizado · rendimiento · accesibilidad",
     },
     {
       name: "Validación",
       title: "Facilitar el trabajo al equipo.",
       text: "Pienso también en quien tocará el código después. Busco que las pruebas expliquen qué debe funcionar y que la automatización quite trabajo repetitivo al equipo.",
-      code: "cambio → build → pruebas",
+      caption: "cambio → build → pruebas",
     },
     {
       name: "Producción",
       title: "Entender qué pasa en producción.",
       text: "Me interesa cómo llega un cambio a producción y qué ocurre después. Automatizar despliegues y observar la aplicación me ayuda a detectar problemas y decidir qué mejorar.",
-      code: "desplegar → observar → aprender",
+      caption: "desplegar → observar → aprender",
     },
   ],
   en: [
     {
       name: "Interface",
       title: "Think about the person using it.",
-      text: "I enjoy turning requirements into interfaces that make sense. I also care about what happens when someone has to wait, something fails or they navigate using only a keyboard.",
-      code: '<Interface state="loading" />',
+      text: "I enjoy making architecture decisions that shape how a product feels: what loads first, where rendering happens and how each interaction responds. I like working through that complexity to give people an experience that is fast, clear and accessible.",
+      caption: "Rendering · performance · accessibility",
     },
     {
       name: "Validation",
       title: "Make the team’s work easier.",
       text: "I think about whoever works on the code next. I want tests to explain what should work and automation to take repetitive tasks off the team’s hands.",
-      code: "change → build → tests",
+      caption: "change → build → tests",
     },
     {
       name: "Production",
       title: "Understand what happens in production.",
       text: "I’m interested in how a change reaches production and what happens afterwards. Automating deployments and observing the application helps me spot problems and decide what to improve.",
-      code: "deploy → observe → learn",
+      caption: "deploy → observe → learn",
     },
   ],
 } as const;
@@ -113,7 +113,7 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       >
         <h2>{item.title}</h2>
         <p>{item.text}</p>
-        <code>{item.code}</code>
+        <p className="layer-caption">{item.caption}</p>
       </div>
       <noscript>
         <p>
