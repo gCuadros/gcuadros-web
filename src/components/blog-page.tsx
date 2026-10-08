@@ -16,8 +16,8 @@ export default function BlogPage({ locale }: { locale: Locale }) {
           <div>
             <p>
               {en
-                ? "Notes on building software: decisions, mistakes to avoid and code to inspect. One article at a time."
-                : "Apuntes sobre construir software: decisiones, errores que evitar y código que revisar. Un artículo cada vez."}
+                ? "Notes on frontend architecture, projects I build and sessions where I share what I learn."
+                : "Notas sobre arquitectura frontend, proyectos que desarrollo y sesiones en las que comparto lo que aprendo."}
             </p>
             <SiteLink
               locale={locale}

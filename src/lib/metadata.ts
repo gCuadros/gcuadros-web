@@ -11,16 +11,16 @@ export function pageMetadata(locale: Locale, hevy = false): Metadata {
   const path = hevy ? "/proyectos/hevy" : "/";
   const title = hevy
     ? en
-      ? "Hevy Coach MCP: real data for an assistant | Gonzalo Cuadros"
-      : "Hevy Coach MCP: datos reales para un asistente | Gonzalo Cuadros"
+      ? "Hevy Coach MCP: connecting Hevy to AI assistants | Gonzalo Cuadros"
+      : "Hevy Coach MCP: conecta Hevy con asistentes de IA | Gonzalo Cuadros"
     : "Gonzalo Cuadros | Frontend Tech Lead";
   const description = hevy
     ? en
-      ? "An MCP server for querying workouts, calculating progress and managing routines: architecture, trade-offs and limitations."
-      : "Un servidor MCP para consultar entrenamientos, calcular progreso y gestionar rutinas: arquitectura, compromisos y límites del proyecto."
+      ? "How I connected Hevy to an AI assistant: workout history, calculated metrics and routine management. Code, design decisions and limitations."
+      : "Cómo conecté Hevy con un asistente de IA: consulta de entrenamientos, cálculo de métricas y gestión de rutinas. Código, decisiones y límites."
     : en
-      ? "I'm Gonzalo Cuadros, Frontend Tech Lead at MANGO. I work on frontend architecture and how we ship it to production: projects, talks, teaching and notes."
-      : "Soy Gonzalo Cuadros, Frontend Tech Lead en MANGO. Trabajo en la arquitectura frontend y en cómo la llevamos a producción: proyectos, charlas, docencia y notas.";
+      ? "Gonzalo Cuadros, Frontend Tech Lead at MANGO. Frontend architecture, DevOps and mentoring, with open source projects, technical articles and talks."
+      : "Gonzalo Cuadros, Frontend Tech Lead en MANGO. Arquitectura frontend, DevOps y mentoría. Proyectos de código abierto, artículos técnicos y docencia.";
   return {
     metadataBase: new URL(
       deploymentHost ? `https://${deploymentHost}` : "http://localhost:3100",

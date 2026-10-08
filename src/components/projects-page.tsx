@@ -12,11 +12,15 @@ export default function ProjectsPage({ locale }: { locale: Locale }) {
           <p className="kicker">
             {en ? "Code with context" : "Código con contexto"}
           </p>
-          <h1>{en ? "Built,\nthen explained." : "Hecho.\nY explicado."}</h1>
+          <h1>
+            {en
+              ? "Personal projects.\nPublic code."
+              : "Proyectos propios.\nCódigo público."}
+          </h1>
           <p>
             {en
-              ? "A closer look at my own work: the problem, the decisions and the limits. Public code you can inspect."
-              : "Una mirada a mi trabajo propio: el problema, las decisiones y los límites. Código público que puedes revisar."}
+              ? "What I wanted to solve, how I built it and where its limits are. Each project includes code you can explore."
+              : "Aquí explico qué quería resolver, cómo lo implementé y qué límites tiene cada proyecto. El código está disponible para revisarlo."}
           </p>
         </header>
         <ProjectPreview locale={locale} />
@@ -25,8 +29,8 @@ export default function ProjectsPage({ locale }: { locale: Locale }) {
           <div>
             <p>
               {en
-                ? "The Hevy case covers retries, validation before writes and the difference between missing data and zero. The repository contains the implementation and tests."
-                : "El caso de Hevy recorre reintentos, validación antes de escribir y la diferencia entre datos ausentes y cero. El repositorio contiene la implementación y sus pruebas."}
+                ? "The Hevy case study explains how I handle failed requests, what I validate before changing data and why I distinguish missing values from zero. The implementation and tests are on GitHub."
+                : "El caso de Hevy explica cómo gestiono las peticiones fallidas, qué valido antes de modificar datos y por qué distingo entre un dato ausente y un cero. La implementación y las pruebas están en GitHub."}
             </p>
             <SiteLink locale={locale} className="text-link" href={links.hevy}>
               {en ? "Explore the repository" : "Explorar el repositorio"} ↗

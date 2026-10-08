@@ -23,7 +23,7 @@ export const navigationFor = (locale: Locale) => [
   },
 ];
 // Follows the Vercel production domain, so a custom domain updates canonical, sitemap and feeds.
-export const siteUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "gcuadros-web.vercel.app"}`;
+export const siteUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "gcuadros.dev"}`;
 
 export const indexablePaths = [
   "/",

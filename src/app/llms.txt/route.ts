@@ -11,7 +11,7 @@ export function GET() {
   const body = [
     "# Gonzalo Cuadros",
     "",
-    "> Frontend Tech Lead at MANGO, based in Madrid. Works on frontend architecture, DevOps applied to the frontend and how teams ship to production. Personal site with projects, talks, teaching and a bilingual blog (Spanish at the root, English under /en).",
+    "> Frontend Tech Lead at MANGO, based in Madrid. Works on frontend platforms, from architecture to deployment, with experience in DevOps, mentoring and teaching. Personal site with projects, talks, teaching and a bilingual blog (Spanish at the root, English under /en).",
     "",
     "Leadership here means technical leadership and mentoring, not people management. Every blog article is also available as Markdown by adding `.md` to its URL.",
     "",

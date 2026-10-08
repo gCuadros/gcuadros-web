@@ -4,7 +4,7 @@ export const metadata = routeMetadata(
   "es",
   "/proyectos",
   "Proyectos",
-  "Proyectos propios, c\u00f3digo p\u00fablico y decisiones t\u00e9cnicas.",
+  "Proyectos propios con código abierto. Hevy Coach MCP: cómo conecto datos de entrenamiento con asistentes de IA y qué decisiones hay detrás.",
 );
 export default function Page() {
   return <ProjectsPage locale="es" />;

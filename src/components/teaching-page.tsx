@@ -25,22 +25,14 @@ export function TeachingPreview({ locale }: { locale: Locale }) {
         <p>
           {en
             ? "I’ve taught frontend at Codespace Academy’s bootcamp, coded live with Garaje de ideas and spoken at Fabrics, MANGO’s tech event."
-            : "He sido docente de frontend en el bootcamp de Codespace Academy, he programado en directo con Garaje de ideas y he participado como ponente en Fabrics, el encuentro tecnológico de MANGO."}
+            : "He enseñado frontend en el bootcamp de Codespace Academy, programado en directo con Garaje de ideas y participado como ponente en Fabrics, el encuentro tecnológico de MANGO."}
         </p>
         <SiteLink
           locale={locale}
           className="text-link"
           href={localPath(locale, "/docencia")}
         >
-          {en ? "Explore teaching & talks" : "Ver docencia y charlas"}
-          <span aria-hidden="true">↗</span>
-        </SiteLink>
-        <SiteLink
-          locale={locale}
-          className="text-link teaching-session-link"
-          href={links.nextTalk}
-        >
-          {en ? "Watch the session (Spanish)" : "Ver la sesión"}
+          {en ? "See my teaching and talks" : "Ver docencia y charlas"}
           <span aria-hidden="true">↗</span>
         </SiteLink>
       </div>
@@ -75,8 +67,8 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
         </h1>
         <p>
           {en
-            ? "Teaching frontend has been part of my work too: from bootcamp classes to live coding and sharing ideas with fellow engineers."
-            : "Enseñar frontend también ha sido parte de mi trabajo: desde las clases en un bootcamp hasta el código en directo y el intercambio de ideas con otros profesionales."}
+            ? "I’ve taught frontend to web development students and shared my experience through live coding and tech talks."
+            : "He enseñado frontend a estudiantes de desarrollo web y compartido mi experiencia en sesiones de código en directo y encuentros tecnológicos."}
         </p>
       </header>
       <section
@@ -100,8 +92,8 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
           </p>
           <p>
             {en
-              ? "As a guest instructor, I designed and taught sessions for web development students. My teaching covered frontend foundations and advanced techniques, with a focus on Next.js."
-              : "Como docente colaborador, diseñé e impartí sesiones para estudiantes de desarrollo web. Trabajamos desde los fundamentos de frontend hasta técnicas avanzadas, con especialización en Next.js."}
+              ? "As a guest instructor at Codespace Academy’s bootcamp, I designed and taught sessions for web development students, specialising in Next.js."
+              : "Durante mi colaboración con el bootcamp de Codespace Academy, diseñé e impartí sesiones para estudiantes de desarrollo web, con especialización en Next.js."}
           </p>
           <ul
             className="teaching-topics"
@@ -111,12 +103,6 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             <li>React</li>
             <li>Next.js</li>
           </ul>
-          <SiteLink locale={locale} className="text-link" href={links.linkedin}>
-            {en
-              ? "Teaching experience on LinkedIn"
-              : "Mi experiencia docente en LinkedIn"}
-            <span aria-hidden="true">↗</span>
-          </SiteLink>
         </div>
       </section>
       <section className="teaching-live container" aria-labelledby="live-title">
@@ -144,7 +130,7 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               ▶
             </span>
             <span>
-              {en ? "Watch the live coding" : "Ver el live coding"}
+              {en ? "Watch the full session" : "Ver la sesión completa"}
               <small>
                 {en
                   ? "Full session · YouTube · Spanish"
@@ -158,7 +144,7 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             className="text-link"
             href={localPath(locale, "/blog/nextjs-rendering-strategies")}
           >
-            {en ? "Read the session notes" : "Leer el contenido de la sesión"}
+            {en ? "Read the session notes" : "Leer las notas de la sesión"}
             <span aria-hidden="true">↗</span>
           </SiteLink>
         </div>
@@ -178,17 +164,14 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
               ? "I took part as a speaker in the second edition of MANGO’s tech event, alongside colleagues and other technology professionals."
               : "Participé como ponente en la segunda edición del encuentro tecnológico de MANGO, junto a compañeros y otros profesionales del sector."}
           </p>
-          <p>
-            {en
-              ? "A chance to share ideas, learn from other speakers and discuss how technology is changing the industry."
-              : "Una oportunidad para compartir ideas, aprender de otros ponentes y conversar sobre cómo la tecnología está transformando la industria."}
-          </p>
           <SiteLink
             locale={locale}
             className="text-link"
             href={localPath(locale, "/blog/fabrics-2025")}
           >
-            {en ? "Read about Fabrics 2025" : "Leer sobre Fabrics 2025"}
+            {en
+              ? "Speaking at Fabrics 2025"
+              : "Mi participación en Fabrics 2025"}
             <span aria-hidden="true">↗</span>
           </SiteLink>
         </div>

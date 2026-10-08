@@ -24,7 +24,7 @@ const english: Record<string, string> = {
   "Liderazgo técnico": "Technical leadership",
   Trayectoria: "Experience",
   "Descargar CV (PDF)": "Download CV (PDF)",
-  "Trayectoria completa en LinkedIn": "Full experience on LinkedIn",
+  "Ver mi perfil en LinkedIn": "View my LinkedIn profile",
   Formación: "Education",
   "Máster en DevOps & Cloud · UNIR · 2025–2026":
     "Master’s in DevOps & Cloud · UNIR · 2025–2026",
@@ -40,51 +40,52 @@ const english: Record<string, string> = {
   "Ponente · MANGO": "Speaker · MANGO",
   "Fabrics 2025": "Fabrics 2025",
   Conectemos: "Let’s connect",
-  "Conectar un asistente con el registro de entrenamiento para que pueda trabajar con datos reales y cálculos explícitos, en lugar de estimar el progreso a partir de una conversación.":
-    "Connecting an assistant to a training log so it can work with real data and explicit calculations, instead of estimating progress from a conversation.",
+  "Construí un servidor MCP que conecta un asistente de IA con mis entrenamientos en Hevy. El servidor calcula las métricas; el asistente trabaja con esos resultados para analizar el progreso.":
+    "I built an MCP server that connects an AI assistant to my workouts in Hevy. The server calculates the metrics; the assistant uses those results to analyse progress.",
   "Explorar el código": "Explore the code",
   "El problema: dar contexto fiable al asistente":
     "The problem: giving the assistant reliable context",
-  "Los entrenamientos, las rutinas y las medidas están en Hevy. Para analizarlos en una conversación hace falta conectar ese historial y convertirlo en información comparable. Construí un servidor MCP que consulta la API de Hevy y calcula métricas de progreso, volumen y constancia.":
-    "Workouts, routines and measurements live in Hevy. Analysing them in a conversation requires connecting that history and turning it into comparable information. I built an MCP server that queries the Hevy API and calculates progress, volume and consistency metrics.",
+  "Hevy guarda entrenamientos, rutinas y medidas corporales. Quería analizar ese historial con un asistente sin copiar los registros a mano ni dejarle hacer las cuentas. Usé Model Context Protocol (MCP) para conectar la conversación con herramientas que consultan la API y calculan progreso, volumen y constancia.":
+    "Hevy stores workouts, routines and body measurements. I wanted to analyse that history with an assistant without copying records by hand or relying on it to do the maths. I used Model Context Protocol (MCP) to connect the conversation to tools that query the API and calculate progress, volume and consistency.",
   "La decisión: consultar y calcular antes de interpretar":
     "The decision: query and calculate before interpreting",
-  "El servidor obtiene los datos en vivo y realiza los cálculos; el cliente MCP recibe los resultados para elaborar una respuesta. Esta separación hace explícita la diferencia entre una métrica calculada y la interpretación del asistente.":
-    "The server retrieves live data and performs the calculations; the MCP client receives the results to compose a response. This separation makes the distinction between a calculated metric and the assistant’s interpretation explicit.",
+  "El servidor consulta Hevy y realiza los cálculos. El cliente MCP recibe los resultados y los incorpora a la conversación. Así puedo comprobar las fórmulas por separado y distinguir el cálculo de la interpretación del asistente.":
+    "The server queries Hevy and performs the calculations. The MCP client receives the results and brings them into the conversation. This lets me check the formulas independently and distinguish the calculation from the assistant’s interpretation.",
   "API de Hevy:": "Hevy API:",
   "entrenamientos, rutinas, ejercicios y medidas.":
     "workouts, routines, exercises and measurements.",
   "Servidor MCP:": "MCP server:",
-  "herramientas de consulta, cálculo y escritura con responsabilidades separadas.":
-    "query, calculation and write tools with separate responsibilities.",
-  "Cliente compatible:": "Compatible client:",
+  "herramientas separadas para consultar registros, calcular métricas y modificar datos.":
+    "separate tools for reading records, calculating metrics and making changes.",
+  "Cliente MCP:": "MCP client:",
   "conversación, interpretación y controles de autorización.":
     "conversation, interpretation and authorisation controls.",
   "No hay una caché local ni una base de datos de entrenamientos. Así se evita mantener una segunda copia sincronizada. El compromiso es depender de la disponibilidad, latencia y límites de la API en cada consulta.":
     "There is no local cache or workout database, avoiding a second copy that needs synchronisation. The trade-off is depending on the API’s availability, latency and limits for every query.",
-  "Los límites de escritura forman parte del diseño":
-    "Write boundaries are part of the design",
+  "Qué puede modificar el asistente": "What the assistant can change",
   "El proyecto permite crear y actualizar rutinas, crear carpetas y registrar medidas corporales. No escribe en el historial de entrenamientos, que es la base de los cálculos.":
     "The project can create and update routines, create folders and log body measurements. It does not write to workout history, which is the basis of its calculations.",
   "Las herramientas llevan indicaciones de lectura o escritura para el cliente MCP. Esas indicaciones ayudan al cliente a decidir cuándo pedir confirmación; no son, por sí solas, una garantía de consentimiento impuesta por el servidor.":
     "Tools carry read or write annotations for the MCP client. These help the client decide when to ask for confirmation; they are not, by themselves, a server-enforced guarantee of consent.",
   "La clave de Hevy no ofrece permisos granulares. Por eso es importante distinguir lo que permite la credencial de las operaciones que este servidor expone.":
     "Hevy API keys do not offer granular permissions. It is therefore important to distinguish what the credential allows from the operations this server exposes.",
-  "Diseñar para una escritura que no se puede deshacer":
-    "Designing for a write that cannot be undone",
+  "Cuando una petición falla, pero el cambio ya está hecho":
+    "When a failed request may have succeeded",
   "Un error HTTP no siempre significa que una operación no haya ocurrido. Si una creación llega a Hevy pero la respuesta falla, repetirla puede generar un duplicado. La integración no dispone de una operación de borrado para compensarlo. Esa restricción cambia cómo se preparan y ejecutan las escrituras.":
     "An HTTP error does not always mean an operation did not happen. If a creation reaches Hevy but the response fails, repeating it can create a duplicate. The integration has no delete operation to compensate for this. That constraint changes how writes are prepared and executed.",
-  "Resolver antes de enviar.": "Resolve before sending.",
+  "Resolver los ejercicios antes de crear la rutina.":
+    "Resolve exercise names before creating a routine.",
   "Al crear una rutina, primero se resuelven los nombres de todos sus ejercicios. Si uno es desconocido o ambiguo, la herramienta devuelve el problema y no envía una rutina incompleta.":
     "When creating a routine, all exercise names are resolved first. If one is unknown or ambiguous, the tool returns the problem without sending an incomplete routine.",
-  "Reintentar según la operación.": "Retry according to the operation.",
+  "Distinguir entre leer y escribir al reintentar.":
+    "Use different retry rules for reads and writes.",
   "El cliente permite reintentos acotados ante respuestas 5xx en lecturas, pero no en escrituras. Las respuestas 429 se tratan aparte. Se acepta devolver un error antes que arriesgar una creación duplicada.":
     "The client allows bounded retries for 5xx responses on reads, but not on writes. It handles 429 responses separately. Returning an error is preferable to risking a duplicate creation.",
   "Leer antes de actualizar.": "Read before updating.",
   "Cuando la API reemplaza un registro completo, omitir campos puede borrarlos. La herramienta recupera el estado existente: preserva las medidas no indicadas y, al cambiar el título de una rutina, los descansos y rangos de repeticiones de sus ejercicios. Reemplazar explícitamente los ejercicios sigue siendo una operación destructiva.":
     "When the API replaces an entire record, omitting fields can erase them. The tool retrieves the existing state: it preserves unspecified measurements and, when renaming a routine, its exercises’ rest times and rep ranges. Explicitly replacing the exercises remains a destructive operation.",
-  "Son defensas frente a fallos concretos, no una transacción distribuida ni una garantía de ejecución exactamente una vez. Una modificación concurrente entre la lectura y la escritura sigue siendo un límite de este enfoque.":
-    "These are defences against specific failures, not a distributed transaction or an exactly-once execution guarantee. A concurrent modification between the read and the write remains a limitation of this approach.",
+  "La lectura y la escritura son operaciones separadas: otro cliente podría modificar el registro entre ambas. Estas comprobaciones reducen riesgos concretos, pero no garantizan que cada operación se ejecute exactamente una vez.":
+    "Reading and writing are separate operations: another client could change the record between them. These checks reduce specific risks, but do not guarantee that each operation runs exactly once.",
   "Ver la preparación de escrituras": "See write preparation",
   "Ver la política de reintentos": "See the retry policy",
   "Ausencia de datos no significa progreso cero":
@@ -93,21 +94,21 @@ const english: Record<string, string> = {
     "The calculation engine receives data and returns results without calling the API. This makes it possible to check formulas against known inputs and keep interpretation separate from arithmetic. To estimate one-rep max, sets without valid weight or reps are excluded; if no set qualifies, the result is null. A single bodyweight measurement does not become a trend either.",
   "La alternativa de rellenar esos huecos con ceros produciría una respuesta más completa en apariencia, pero confundiría falta de información con un resultado medido. El asistente debe poder decir que no tiene datos suficientes.":
     "Filling these gaps with zeros would produce a seemingly more complete answer, but would confuse missing information with a measured result. The assistant must be able to say it has insufficient data.",
-  "Las pruebas públicas incluyen nombres ambiguos que no producen escrituras, conservación de campos al actualizar, creaciones fallidas que no se repiten y series que no pueden puntuarse. Estas pruebas comprueban reglas del servidor con datos controlados; no demuestran por sí solas la disponibilidad de Hevy ni la calidad de las respuestas de un modelo.":
-    "The public tests cover ambiguous names that produce no writes, field preservation during updates, failed creations that are not retried, and sets that cannot be scored. They check server rules with controlled data; they do not, by themselves, demonstrate Hevy’s availability or the quality of a model’s responses.",
+  "Las pruebas cubren nombres ambiguos, conservación de campos, reintentos y series sin datos suficientes para calcular. Comprueban las reglas del servidor con entradas controladas; la disponibilidad de Hevy y las respuestas del asistente requieren comprobaciones aparte.":
+    "The tests cover ambiguous names, field preservation, retries and sets without enough valid data for a calculation. They check the server’s rules against controlled inputs; Hevy’s availability and the assistant’s responses need separate checks.",
   "Revisar las pruebas de escritura": "Review the write tests",
   "Revisar las pruebas del cálculo": "Review the calculation tests",
-  "Una forma de comprobarlo": "One way to try it",
+  "Pruébalo con tu historial": "Try it with your workout history",
   "Con una cuenta Hevy PRO y una clave API configurada en un cliente compatible, se puede empezar por comprobar la conexión y comparar dos periodos:":
     "With a Hevy PRO account and an API key configured in a compatible client, you can start by checking the connection and comparing two periods:",
   "Comprueba la conexión con Hevy. Compara el número de entrenamientos y el volumen de las últimas cuatro semanas con las cuatro anteriores. Explica qué datos has utilizado y qué no puedes concluir.":
     "Check the connection to Hevy. Compare workout count and volume over the last four weeks with the previous four. Explain which data you used and what you cannot conclude.",
-  "Es una propuesta de consulta, no una captura de un resultado real. El repositorio incluye las instrucciones de conexión, las herramientas disponibles y sus límites.":
-    "This is a suggested query, not a screenshot of an actual result. The repository includes connection instructions, available tools and their limitations.",
+  "Puedes adaptar esta consulta a tu historial. La guía del repositorio explica cómo conectar el servidor y qué herramientas tienes disponibles.":
+    "You can adapt this query to your own history. The repository guide explains how to connect the server and which tools are available.",
   "Consultar la guía de conexión": "Read the connection guide",
-  "Qué demuestra este proyecto": "What this project demonstrates",
-  "Una integración entre una API externa y clientes de IA, con cálculos separados de la conversación y un alcance de escritura delimitado. El resultado verificable es el código y su documentación pública; no se presentan métricas de adopción ni mejoras deportivas no medidas.":
-    "An integration between an external API and AI clients, with calculations separated from conversation and a defined write scope. The verifiable outcome is the code and its public documentation; no unmeasured adoption figures or training improvements are claimed.",
+  "Lo que quería resolver bien": "What I wanted to get right",
+  "Conectar una API externa con un asistente obliga a decidir dónde se hacen los cálculos, qué datos faltan y qué cambios se permiten. Esas decisiones están en el código y en las pruebas: son la parte del proyecto que más me interesa compartir.":
+    "Connecting an external API to an assistant means deciding where calculations happen, how to handle missing data and which changes to allow. Those decisions are in the code and tests: they are the part of this project I most want to share.",
   "Código y pruebas públicas revisados el 27 de septiembre de 2026. Los enlaces técnicos apuntan al commit c3a2326 para mantener verificables las decisiones descritas.":
     "Public code and tests reviewed on 27 September 2026. Technical links point to commit c3a2326 so the decisions described remain verifiable.",
   "Gonzalo Cuadros, inicio": "Gonzalo Cuadros, home",
