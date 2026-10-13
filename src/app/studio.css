@@ -1626,3 +1626,175 @@ h3 {
     order: 2;
   }
 }
+
+/* A transparent calculation, using the same visual language as the layer explorer. */
+.demo-entry {
+  margin-top: 1.5rem;
+}
+.case-study .hevy-demo {
+  margin-block: 4rem;
+  padding: 0;
+  border: 1px solid var(--foreground);
+  scroll-margin-top: 2rem;
+}
+.demo-heading {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+.case-study .demo-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin-top: 0.75rem;
+}
+.demo-heading .demo-disclosure {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 0;
+}
+.demo-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--foreground);
+}
+.demo-controls button {
+  padding: 1rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--foreground);
+  text-align: left;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  min-height: 4.5rem;
+}
+.demo-controls button + button {
+  border-left: 1px solid var(--foreground);
+}
+.demo-controls button span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+.demo-controls button[aria-pressed="true"] {
+  background: var(--signal);
+  color: #22231f;
+}
+.demo-controls button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.demo-controls button:focus-visible {
+  outline: 3px solid var(--foreground);
+  outline-offset: -5px;
+}
+.demo-result {
+  background: var(--ink);
+  color: var(--on-ink);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+}
+.case-study .demo-result p {
+  color: inherit;
+}
+.demo-result .demo-result-label {
+  font: 0.75rem/1.5 var(--font-mono);
+}
+.demo-result .demo-number {
+  font: 650 clamp(3.5rem, 7vw, 5rem)/1 var(--font-editorial);
+  letter-spacing: -0.05em;
+  color: var(--signal);
+  margin: 1rem 0;
+}
+.demo-answer > p:last-child {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+.demo-chart {
+  align-self: center;
+}
+.demo-chart-row {
+  margin-bottom: 1.5rem;
+}
+.demo-chart-row > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+.demo-track {
+  height: 1.25rem;
+  background: #41423b;
+}
+.demo-track > div {
+  height: 100%;
+  background: #c8d19f;
+  transition: width 0.4s ease;
+}
+.demo-chart-row:nth-child(2) .demo-track > div {
+  background: #cbb6e4;
+}
+.demo-chart > p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.demo-evidence summary {
+  padding: 1.25rem;
+  cursor: pointer;
+  font-weight: 650;
+}
+.demo-tables {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.25rem 1.25rem;
+}
+.demo-tables table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 0.8rem/1.6 var(--font-mono);
+}
+.demo-tables caption {
+  text-align: left;
+  font: 600 0.85rem/1.5 var(--font-sans);
+  padding-bottom: 1rem;
+}
+.demo-tables th,
+.demo-tables td {
+  text-align: left;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.demo-tables tr[data-excluded] {
+  color: var(--accent);
+}
+.demo-formula {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem;
+}
+.demo-formula p {
+  font-size: 0.85rem;
+}
+.demo-formula p:first-child {
+  margin-top: 0;
+}
+.demo-formula .arrow-link {
+  font-size: 0.85rem;
+}
+@media (max-width: 600px) {
+  .demo-result,
+  .demo-tables {
+    grid-template-columns: 1fr;
+  }
+  .demo-controls button {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-track > div {
+    transition: none;
+  }
+}

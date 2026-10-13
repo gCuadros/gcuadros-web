@@ -3,6 +3,7 @@ import { translator, localPath, type Locale } from "@/lib/i18n";
 import { PageShell } from "./page-shell";
 import { links } from "@/lib/portfolio";
 import { siteUrl } from "@/lib/site";
+import { HevyDemo } from "./hevy-demo";
 import { JsonLd } from "./json-ld";
 
 const source =
@@ -47,6 +48,7 @@ export default function HevyCase({ locale }: { locale: Locale }) {
             {locale === "en" ? "Why I built it" : "Por qué lo construí"}{" "}
           </SiteLink>
         </div>
+        <HevyDemo locale={locale} />
         <section aria-labelledby="problema">
           <h2 id="problema">
             {t("El problema: dar contexto fiable al asistente")}

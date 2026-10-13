@@ -1,0 +1,1 @@
+Bricolage Grotesque, SIL Open Font License. Static 650-weight Latin instance generated from @fontsource-variable/bricolage-grotesque 5.3.0 (latin-wght-normal.woff2) with fontTools 4.66.1. Used server-side for social images because ImageResponse needs a TTF/OTF/WOFF font. The website continues to use its existing WOFF2 fonts.
