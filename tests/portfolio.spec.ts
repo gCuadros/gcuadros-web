@@ -13,17 +13,17 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Cuadros",
     );
-    await page.getByRole("button", { name: "02 Validación" }).click();
+    await page.getByRole("button", { name: "02 Infraestructura" }).click();
     await expect(
-      page.getByRole("button", { name: "02 Validación" }),
+      page.getByRole("button", { name: "02 Infraestructura" }),
     ).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("#layer-detail")).toContainText(
-      "¿Qué demuestra un check verde?",
+      "¿Podemos reconstruir el entorno?",
     );
-    await page.getByRole("button", { name: "03 Producción" }).focus();
+    await page.getByRole("button", { name: "03 Operación" }).focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#layer-detail")).toContainText(
-      "¿Reintentar puede duplicar datos?",
+      "¿Qué pasa si el cambio falla?",
     );
     await expect(page.locator(".layer-explorer")).toHaveAttribute(
       "data-active",
@@ -71,6 +71,7 @@ for (const locale of ["es", "en"]) {
         "/blog/fabrics-2025",
         "/blog/hevy-coach-mcp",
         "/blog/nextjs-rendering-strategies",
+        "/blog/arquitectura-infraestructura-operacion",
         "/proyectos/hevy",
       ]) {
         const response = await page.goto(prefix + path);
@@ -95,11 +96,8 @@ for (const locale of ["es", "en"]) {
           page.locator(`.language-switch a[lang="${other}"]`),
         ).toHaveAttribute("href", otherPrefix + path);
       }
-      for (const [index, path] of [
-        "/blog/nextjs-rendering-strategies",
-        "/blog/cicd-frontend",
-        "/proyectos/hevy",
-      ].entries()) {
+      for (const index of [0, 1, 2]) {
+        const path = "/blog/arquitectura-infraestructura-operacion";
         await page.goto(prefix || "/");
         await page.locator(".layer-controls button").nth(index).click();
         const evidence = page.locator(".layer-evidence");
@@ -198,9 +196,9 @@ test("reduced motion keeps interaction and skip navigation usable", async ({
       .locator(".layer-front")
       .evaluate((el) => getComputedStyle(el).transitionDuration),
   ).toBe("0s");
-  await page.getByRole("button", { name: "03 Producción" }).click();
+  await page.getByRole("button", { name: "03 Operación" }).click();
   await expect(page.locator("#layer-detail")).toContainText(
-    "¿Reintentar puede duplicar datos?",
+    "¿Qué pasa si el cambio falla?",
   );
 });
 

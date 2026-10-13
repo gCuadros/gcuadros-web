@@ -5,66 +5,54 @@ import { SiteLink } from "./site-link";
 const content = {
   es: [
     {
-      name: "Interfaz",
-      context: "Esta web · Renderizado",
-      title: "¿Renderizar en cada visita?",
-      text: "Aquí el contenido cambia cuando publico. Genero las páginas al compilar y uso JavaScript para las interacciones, como este gráfico. Leer un artículo o cambiar de idioma funciona también sin JavaScript.",
+      name: "Arquitectura",
+      context: "Límites · contratos · autonomía",
+      title: "¿Qué debe cambiar por separado?",
+      text: "Antes de separar servicios o microfrontends, miro quién mantiene cada parte, qué datos comparte y si puede desplegarse sin coordinar al resto. Si esa autonomía no es necesaria, prefiero límites claros dentro del sistema antes de añadir red y operación.",
       tradeoff:
-        "El coste: para corregir una frase tengo que volver a desplegar. En este portfolio me compensa.",
-      href: "/blog/nextjs-rendering-strategies",
-      link: "Cómo elijo el renderizado",
+        "Un monorepo organiza el código. La independencia se decide en los contratos, los datos y los despliegues.",
     },
     {
-      name: "Validación",
-      context: "Esta web · Integración continua",
-      title: "¿Qué demuestra un check verde?",
-      text: "Compruebo que el menú funcione con teclado, que cada idioma descargue su CV y que el PDF coincida con su fuente. Son fallos que una compilación correcta puede dejar pasar.",
+      name: "Infraestructura",
+      context: "Estado · permisos · reproducibilidad",
+      title: "¿Podemos reconstruir el entorno?",
+      text: "Versionar recursos es solo una parte. También hay que proteger el estado y los secretos, limitar los permisos y detectar cambios hechos a mano. Me interesa que otro miembro del equipo pueda revisar y aplicar un cambio sin depender de quien creó el entorno.",
       tradeoff:
-        "El límite: las pruebas de navegador cubren Chromium. Todavía reviso a mano la web publicada.",
-      href: "/blog/cicd-frontend",
-      link: "Qué comprueba mi CI",
+        "Recrear infraestructura no recupera los datos. Las copias y la restauración necesitan su propia prueba.",
     },
     {
-      name: "Producción",
-      context: "Hevy Coach · API externa",
-      title: "¿Reintentar puede duplicar datos?",
-      text: "Si crear una rutina devuelve un error 5xx, el cambio podría haberse guardado. Por eso el conector no repite esa escritura automáticamente; en las lecturas sí permite reintentos acotados.",
+      name: "Operación",
+      context: "Despliegue · señales · recuperación",
+      title: "¿Qué pasa si el cambio falla?",
+      text: "Antes de desplegar, quiero saber qué señal del producto detectaría un problema, a quién afectaría y quién respondería. Ampliaría la exposición por etapas cuando pueda comparar versiones con tráfico representativo y criterios claros para detener el despliegue.",
       tradeoff:
-        "Acepto devolver un error que hay que investigar antes que arriesgar una rutina duplicada.",
-      href: "/proyectos/hevy",
-      link: "La decisión y el código de Hevy",
+        "Volver a la versión anterior no deshace una migración de datos. La recuperación se diseña junto al cambio.",
     },
   ],
   en: [
     {
-      name: "Interface",
-      context: "This site · Rendering",
-      title: "Render on every visit?",
-      text: "The content here changes when I publish. I generate pages at build time and use JavaScript for interactions such as this diagram. Reading an article or switching languages also works without JavaScript.",
+      name: "Architecture",
+      context: "Boundaries · contracts · autonomy",
+      title: "What needs to change independently?",
+      text: "Before splitting services or microfrontends, I look at who maintains each part, which data it shares and whether it can deploy without coordinating with the rest. If that autonomy is unnecessary, I favour clear internal boundaries before adding network and operational overhead.",
       tradeoff:
-        "The cost: fixing a sentence requires another deployment. For this portfolio, that is worth it.",
-      href: "/blog/nextjs-rendering-strategies",
-      link: "How I choose a rendering strategy",
+        "A monorepo organises code. Independence depends on contracts, data ownership and deployments.",
     },
     {
-      name: "Validation",
-      context: "This site · Continuous integration",
-      title: "What does a green check prove?",
-      text: "I check that the menu works with a keyboard, each language downloads the right CV and the PDF matches its source. A successful build can miss all of these failures.",
+      name: "Infrastructure",
+      context: "State · permissions · reproducibility",
+      title: "Can we rebuild the environment?",
+      text: "Versioning resources is only part of it. State and secrets need protection, permissions need boundaries and manual changes need to be detected. I want another team member to be able to review and apply a change without relying on whoever created the environment.",
       tradeoff:
-        "The limit: browser tests cover Chromium. I still check the published site manually.",
-      href: "/blog/cicd-frontend",
-      link: "What my CI checks",
+        "Recreating infrastructure does not recover the data. Backups and restoration need their own test.",
     },
     {
-      name: "Production",
-      context: "Hevy Coach · External API",
-      title: "Could a retry duplicate data?",
-      text: "If creating a routine returns a 5xx error, the change may already have been saved. The connector therefore does not retry that write automatically; reads can use bounded retries.",
+      name: "Operations",
+      context: "Deployment · signals · recovery",
+      title: "What if the change fails?",
+      text: "Before deploying, I want to know which product signal would reveal a problem, who it would affect and who would respond. I would expand exposure in stages when I can compare versions using representative traffic and clear criteria for stopping the rollout.",
       tradeoff:
-        "I accept returning an error that needs investigating rather than risk creating a duplicate routine.",
-      href: "/proyectos/hevy",
-      link: "The decision and the Hevy code",
+        "Reverting the application does not undo a data migration. Recovery needs to be designed alongside the change.",
     },
   ],
 } as const;
@@ -77,16 +65,14 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       className="layer-explorer"
       aria-label={
         locale === "es"
-          ? "Explora tres decisiones técnicas"
-          : "Explore three engineering decisions"
+          ? "Explora mis criterios de arquitectura, infraestructura y operación"
+          : "Explore my approach to architecture, infrastructure and operations"
       }
       data-active={active}
     >
       <div className="explorer-heading">
         <span className="kicker">
-          {locale === "es"
-            ? "Decisiones, con contexto"
-            : "Decisions in context"}
+          {locale === "es" ? "Criterio de diseño" : "Design judgement"}
         </span>
         <span className="explorer-count" aria-hidden="true">
           0{active + 1} / 03
@@ -145,16 +131,20 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
         <SiteLink
           locale={locale}
           className="layer-evidence"
-          href={localPath(locale, item.href)}
+          href={localPath(
+            locale,
+            "/blog/arquitectura-infraestructura-operacion",
+          )}
         >
-          {item.link} <span aria-hidden="true">→</span>
+          {locale === "es" ? "Leer el razonamiento" : "Read the reasoning"}{" "}
+          <span aria-hidden="true">→</span>
         </SiteLink>
       </div>
       <noscript>
         <p>
           {locale === "es"
-            ? "Este ejemplo muestra la interfaz. Con JavaScript puedes explorar también validación y producción."
-            : "This example shows the interface. Enable JavaScript to explore validation and production too."}
+            ? "Aquí puedes leer el criterio de arquitectura. El artículo enlazado desarrolla también infraestructura y operación."
+            : "The architecture perspective is shown here. The linked article also covers infrastructure and operations."}
         </p>
       </noscript>
     </section>
