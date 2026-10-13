@@ -54,4 +54,12 @@ Cobertura: Inicio, Proyectos, caso Hevy, Docencia, Sobre mí, índice del blog, 
 
 ## Voz personal de la portada
 
-El titular expresa motivación: construir plataformas frontend y ayudar a otros a crecer. La descripción lo respalda con el rol actual, la arquitectura compartida y DevOps. El gráfico «Cómo me gusta trabajar» conecta cada capa con una prioridad: la persona que usa la interfaz, el equipo que mantiene el código y el aprendizaje en producción. Describir prácticas concretas en primera persona; evitar eslóganes intercambiables y promesas absolutas. Mantener esta intención al adaptar el inglés.
+El titular expresa motivación: construir plataformas frontend y ayudar a otros a crecer. La descripción lo respalda con el rol actual, la arquitectura compartida y DevOps.
+
+El gráfico «Decisiones, con contexto» muestra tres ejemplos públicos, no declaraciones genéricas de capacidad. Cada capa identifica proyecto, decisión, coste o límite y un enlace interno localizado donde contrastarla:
+
+- Interfaz: páginas generadas al compilar en este portfolio; cambios editoriales requieren despliegue. El artículo de renderizado desarrolla la elección y enlaza al código.
+- Validación: recorridos de teclado, idioma del CV y verificación del PDF en la CI real de esta web. Pruebas de navegador limitadas a Chromium y revisión manual del despliegue.
+- Producción: Hevy distingue lecturas y escrituras al reintentar errores 5xx; el error puede requerir investigación. Los 429 tienen tratamiento separado. No afirmar idempotencia, consentimiento garantizado ni ausencia total de duplicados. Contrastado con src/hevy/client.ts en c3a2326 el 13/10/2026.
+
+Mantener el titular personal, la animación y el diseño del gráfico. Evitar código decorativo, listas de tecnologías como prueba de seniority, métricas inventadas y casos internos de empresas. Esta evidencia pública permite evaluar decisiones concretas; no demuestra por sí sola alcance de Staff Engineer ni gestión de personas.

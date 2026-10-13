@@ -100,6 +100,16 @@ Before choosing, I would ask:
 
 Personalisation does not rule out all static content. It can sit alongside dynamic sections or data fetched on the client. The decision is what each part needs, followed by measuring the result.
 
+## The decision in this portfolio
+
+This site's content lives in the repository and changes when I publish. Pages and articles are generated at build time; I do not need to render the same text again for every visit. The language switcher and navigation use HTML links: reading and moving between pages do not depend on running React in the browser.
+
+JavaScript handles interactions such as exploring this diagram's layers, opening the mobile menu and changing the theme. The diagram also delivers its first layer in the initial HTML. This boundary keeps the content readable even if the interactions never become available.
+
+The cost is editorial: fixing a sentence or publishing an article requires another build and deployment. For a site I maintain through Git, that is worth it. If I needed to publish immediately and frequently, I would reconsider how to regenerate the content; I would not default to rendering every page per request.
+
+You can inspect the [home page composition](https://github.com/gCuadros/gcuadros-web/blob/bb7387356075f4686860fc9e973dd56f6e497da3/src/components/home.tsx) and the [language switcher](https://github.com/gCuadros/gcuadros-web/blob/bb7387356075f4686860fc9e973dd56f6e497da3/src/components/language-switch.tsx).
+
 ## A note on Next.js today
 
 The session was prepared with Next.js 14. In Next.js 16, [Cache Components](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) is an opt-in feature enabled with `cacheComponents: true`. It combines partial prerendering, explicit caching through `use cache` and dynamic content streamed through `Suspense`.

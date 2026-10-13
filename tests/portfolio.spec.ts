@@ -18,12 +18,12 @@ for (const width of [320, 390, 768, 1440]) {
       page.getByRole("button", { name: "02 Validación" }),
     ).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Facilitar el trabajo al equipo.",
+      "¿Qué demuestra un check verde?",
     );
     await page.getByRole("button", { name: "03 Producción" }).focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#layer-detail")).toContainText(
-      "Entender qué pasa en producción.",
+      "¿Reintentar puede duplicar datos?",
     );
     await expect(page.locator(".layer-explorer")).toHaveAttribute(
       "data-active",
@@ -94,6 +94,20 @@ for (const locale of ["es", "en"]) {
         await expect(
           page.locator(`.language-switch a[lang="${other}"]`),
         ).toHaveAttribute("href", otherPrefix + path);
+      }
+      for (const [index, path] of [
+        "/blog/nextjs-rendering-strategies",
+        "/blog/cicd-frontend",
+        "/proyectos/hevy",
+      ].entries()) {
+        await page.goto(prefix || "/");
+        await page.locator(".layer-controls button").nth(index).click();
+        const evidence = page.locator(".layer-evidence");
+        await expect(evidence).not.toHaveAttribute("target", "_blank");
+        await evidence.click();
+        await expect(page).toHaveURL(new RegExp(`${prefix}${path}$`));
+        await expect(page.locator("html")).toHaveAttribute("lang", locale);
+        await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       }
       await page.goto(prefix + "/sobre-mi");
       const cvLink = page.getByRole("link", {
@@ -186,7 +200,7 @@ test("reduced motion keeps interaction and skip navigation usable", async ({
   ).toBe("0s");
   await page.getByRole("button", { name: "03 Producción" }).click();
   await expect(page.locator("#layer-detail")).toContainText(
-    "Entender qué pasa en producción.",
+    "¿Reintentar puede duplicar datos?",
   );
 });
 

@@ -1,45 +1,70 @@
 "use client";
 import { useState } from "react";
-import type { Locale } from "@/lib/i18n";
+import { localPath, type Locale } from "@/lib/i18n";
+import { SiteLink } from "./site-link";
 const content = {
   es: [
     {
       name: "Interfaz",
-      title: "Pensar en quien la usa.",
-      text: "Disfruto tomando decisiones de arquitectura que se notan al usar el producto: qué se carga primero, dónde se renderiza y cómo responde cada interacción. Me interesa resolver esa complejidad para que quien está al otro lado encuentre una experiencia rápida, clara y accesible.",
-      caption: "Renderizado · rendimiento · accesibilidad",
+      context: "Esta web · Renderizado",
+      title: "¿Renderizar en cada visita?",
+      text: "Aquí el contenido cambia cuando publico. Genero las páginas al compilar y uso JavaScript para las interacciones, como este gráfico. Leer un artículo o cambiar de idioma funciona también sin JavaScript.",
+      tradeoff:
+        "El coste: para corregir una frase tengo que volver a desplegar. En este portfolio me compensa.",
+      href: "/blog/nextjs-rendering-strategies",
+      link: "Cómo elijo el renderizado",
     },
     {
       name: "Validación",
-      title: "Facilitar el trabajo al equipo.",
-      text: "Pienso también en quien tocará el código después. Busco que las pruebas expliquen qué debe funcionar y que la automatización quite trabajo repetitivo al equipo.",
-      caption: "cambio → build → pruebas",
+      context: "Esta web · Integración continua",
+      title: "¿Qué demuestra un check verde?",
+      text: "Compruebo que el menú funcione con teclado, que cada idioma descargue su CV y que el PDF coincida con su fuente. Son fallos que una compilación correcta puede dejar pasar.",
+      tradeoff:
+        "El límite: las pruebas de navegador cubren Chromium. Todavía reviso a mano la web publicada.",
+      href: "/blog/cicd-frontend",
+      link: "Qué comprueba mi CI",
     },
     {
       name: "Producción",
-      title: "Entender qué pasa en producción.",
-      text: "Me interesa cómo llega un cambio a producción y qué ocurre después. Automatizar despliegues y observar la aplicación me ayuda a detectar problemas y decidir qué mejorar.",
-      caption: "desplegar → observar → aprender",
+      context: "Hevy Coach · API externa",
+      title: "¿Reintentar puede duplicar datos?",
+      text: "Si crear una rutina devuelve un error 5xx, el cambio podría haberse guardado. Por eso el conector no repite esa escritura automáticamente; en las lecturas sí permite reintentos acotados.",
+      tradeoff:
+        "Acepto devolver un error que hay que investigar antes que arriesgar una rutina duplicada.",
+      href: "/proyectos/hevy",
+      link: "La decisión y el código de Hevy",
     },
   ],
   en: [
     {
       name: "Interface",
-      title: "Think about the person using it.",
-      text: "I enjoy making architecture decisions that shape how a product feels: what loads first, where rendering happens and how each interaction responds. I like working through that complexity to give people an experience that is fast, clear and accessible.",
-      caption: "Rendering · performance · accessibility",
+      context: "This site · Rendering",
+      title: "Render on every visit?",
+      text: "The content here changes when I publish. I generate pages at build time and use JavaScript for interactions such as this diagram. Reading an article or switching languages also works without JavaScript.",
+      tradeoff:
+        "The cost: fixing a sentence requires another deployment. For this portfolio, that is worth it.",
+      href: "/blog/nextjs-rendering-strategies",
+      link: "How I choose a rendering strategy",
     },
     {
       name: "Validation",
-      title: "Make the team’s work easier.",
-      text: "I think about whoever works on the code next. I want tests to explain what should work and automation to take repetitive tasks off the team’s hands.",
-      caption: "change → build → tests",
+      context: "This site · Continuous integration",
+      title: "What does a green check prove?",
+      text: "I check that the menu works with a keyboard, each language downloads the right CV and the PDF matches its source. A successful build can miss all of these failures.",
+      tradeoff:
+        "The limit: browser tests cover Chromium. I still check the published site manually.",
+      href: "/blog/cicd-frontend",
+      link: "What my CI checks",
     },
     {
       name: "Production",
-      title: "Understand what happens in production.",
-      text: "I’m interested in how a change reaches production and what happens afterwards. Automating deployments and observing the application helps me spot problems and decide what to improve.",
-      caption: "deploy → observe → learn",
+      context: "Hevy Coach · External API",
+      title: "Could a retry duplicate data?",
+      text: "If creating a routine returns a 5xx error, the change may already have been saved. The connector therefore does not retry that write automatically; reads can use bounded retries.",
+      tradeoff:
+        "I accept returning an error that needs investigating rather than risk creating a duplicate routine.",
+      href: "/proyectos/hevy",
+      link: "The decision and the Hevy code",
     },
   ],
 } as const;
@@ -52,14 +77,16 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       className="layer-explorer"
       aria-label={
         locale === "es"
-          ? "Explora cómo me gusta trabajar"
-          : "Explore how I like to work"
+          ? "Explora tres decisiones técnicas"
+          : "Explore three engineering decisions"
       }
       data-active={active}
     >
       <div className="explorer-heading">
         <span className="kicker">
-          {locale === "es" ? "Cómo me gusta trabajar" : "How I like to work"}
+          {locale === "es"
+            ? "Decisiones, con contexto"
+            : "Decisions in context"}
         </span>
         <span className="explorer-count" aria-hidden="true">
           0{active + 1} / 03
@@ -111,9 +138,17 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
         aria-live="polite"
         aria-atomic="true"
       >
+        <p className="layer-context">{item.context}</p>
         <h2>{item.title}</h2>
         <p>{item.text}</p>
-        <p className="layer-caption">{item.caption}</p>
+        <p className="layer-tradeoff">{item.tradeoff}</p>
+        <SiteLink
+          locale={locale}
+          className="layer-evidence"
+          href={localPath(locale, item.href)}
+        >
+          {item.link} <span aria-hidden="true">→</span>
+        </SiteLink>
       </div>
       <noscript>
         <p>

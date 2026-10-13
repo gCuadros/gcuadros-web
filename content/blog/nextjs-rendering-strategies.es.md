@@ -100,6 +100,16 @@ Antes de elegir, me haría estas preguntas:
 
 La personalización no obliga a descartar todo el contenido estático. Puede convivir con partes dinámicas o con datos que se consultan desde el cliente. El criterio es decidir qué necesita cada parte y medir el resultado.
 
+## La decisión en este portfolio
+
+El contenido de esta web está en el repositorio y cambia cuando publico. Las páginas y los artículos se generan al compilar; no necesito renderizar de nuevo el mismo texto para cada visita. El selector de idioma y los enlaces son HTML: leer y navegar entre páginas no depende de ejecutar React en el navegador.
+
+Sí hay JavaScript para las interacciones, como explorar las capas del gráfico, abrir el menú móvil o cambiar de tema. El gráfico también entrega su primera capa en el HTML inicial. Esa frontera permite conservar la lectura aunque la interacción no llegue a activarse.
+
+El coste es editorial: corregir una frase o publicar un artículo exige volver a compilar y desplegar. Para un sitio que mantengo desde Git, me compensa. Si necesitara publicar contenido de inmediato y con frecuencia, revisaría cómo regenerarlo; no convertiría por defecto todas las páginas en renderizado por petición.
+
+Puedes contrastarlo con la [composición de la portada](https://github.com/gCuadros/gcuadros-web/blob/bb7387356075f4686860fc9e973dd56f6e497da3/src/components/home.tsx) y el [selector de idioma](https://github.com/gCuadros/gcuadros-web/blob/bb7387356075f4686860fc9e973dd56f6e497da3/src/components/language-switch.tsx).
+
 ## Una nota sobre Next.js hoy
 
 La sesión se preparó con Next.js 14. En Next.js 16, [Cache Components](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents) es una opción que se activa con `cacheComponents: true`. Combina prerenderizado parcial, caché explícita con `use cache` y contenido dinámico que llega por streaming mediante `Suspense`.
