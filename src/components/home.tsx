@@ -24,13 +24,13 @@ export default function Home({ locale }: { locale: Locale }) {
           </h1>
           <p className="hero-statement">
             {en
-              ? "I build frontend platforms. From architecture to deployment."
-              : "Desarrollo plataformas frontend. De la arquitectura al despliegue."}
+              ? "I enjoy building frontend platforms and helping others grow."
+              : "Disfruto construyendo plataformas frontend y ayudando a otros a crecer."}
           </p>
           <p className="hero-description">
             {en
-              ? "I’m a Tech Lead at MANGO, working with fellow leads on architecture, automating development workflows and mentoring developers. Previously at Freepik and Wuolah."
-              : "Soy Tech Lead en MANGO: comparto decisiones de arquitectura, automatizo procesos de desarrollo y acompaño a otros desarrolladores. Antes trabajé en Freepik y Wuolah."}
+              ? "I’m a Tech Lead at MANGO, making architecture decisions with fellow leads and bringing DevOps practices to frontend development. Previously at Freepik and Wuolah."
+              : "Soy Tech Lead en MANGO: comparto decisiones de arquitectura con otros Tech Leads y aplico DevOps al frontend. Antes trabajé en Freepik y Wuolah."}
           </p>
           <SiteLink
             locale={locale}

@@ -50,4 +50,18 @@ La presentación prioriza plataformas frontend, arquitectura, despliegue, DevOps
 - Sincronizar texto visible, metadatos, Markdown público, RSS y CV. El dominio definitivo es `https://gcuadros.dev`; el CV inglés enlaza a `/en`.
 - Las notas sobre renderizado distinguen la sesión de 2024 (Next.js 14) de las capacidades actuales. Client Components no equivale a CSR exclusivo; SSR no garantiza frescura de datos; ISR depende del estado de la caché. No asignar garantías de rendimiento o SEO por estrategia. Las capacidades de Cache Components se presentan como optativas y posteriores a la sesión.
 
-Cobertura: Inicio, Proyectos, caso Hevy, Docencia, Sobre mí, índice del blog, los cuatro artículos en ambos idiomas, navegación y pie, textos accesibles, metadatos y ambos CV. Se conservan cargos, fechas, fuentes y límites de confidencialidad.
+Cobertura: Inicio, Proyectos, caso Hevy, Docencia, Sobre mí, índice del blog, los artículos en ambos idiomas, navegación y pie, textos accesibles, metadatos y ambos CV. Se conservan cargos, fechas, fuentes y límites de confidencialidad.
+
+## Voz personal de la portada
+
+El titular expresa motivación: construir plataformas frontend y ayudar a otros a crecer. La descripción lo respalda con el rol actual, la arquitectura compartida y DevOps.
+
+El gráfico «Criterio de diseño» presenta arquitectura, infraestructura y operación. Son criterios para discutir un sistema, no casos empresariales implantados ni resultados medidos. El titular personal y el diseño se conservan.
+
+- Arquitectura: contratos, propiedad de los datos, responsabilidad del equipo e independencia de despliegue. No confundir un monorepo con una topología de ejecución; separar procesos tiene coste operativo.
+- Infraestructura: definición reproducible, protección del estado y secretos, permisos, detección de cambios manuales y restauración. No presentar IaC como copia de seguridad ni `sensitive` como garantía de que un secreto no se persiste.
+- Operación: señales ligadas a tareas del producto, alcance del fallo, despliegue gradual condicionado a tráfico representativo y compatibilidad de datos para recuperar. No prometer rollback universal.
+
+Las tres capas enlazan al artículo bilingüe `arquitectura-infraestructura-operacion`, que desarrolla un escenario explícitamente hipotético de catálogo/editor. Evitar convertirlo en un caso de MANGO, Freepik o Wuolah. Fuentes primarias revisadas el 13/10/2026: límites de servicios de Microsoft, gestión de datos sensibles y drift de HashiCorp, canarios de Google SRE. Las tecnologías aparecen como opciones, sin prescribir Next.js, Kubernetes ni microservicios por defecto.
+
+Hevy y la CI del portfolio permanecen como ejemplos públicos en sus páginas y al final del artículo. Su alcance no prueba por sí solo un rol Staff o gestión formal de personas. AWS, Azure, Kubernetes y Ansible son formación del máster según el titular; no convertir las referencias documentales en experiencia profesional con esos proveedores.

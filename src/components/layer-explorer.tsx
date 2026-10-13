@@ -1,45 +1,58 @@
 "use client";
 import { useState } from "react";
-import type { Locale } from "@/lib/i18n";
+import { localPath, type Locale } from "@/lib/i18n";
+import { SiteLink } from "./site-link";
 const content = {
   es: [
     {
-      name: "Interfaz",
-      title: "Construir la interfaz.",
-      text: "Componentes, estados y navegación. Me interesan tanto el recorrido habitual como la espera, los errores y el uso con teclado.",
-      code: '<Interfaz estado="cargando" />',
+      name: "Arquitectura",
+      context: "Límites · contratos · autonomía",
+      title: "¿Qué debe cambiar por separado?",
+      text: "Antes de separar servicios o microfrontends, miro quién mantiene cada parte, qué datos comparte y si puede desplegarse sin coordinar al resto. Si esa autonomía no es necesaria, prefiero límites claros dentro del sistema antes de añadir red y operación.",
+      tradeoff:
+        "Un monorepo organiza el código. La independencia se decide en los contratos, los datos y los despliegues.",
     },
     {
-      name: "Validación",
-      title: "Comprobar cada cambio.",
-      text: "Tipos, compilación y pruebas de los recorridos de usuario para detectar errores antes de desplegar.",
-      code: "cambio → build → pruebas",
+      name: "Infraestructura",
+      context: "Estado · permisos · reproducibilidad",
+      title: "¿Podemos reconstruir el entorno?",
+      text: "Versionar recursos es solo una parte. También hay que proteger el estado y los secretos, limitar los permisos y detectar cambios hechos a mano. Me interesa que otro miembro del equipo pueda revisar y aplicar un cambio sin depender de quien creó el entorno.",
+      tradeoff:
+        "Recrear infraestructura no recupera los datos. Las copias y la restauración necesitan su propia prueba.",
     },
     {
-      name: "Producción",
-      title: "Verificar en producción.",
-      text: "Despliegues, observabilidad y comprobaciones sobre la versión publicada para saber cómo se comporta la web en uso.",
-      code: "desplegar → observar → aprender",
+      name: "Operación",
+      context: "Despliegue · señales · recuperación",
+      title: "¿Qué pasa si el cambio falla?",
+      text: "Antes de desplegar, quiero saber qué señal del producto detectaría un problema, a quién afectaría y quién respondería. Ampliaría la exposición por etapas cuando pueda comparar versiones con tráfico representativo y criterios claros para detener el despliegue.",
+      tradeoff:
+        "Volver a la versión anterior no deshace una migración de datos. La recuperación se diseña junto al cambio.",
     },
   ],
   en: [
     {
-      name: "Interface",
-      title: "Building the interface.",
-      text: "Components, states and navigation. I care about the everyday experience, loading and error states, and keyboard access.",
-      code: '<Interface state="loading" />',
+      name: "Architecture",
+      context: "Boundaries · contracts · autonomy",
+      title: "What needs to change independently?",
+      text: "Before splitting services or microfrontends, I look at who maintains each part, which data it shares and whether it can deploy without coordinating with the rest. If that autonomy is unnecessary, I favour clear internal boundaries before adding network and operational overhead.",
+      tradeoff:
+        "A monorepo organises code. Independence depends on contracts, data ownership and deployments.",
     },
     {
-      name: "Validation",
-      title: "Checking each change.",
-      text: "Type checks, builds and user journey tests to catch errors before deployment.",
-      code: "change → build → tests",
+      name: "Infrastructure",
+      context: "State · permissions · reproducibility",
+      title: "Can we rebuild the environment?",
+      text: "Versioning resources is only part of it. State and secrets need protection, permissions need boundaries and manual changes need to be detected. I want another team member to be able to review and apply a change without relying on whoever created the environment.",
+      tradeoff:
+        "Recreating infrastructure does not recover the data. Backups and restoration need their own test.",
     },
     {
-      name: "Production",
-      title: "Verifying in production.",
-      text: "Deployments, observability and checks on the live site to understand how it behaves in use.",
-      code: "deploy → observe → learn",
+      name: "Operations",
+      context: "Deployment · signals · recovery",
+      title: "What if the change fails?",
+      text: "Before deploying, I want to know which product signal would reveal a problem, who it would affect and who would respond. I would expand exposure in stages when I can compare versions using representative traffic and clear criteria for stopping the rollout.",
+      tradeoff:
+        "Reverting the application does not undo a data migration. Recovery needs to be designed alongside the change.",
     },
   ],
 } as const;
@@ -52,14 +65,14 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
       className="layer-explorer"
       aria-label={
         locale === "es"
-          ? "Explora las capas de una web"
-          : "Explore the layers of a website"
+          ? "Explora mis criterios de arquitectura, infraestructura y operación"
+          : "Explore my approach to architecture, infrastructure and operations"
       }
       data-active={active}
     >
       <div className="explorer-heading">
         <span className="kicker">
-          {locale === "es" ? "Una web, por dentro" : "Inside a website"}
+          {locale === "es" ? "Criterio de diseño" : "Design judgement"}
         </span>
         <span className="explorer-count" aria-hidden="true">
           0{active + 1} / 03
@@ -111,15 +124,27 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
         aria-live="polite"
         aria-atomic="true"
       >
+        <p className="layer-context">{item.context}</p>
         <h2>{item.title}</h2>
         <p>{item.text}</p>
-        <code>{item.code}</code>
+        <p className="layer-tradeoff">{item.tradeoff}</p>
+        <SiteLink
+          locale={locale}
+          className="layer-evidence"
+          href={localPath(
+            locale,
+            "/blog/arquitectura-infraestructura-operacion",
+          )}
+        >
+          {locale === "es" ? "Leer el razonamiento" : "Read the reasoning"}{" "}
+          <span aria-hidden="true">→</span>
+        </SiteLink>
       </div>
       <noscript>
         <p>
           {locale === "es"
-            ? "Este ejemplo muestra la interfaz. Con JavaScript puedes explorar también validación y producción."
-            : "This example shows the interface. Enable JavaScript to explore validation and production too."}
+            ? "Aquí puedes leer el criterio de arquitectura. El artículo enlazado desarrolla también infraestructura y operación."
+            : "The architecture perspective is shown here. The linked article also covers infrastructure and operations."}
         </p>
       </noscript>
     </section>
