@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icon";
 import { useState } from "react";
 import { localPath, type Locale } from "@/lib/i18n";
 import { SiteLink } from "./site-link";
@@ -137,7 +138,9 @@ export function LayerExplorer({ locale }: { locale: Locale }) {
           )}
         >
           {locale === "es" ? "Leer el razonamiento" : "Read the reasoning"}{" "}
-          <span aria-hidden="true">→</span>
+          <span aria-hidden="true">
+            <Icon name="arrow-right" />
+          </span>
         </SiteLink>
       </div>
       <noscript>

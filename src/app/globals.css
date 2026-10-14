@@ -34,6 +34,13 @@ button:focus-visible {
 [tabindex="-1"]:focus {
   outline: none;
 }
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
 button {
   font: inherit;
   cursor: pointer;

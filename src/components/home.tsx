@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { LayerExplorer } from "./layer-explorer";
@@ -38,7 +39,9 @@ export default function Home({ locale }: { locale: Locale }) {
             href={localPath(locale, "/sobre-mi")}
           >
             {en ? "My background" : "Conocer mi trayectoria"}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
         </div>
         <LayerExplorer locale={locale} />
@@ -59,7 +62,9 @@ export default function Home({ locale }: { locale: Locale }) {
             href={localPath(locale, "/proyectos")}
           >
             {en ? "Explore projects" : "Explorar proyectos"}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
         </div>
         <ProjectPreview locale={locale} />
@@ -84,7 +89,9 @@ export default function Home({ locale }: { locale: Locale }) {
               href={localPath(locale, "/blog")}
             >
               {en ? "Read the blog" : "Entrar al blog"}
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">
+                <Icon name="arrow-up-right" />
+              </span>
             </SiteLink>
           </div>
           {post && (
@@ -99,18 +106,23 @@ export default function Home({ locale }: { locale: Locale }) {
               <div className="check-art" aria-hidden="true">
                 {post.slug === "cicd-frontend" ? (
                   <>
-                    <span>✓</span>
+                    <span>
+                      <Icon name="check" />
+                    </span>
                     <span>?</span>
                   </>
                 ) : (
-                  <span>↗</span>
+                  <span>
+                    <Icon name="arrow-up-right" />
+                  </span>
                 )}
               </div>
               <h3 style={{ viewTransitionName: `article-${post.slug}` }}>
                 {post.title}
               </h3>
               <span className="text-link">
-                {en ? "Read article" : "Leer artículo"} ↗
+                {en ? "Read article" : "Leer artículo"}{" "}
+                <Icon name="arrow-up-right" />
               </span>
             </SiteLink>
           )}

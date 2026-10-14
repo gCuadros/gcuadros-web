@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { localPath, type Locale } from "@/lib/i18n";
 export function ProjectPreview({ locale }: { locale: Locale }) {
@@ -15,7 +16,10 @@ export function ProjectPreview({ locale }: { locale: Locale }) {
             <span>OPEN SOURCE</span>
           </div>
           <div className="hevy-word">
-            hevy<span>↗</span>
+            hevy
+            <span>
+              <Icon name="arrow-up-right" />
+            </span>
           </div>
           <div className="art-flow">
             <span>API</span>
@@ -45,7 +49,7 @@ export function ProjectPreview({ locale }: { locale: Locale }) {
             </p>
           </div>
           <span className="round-arrow" aria-hidden="true">
-            ↗
+            <Icon name="arrow-up-right" />
           </span>
         </div>
       </SiteLink>

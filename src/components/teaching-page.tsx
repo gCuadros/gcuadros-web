@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import Image from "next/image";
 import { FabricsCover } from "./fabrics-cover";
@@ -33,7 +34,9 @@ export function TeachingPreview({ locale }: { locale: Locale }) {
           href={localPath(locale, "/docencia")}
         >
           {en ? "See my teaching and talks" : "Ver docencia y charlas"}
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true">
+            <Icon name="arrow-up-right" />
+          </span>
         </SiteLink>
       </div>
       <figure className="teaching-photo">
@@ -127,7 +130,7 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             href={links.nextTalk}
           >
             <span className="play-symbol" aria-hidden="true">
-              ▶
+              <Icon name="play" />
             </span>
             <span>
               {en ? "Watch the full session" : "Ver la sesión completa"}
@@ -137,7 +140,9 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
                   : "Sesión completa · YouTube"}
               </small>
             </span>
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
           <SiteLink
             locale={locale}
@@ -145,7 +150,9 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             href={localPath(locale, "/blog/nextjs-rendering-strategies")}
           >
             {en ? "Read the session notes" : "Leer las notas de la sesión"}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
         </div>
       </section>
@@ -172,7 +179,9 @@ export default function TeachingPage({ locale }: { locale: Locale }) {
             {en
               ? "Speaking at Fabrics 2025"
               : "Mi participación en Fabrics 2025"}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
         </div>
       </section>

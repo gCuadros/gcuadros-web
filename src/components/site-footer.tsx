@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { type Locale } from "@/lib/i18n";
 import { navigationFor } from "@/lib/site";
@@ -17,7 +18,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             href={links.linkedin}
           >
             {en ? "Let’s talk." : "¿Hablamos?"}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Icon name="arrow-up-right" />
+            </span>
           </SiteLink>
         </div>
         <div className="footer-bottom">
@@ -37,10 +40,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </nav>
           <div className="footer-social">
             <SiteLink locale={locale} href={links.github}>
-              GitHub ↗
+              GitHub <Icon name="arrow-up-right" />
             </SiteLink>
             <SiteLink locale={locale} href={links.linkedin}>
-              LinkedIn ↗
+              LinkedIn <Icon name="arrow-up-right" />
             </SiteLink>
           </div>
         </div>

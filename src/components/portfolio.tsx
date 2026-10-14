@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { translator, type Locale } from "@/lib/i18n";
 import type { ReactNode } from "react";
@@ -15,7 +16,9 @@ export function ArrowLink({
   return (
     <SiteLink locale={locale} className="arrow-link" href={href}>
       {children}
-      <span aria-hidden="true">↗</span>
+      <span aria-hidden="true">
+        <Icon name="arrow-up-right" />
+      </span>
     </SiteLink>
   );
 }

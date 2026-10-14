@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icon";
 import { useSyncExternalStore } from "react";
 
 function subscribe(onChange: () => void) {
@@ -27,7 +28,9 @@ export function ThemeToggle({ label }: { label: string }) {
         } catch {}
       }}
     >
-      <span aria-hidden="true">◐</span>
+      <span aria-hidden="true">
+        <Icon name="theme" />
+      </span>
       <span className="visually-hidden">{label}</span>
     </button>
   );

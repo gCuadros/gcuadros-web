@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { ProjectPreview } from "./project-preview";
@@ -33,7 +34,8 @@ export default function ProjectsPage({ locale }: { locale: Locale }) {
                 : "El caso de Hevy explica cómo gestiono las peticiones fallidas, qué valido antes de modificar datos y por qué distingo entre un dato ausente y un cero. La implementación y las pruebas están en GitHub."}
             </p>
             <SiteLink locale={locale} className="text-link" href={links.hevy}>
-              {en ? "Explore the repository" : "Explorar el repositorio"} ↗
+              {en ? "Explore the repository" : "Explorar el repositorio"}{" "}
+              <Icon name="arrow-up-right" />
             </SiteLink>
           </div>
         </section>
