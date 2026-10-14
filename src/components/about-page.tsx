@@ -18,13 +18,8 @@ export default function AboutPage({ locale }: { locale: Locale }) {
         <div className="about-copy">
           <p>
             {en
-              ? "I’m a Frontend Tech Lead at MANGO. I build interfaces, make architecture decisions with other Tech Leads and support the team’s technical work. Before that, I worked at Freepik and Wuolah."
-              : "Soy Frontend Tech Lead en MANGO. Desarrollo interfaces, comparto decisiones de arquitectura con otros Tech Leads y acompaño al equipo en su trabajo técnico. Antes trabajé en Freepik y Wuolah."}
-          </p>
-          <p>
-            {en
-              ? "At MANGO and Freepik, I’ve worked directly on high-traffic digital products used by customers, with performance and scalability requirements that shape frontend engineering decisions."
-              : "En MANGO y Freepik he trabajado directamente en productos digitales de alto tráfico utilizados por clientes, con requisitos de rendimiento y escalabilidad que condicionan las decisiones de desarrollo frontend."}
+              ? "I’m a Frontend Tech Lead at MANGO. I build interfaces and share architecture decisions with other Tech Leads. At MANGO and Freepik, I’ve worked directly on high-traffic digital products used by customers, with performance and scalability requirements. I’ve also worked at Wuolah."
+              : "Soy Frontend Tech Lead en MANGO. Desarrollo interfaces y comparto decisiones de arquitectura con otros Tech Leads. En MANGO y Freepik he trabajado directamente en productos digitales de alto tráfico utilizados por clientes, con requisitos de rendimiento y escalabilidad. También he trabajado en Wuolah."}
           </p>
           <p>
             {en
