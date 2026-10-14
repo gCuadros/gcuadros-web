@@ -7,7 +7,7 @@ Madrid, España · [linkedin.com/in/gonzalo-cuadros](https://www.linkedin.com/in
 
 ## Perfil profesional
 
-Frontend Tech Lead especializado en arquitectura frontend con React, Next.js y TypeScript, monorepos y DevOps. Experiencia en integración y entrega continua (CI/CD), infraestructura como código y despliegues en Google Cloud Platform (GCP).
+Frontend Tech Lead con experiencia en productos digitales de alto tráfico en MANGO y Freepik. Especializado en arquitectura frontend con React, Next.js y TypeScript, monorepos y DevOps. Experiencia en integración y entrega continua (CI/CD), infraestructura como código y despliegues en Google Cloud Platform (GCP).
 
 En MANGO comparto con otros Tech Leads las decisiones de arquitectura y la planificación de migraciones. Combino ese trabajo con la automatización de procesos y la mentoría a desarrolladores.
 
@@ -18,7 +18,7 @@ En MANGO comparto con otros Tech Leads las decisiones de arquitectura y la plani
 Enero de 2025 — actualidad
 
 - Mentoría técnica, reuniones 1:1 y feedback a desarrolladores.
-- Decisiones de arquitectura compartidas con otros Tech Leads, con foco en la mantenibilidad de las plataformas frontend.
+- Decisiones de arquitectura compartidas con otros Tech Leads, con foco en rendimiento y mantenibilidad de una plataforma de alto tráfico.
 - Integración y entrega continua de frontend, automatización de despliegues y observabilidad.
 - Participación en entrevistas técnicas y planes de desarrollo profesional desde el rol de Tech Lead.
 
@@ -42,7 +42,7 @@ Enero de 2025 — actualidad
 
 Julio de 2020 — julio de 2022
 
-- Participación en la migración a Next.js y conversión de código JavaScript a TypeScript.
+- Desarrollo frontend en una plataforma de alto tráfico: migración a Next.js y conversión de JavaScript a TypeScript.
 - Gestión de despliegues e infraestructura GCP, incluidos entornos sandbox.
 
 ### Cash Converters España — Frontend Developer

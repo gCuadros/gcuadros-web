@@ -23,6 +23,11 @@ export default function AboutPage({ locale }: { locale: Locale }) {
           </p>
           <p>
             {en
+              ? "At MANGO and Freepik, I’ve worked directly on high-traffic digital products used by customers, with performance and scalability requirements that shape frontend engineering decisions."
+              : "En MANGO y Freepik he trabajado directamente en productos digitales de alto tráfico utilizados por clientes, con requisitos de rendimiento y escalabilidad que condicionan las decisiones de desarrollo frontend."}
+          </p>
+          <p>
+            {en
               ? "My DevOps work covers automation, CI/CD, infrastructure as code and observability. As a Tech Lead, I spend part of my time mentoring developers and giving feedback. I’ve also taught frontend and Next.js at Codespace Academy."
               : "Mi trabajo en DevOps incluye automatización, CI/CD, infraestructura como código y observabilidad. Como Tech Lead, dedico parte de mi trabajo a la mentoría y al feedback; como docente, he impartido sesiones de frontend y Next.js en Codespace Academy."}
           </p>

@@ -7,7 +7,7 @@ Madrid, Spain · [linkedin.com/in/gonzalo-cuadros](https://www.linkedin.com/in/g
 
 ## Professional profile
 
-Frontend Tech Lead specialising in frontend architecture with React, Next.js and TypeScript, monorepos and DevOps. Experience in continuous integration and delivery (CI/CD), infrastructure as code and deployments on Google Cloud Platform (GCP).
+Frontend Tech Lead with experience in high-traffic digital products at MANGO and Freepik. Specialising in frontend architecture with React, Next.js and TypeScript, monorepos and DevOps. Experience in continuous integration and delivery (CI/CD), infrastructure as code and deployments on Google Cloud Platform (GCP).
 
 At MANGO, I share architectural decisions and migration planning with other Tech Leads. Alongside that work, I automate development processes and mentor developers.
 
@@ -18,7 +18,7 @@ At MANGO, I share architectural decisions and migration planning with other Tech
 January 2025 - present
 
 - Technical mentoring, one-to-ones and feedback for developers.
-- Shared architectural decisions with other Tech Leads, with a focus on maintainable frontend platforms.
+- Shared architectural decisions with other Tech Leads, with a focus on performance and maintainability for a high-traffic platform.
 - Frontend continuous integration and delivery, deployment automation and observability.
 - Participation in technical interviews and professional development plans as a Tech Lead.
 
@@ -42,7 +42,7 @@ January 2025 - present
 
 July 2020 - July 2022
 
-- Contributed to migration to Next.js and conversion of JavaScript code to TypeScript.
+- Frontend development for a high-traffic platform: contributed to migration to Next.js and conversion of JavaScript to TypeScript.
 - Managed GCP deployments and infrastructure, including sandbox environments.
 
 ### Cash Converters España - Frontend Developer
