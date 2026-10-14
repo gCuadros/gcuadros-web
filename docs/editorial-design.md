@@ -11,3 +11,9 @@ Responsive layouts are reviewed at 320, 390, 768 and 1440 px. Diagrams and typog
 Maggie Appleton’s https://maggieappleton.com/ informed the emphasis on authored material and reading hierarchy. This implementation does not copy her illustrations, fonts or layout. The user authorized direct code design for this iteration. The older local Pen.dev Q/R boards describe the previous design and are not the source of truth for this version. Do not claim they were synchronized.
 
 Public content must not include team headcounts, internal migration paths or company infrastructure diagrams. Technical leadership must not imply formal people management. AWS, Azure, Kubernetes and Ansible remain academic training unless professional use is explicitly confirmed.
+
+## Cross-platform icon rendering
+
+UI arrows, play, check and theme symbols use the decorative inline SVG `Icon` component. Do not use Unicode pictographs for interface icons: iOS can render text arrows as coloured emoji even when Chromium on desktop displays monochrome glyphs. Icons inherit `currentColor`, scale with surrounding text and are hidden from assistive technology; the link or button retains its text name. Existing hover movement stays on wrapper elements and honours reduced motion.
+
+`tests/icons.spec.ts` checks ES/EN routes in light and dark themes, verifies link names and rendered vector dimensions, rejects the replaced glyphs, and checks horizontal overflow. CI runs it on desktop Chromium and WebKit using the iPhone 13 device profile. WebKit emulation complements, but does not replace, a physical iPhone/Safari visual review.

@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { FabricsCover } from "./fabrics-cover";
 import { RenderingDiagram } from "./rendering-diagram";
@@ -39,7 +40,8 @@ export default async function BlogArticle({
             className="text-link"
             href={localPath(locale, "/blog")}
           >
-            ← {en ? "All articles" : "Todos los artículos"}
+            <Icon name="arrow-left" />{" "}
+            {en ? "All articles" : "Todos los artículos"}
           </SiteLink>
           <div className="post-meta">
             <span>Gonzalo Cuadros</span>
@@ -63,11 +65,16 @@ export default async function BlogArticle({
         {post.slug === "cicd-frontend" && (
           <div className="article-cover" aria-hidden="true">
             <span>BUILD</span>
-            <i>→</i>
+            <i>
+              <Icon name="arrow-right" />
+            </i>
             <span>TEST</span>
-            <i>→</i>
+            <i>
+              <Icon name="arrow-right" />
+            </i>
             <strong>
-              ✓<em>?</em>
+              <Icon name="check" />
+              <em>?</em>
             </strong>
           </div>
         )}
@@ -82,7 +89,8 @@ export default async function BlogArticle({
             className="text-link"
             href={localPath(locale, "/blog")}
           >
-            ← {en ? "Back to the blog" : "Volver al blog"}
+            <Icon name="arrow-left" />{" "}
+            {en ? "Back to the blog" : "Volver al blog"}
           </SiteLink>
         </footer>
       </article>

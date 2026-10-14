@@ -603,6 +603,7 @@ h3 {
   gap: 0;
 }
 .footer-social a {
+  gap: 0.35em;
   min-height: 44px;
   display: flex;
   align-items: center;

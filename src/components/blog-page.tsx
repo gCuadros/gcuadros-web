@@ -1,3 +1,4 @@
+import { Icon } from "./icon";
 import { SiteLink } from "./site-link";
 import { PageShell } from "./page-shell";
 import { localPath, type Locale } from "@/lib/i18n";
@@ -24,7 +25,8 @@ export default function BlogPage({ locale }: { locale: Locale }) {
               className="text-link"
               href={localPath(locale, "/blog/feed.xml")}
             >
-              {en ? "Follow via RSS" : "Seguir por RSS"} ↗
+              {en ? "Follow via RSS" : "Seguir por RSS"}{" "}
+              <Icon name="arrow-up-right" />
             </SiteLink>
           </div>
         </header>
@@ -49,7 +51,9 @@ export default function BlogPage({ locale }: { locale: Locale }) {
                     href={localPath(locale, `/blog/${post.slug}`)}
                   >
                     {post.title}
-                    <span aria-hidden="true">↗</span>
+                    <span aria-hidden="true">
+                      <Icon name="arrow-up-right" />
+                    </span>
                   </SiteLink>
                 </h2>
                 <p>{post.summary}</p>

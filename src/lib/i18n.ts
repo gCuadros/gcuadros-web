@@ -11,7 +11,6 @@ const english: Record<string, string> = {
   LinkedIn: "LinkedIn",
   GitHub: "GitHub",
   "©": "©",
-  "↗": "↗",
   Trabajo: "Work",
   "Arquitectura frontend": "Frontend architecture",
   Contexto: "Context",
