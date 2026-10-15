@@ -26,14 +26,14 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
-    "@playwright/test": "1.63.0",
+    "@playwright/test": "1.64.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "16.4.0",
     "eslint-config-prettier": "10.1.8",
-    "prettier": "3.9.9",
+    "prettier": "3.9.10",
     "typescript": "^5"
   },
   "engines": {
